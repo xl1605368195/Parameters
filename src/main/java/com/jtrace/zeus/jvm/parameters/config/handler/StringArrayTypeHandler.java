@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// 数据库 a,b,c <=> 对象[a,b,c]
 public class StringArrayTypeHandler extends BaseTypeHandler<String[]> {
 
     private String delimiter = ",";

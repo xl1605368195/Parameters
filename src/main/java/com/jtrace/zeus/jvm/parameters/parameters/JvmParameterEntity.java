@@ -31,9 +31,9 @@ public class JvmParameterEntity {
     private String[] examples;
 
     /**
-     * 参数类型
+     * 参数类型: 对系统的影响分类
      **/
-    private Type type;
+    private String type;
 
     /**
      * 适用的操作系统
@@ -61,6 +61,11 @@ public class JvmParameterEntity {
     private String defaultValue;
 
     /**
+     *  参数值的类型
+     **/
+    private String valueType;
+
+    /**
      * 备注
      **/
     private String extend;
@@ -69,4 +74,5 @@ public class JvmParameterEntity {
     public JvmParameterEntity(String name) {
         this.name = name;
     }
+
 }
