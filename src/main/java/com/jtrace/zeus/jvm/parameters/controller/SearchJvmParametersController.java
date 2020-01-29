@@ -48,7 +48,7 @@ public class SearchJvmParametersController {
     }
 
     /**
-     * 查询含义
+     * 增加
      */
     @RequestMapping(value = "/add")
     public ResponseEntity addJvmParameters() {
