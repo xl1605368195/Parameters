@@ -44,6 +44,7 @@ function send(value) {
             $("#result").empty();
             var body =appendToTable(result);
             $("#result").append($(body));
+             showSuccessNotify("success","参数["+value+"]查询成功");
         },
         error: function (e) {//请求失败，包含具体的错误信息
             alert("err");
@@ -63,7 +64,6 @@ function appendToTable(tmp) {
     var defaultValue = tmp.defaultValue;
     var valueType = tmp.valueType;
     var extend = tmp.extend;
-
     var body=$('<div class="panel-heading">'+name+'&nbsp;&nbsp;<span class="badge badge-primary">'+versions+'</span>&nbsp;&nbsp;<span class="badge label-info">'+defaultValue+'</span></div>\n' +
         '<div class="panel-body">\n' +
         '    <p><span class="label label-danger">例子</span>&nbsp;&nbsp;'+examples+'</p>\n' +
@@ -76,3 +76,21 @@ function appendToTable(tmp) {
     );
     return body;
 }
+
+// 参数诊断
+$("#parameters").change(function(){
+    var values=$("#parameters").val();
+    $.ajax({
+        type: "POST", //请求方式
+        contentType: "application/json;charset=UTF-8",  //请求的媒体类型
+        url: "/evaluate",  //请求地址
+        data: {"parameters": values},    //参数值
+        success: function (result) {  //请求成功
+            showSuccessNotify("success","参数参数诊断完成");
+
+        },
+        error: function (e) {//请求失败，包含具体的错误信息
+            alert("err");
+        }
+    });
+})

@@ -16,4 +16,32 @@ CREATE TABLE `tb_jvm_parameters` (
   `modify_time`   datetime      DEFAULT NULL            COMMENT '最后更新时间',
    PRIMARY KEY (`id`),
    index(`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='参数集合';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='参数信息集合';
+
+DROP TABLE IF EXISTS `tb_jvm_parameters_rank`;
+CREATE TABLE `tb_jvm_parameters_rank` (
+  `id`            int(11)       NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `name`          varchar(128)  NOT NULL                COMMENT '参数命令或者完整的模式',
+  `use_off_line`    int(11)       DEFAULT 0               COMMENT '线下',
+  `use_on_line`     int(11)       DEFAULT 0               COMMENT '线上',
+  `create_time`   datetime      DEFAULT NULL            COMMENT '创建时间/注册时间',
+  `modify_time`   datetime      DEFAULT NULL            COMMENT '最后更新时间',
+   PRIMARY KEY (`id`),
+   index(`name`),
+   index(`use_off_line`),
+   UNIQUE (`name`),
+   index(`use_on_line`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='参数使用排名';
+
+
+DROP TABLE IF EXISTS `tb_java_info`;
+CREATE TABLE `tb_java_info` (
+  `id`            int(11)       NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `hostname`      varchar(256)  NOT NULL                COMMENT '主机名称',
+  `java_info`     text          DEFAULT NULL            COMMENT 'javaInfo 信息',
+  `env`           varchar(12)   DEFAULT NULL            COMMENT '环境信息',
+  `create_time`   datetime      DEFAULT NULL            COMMENT '创建时间/注册时间',
+  `modify_time`   datetime      DEFAULT NULL            COMMENT '最后更新时间',
+   PRIMARY KEY (`id`),
+   UNIQUE (`hostname`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='主机的JavaInfo信息';

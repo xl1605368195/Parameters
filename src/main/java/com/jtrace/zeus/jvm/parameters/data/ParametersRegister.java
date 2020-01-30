@@ -1,5 +1,7 @@
-package com.jtrace.zeus.jvm.parameters.parameters;
+package com.jtrace.zeus.jvm.parameters.data;
 
+
+import com.jtrace.zeus.jvm.parameters.parameters.JvmParameterEntity;
 
 import java.util.HashSet;
 
@@ -7,6 +9,7 @@ import java.util.HashSet;
 /**
  * @author xule05
  * @date 2020/1/27 下午8:13
+ *  阿里云主机到期后，不需要进行数据恢复
  */
 public class ParametersRegister {
 
@@ -27,7 +30,7 @@ public class ParametersRegister {
                 "Loads the specified native agent library. After the library name, a comma-separated list of options specific to the library can be used.",
                 "输出虚拟机中GC日志",
                 "If the option -agentlib:foo is specified, then the JVM attempts to load the library named libfoo.so in the location specified by the LD_LIBRARY_PATH system variable (on OS X this variable is DYLD_LIBRARY_PATH).",
-                "false",
+                "不开启",
                 "boolean",
                 "-verbose:gc的VM等价参数是-XX:+PrintGC "
         ));
@@ -70,11 +73,11 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "Selects the Java HotSpot Server VM. The 64-bit version of the JDK supports only the Server VM, so in that case the option is implicit.",
+                "在多个CPU时性能佳",
                 "",
                 "",
                 "",
-                "",
-                "java -version 可以查看启动模式"
+                "在具有64位能力的jdk环境下默认启动该模式，忽略配置的-client参数。'java -version'可以查看进程的启动模式"
         ));
 
         // verbose:gc
@@ -327,6 +330,7 @@ public class ParametersRegister {
                 "unsigned int",
                 "这个选项在jdk8中被弃用，取而代之的是-XX:MetaspaceSize选项。"
         ));
+
         // -XX:-PrintGC
         set.add(new JvmParameterEntity(
                 "PrintGC",
@@ -342,5 +346,127 @@ public class ParametersRegister {
                 "-XX:+PrintGC的VM等价参数是-verbose:gc"
         ));
 
+        // 2020.1.30
+        // -XX:+UseG1GC
+        set.add(new JvmParameterEntity(
+                "UseG1GC",
+                new String[]{"jdk7"},
+                new String[]{"-XX:-UseG1GC"},
+                "-",
+                "-",
+                "Enables printing of messages at every GC.",
+                "-XX:+PrintGC开启GC日志打印",
+                "-",
+                "不开启",
+                "boolean",
+                "-XX:+PrintGC的VM等价参数是-verbose:gc"
+        ));
+
+        // -XX:+HeapDumpOnOutOfMemoryError
+        set.add(new JvmParameterEntity(
+                "HeapDumpOnOutOfMemoryError",
+                new String[]{"all"},
+                new String[]{"-XX:+HeapDumpOnOutOfMemoryError"},
+                "-",
+                "-",
+                "Enables printing of messages at every GC.",
+                "开启选项后，当JVM发生java.lang.OutOfMemoryError时，自动生成DUMP文件",
+                "-",
+                "不开启",
+                "boolean",
+                ""
+        ));
+
+        // -XX:+TraceClassLoading
+        set.add(new JvmParameterEntity(
+                "TraceClassLoading",
+                new String[]{"all"},
+                new String[]{"-XX:-TraceClassLoading"},
+                "-",
+                "-",
+                "Enables tracing of classes as they are loaded. By default, this option is disabled and classes are not traced.",
+                "开启选项后，跟踪类的加载信息",
+                "-",
+                "不开启",
+                "boolean",
+                ""
+        ));
+
+
+        // -XX:+TraceClassUnloading
+        set.add(new JvmParameterEntity(
+                "TraceClassUnloading",
+                new String[]{"all"},
+                new String[]{"-XX:-TraceClassUnloading"},
+                "-",
+                "-",
+                "Enables tracing of classes as they are unloaded. By default, this option is disabled and classes are not traced.",
+                "开启选项后，跟踪类的卸载信息",
+                "-",
+                "不开启",
+                "boolean",
+                ""
+        ));
+
+        // -XX:ErrorFile
+        set.add(new JvmParameterEntity(
+                "ErrorFile",
+                new String[]{"@since 1.6+"},
+                new String[]{"-XX:ErrorFile=filename"},
+                "-",
+                "-",
+                "If an error occurs, save the error data to this file. (Introduced in 6.)",
+                "",
+                "-",
+                "./hs_err_pid<pid>.log",
+                "String",
+                "-XX:ErrorFile=targetDir/hs_err_pid_%p.log, 可以自定义输出目录"
+        ));
+
+        // -Xnoagent
+        set.add(new JvmParameterEntity(
+                "Xnoagent",
+                new String[]{"jdk5"},
+                new String[]{"-Xnoagent"},
+                "-",
+                "-",
+                "This is a deprecated option which is accepted and ignored. It need not be specified.wiki：https://www.oracle.com/technetwork/java/javase/tech/faqs-jsp-142584.html#QC4\n" ,
+                "jvm启动参数中加入-Xnoagent这个参数不影响agent功能",
+                "-",
+                "",
+                "",
+                "-Xnoagent参数主要是JDK早期用于禁止JPDA远程调试用，现在已经弃用了"
+        ));
+
+        // https://www.jianshu.com/p/b448c21d2e71
+        // -XX:MaxMetaspaceSize
+        set.add(new JvmParameterEntity(
+                "MaxMetaspaceSize",
+                new String[]{"@since1.8+"},
+                new String[]{"-XX:MaxMetaspaceSize=256m"},
+                "-",
+                "-",
+                "" ,
+                "MaxMetaspaceSize用于设置metaspace区域的最大值",
+                "-",
+                "-1",
+                "",
+                ""
+        ));
+
+        // -XX:MetaspaceSize
+        set.add(new JvmParameterEntity(
+                "MetaspaceSize",
+                new String[]{"@since1.8+"},
+                new String[]{"-XX:MetaspaceSize=256m"},
+                "-",
+                "-",
+                "" ,
+                "",
+                "-",
+                "20M",
+                "unsigned int",
+                "metaspace的大小表示首次使用不够而触发FGC的阈值，只对触发起作用"
+        ));
     }
 }

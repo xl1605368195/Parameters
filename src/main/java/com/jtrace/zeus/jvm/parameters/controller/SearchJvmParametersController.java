@@ -1,13 +1,11 @@
 package com.jtrace.zeus.jvm.parameters.controller;
 
 import com.jtrace.zeus.jvm.parameters.parameters.JvmParameterEntity;
-import com.jtrace.zeus.jvm.parameters.parameters.ParametersRegister;
 import com.jtrace.zeus.jvm.parameters.service.ParametersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -44,6 +42,7 @@ public class SearchJvmParametersController {
         if (parameterEntity == null || parameterEntity.getName() == "") {
             return new ResponseEntity<>("查询参数[" + parameter + "]不存在!", HttpStatus.BAD_REQUEST);
         }
+        System.out.println("parameterEntity:"+parameterEntity.toString());
         return new ResponseEntity<>(parameterEntity, HttpStatus.OK);
     }
 

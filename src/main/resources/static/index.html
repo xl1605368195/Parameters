@@ -6,6 +6,8 @@
     <link rel="Shortcut Icon" href="./image/favicon.ico"  type="image/x-icon" />
     <link rel="Bookmark" href="./image/favicon.ico" type="image/x-icon" />
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/pnotify/3.2.1/pnotify.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/pnotify/3.2.1/pnotify.buttons.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/app.css">
     <title>JTrace</title>
 </head>
@@ -27,12 +29,14 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <!--
                 <ul class="nav navbar-nav">
                     <li><a href="#">定制参数</a></li>
                     <li><a href="#">热门参数</a></li>
                     <li><a href="#">修改参数</a></li>
                     <li><a href="#">诊断参数</a></li>
                 </ul>
+                -->
 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">分享本网站</a></li>
@@ -40,38 +44,65 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    <div class="container">
-        <div style="padding-bottom: 20px">
-            <form>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">查询框</label>
-                    <input type="text" data-provide="typeahead" autocomplete="off" class="form-control" id="parameter">
-                </div>
-            </form>
-        </div>
 
-        <div class="panel panel-success" id="result">
-            <div class="panel-heading">verbose:gc&nbsp;&nbsp;<span class="badge badge-primary">jdk8</span>&nbsp;&nbsp;<span class="badge label-info">false</span></div>
-            <div class="panel-body">
-                <p><span class="label label-danger">例子</span>&nbsp;&nbsp;-verbose:gc</p>
+    <!-- 面板-->
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">参数查询</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">参数评估</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">定制参数</a></li>
+            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">热门参数</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- 参数查询框 -->
+            <div role="tabpanel" class="tab-pane active" id="home" style="padding-top: 20px">
+                <div >
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">查询框</label>
+                            <input type="text" data-provide="typeahead" autocomplete="off" class="form-control" id="parameter" placeholder="verbose:gc">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="panel panel-success" id="result">
+                    <div class="panel-heading">verbose:gc&nbsp;&nbsp;<span class="badge badge-primary">jdk8</span>&nbsp;&nbsp;<span class="badge label-info">false</span></div>
+                    <div class="panel-body">
+                        <p><span class="label label-danger">例子</span>&nbsp;&nbsp;-verbose:gc</p>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="label label-success">含义</span>&nbsp;&nbsp;输出虚拟机中GC的详细情况</li>
+                        <li class="list-group-item"><span class="label label-warning">扩展</span>&nbsp;&nbsp;-verbose:gc的VM等价参数是-XX:+PrintGC</li>
+                        <li class="list-group-item"><span class="label label-primary">使用</span>&nbsp;&nbsp;-verbose:gc 输出虚拟机中GC的详细情况，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，
+                            收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印</li>
+                    </ul>
+                </div>
             </div>
-            <ul class="list-group">
-                <li class="list-group-item"><span class="label label-success">含义</span>&nbsp;&nbsp;输出虚拟机中GC的详细情况</li>
-                <li class="list-group-item"><span class="label label-warning">扩展</span>&nbsp;&nbsp;-verbose:gc的VM等价参数是-XX:+PrintGC</li>
-                <li class="list-group-item"><span class="label label-primary">使用</span>&nbsp;&nbsp;-verbose:gc 输出虚拟机中GC的详细情况，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，
-                    收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印</li>
-            </ul>
+            <!-- 参数诊断框 -->
+            <div role="tabpanel" class="tab-pane" id="profile" style="padding-top: 20px">
+                <div class="form-group">
+                    <textarea  id="paraneters" class="form-control" rows="10" placeholder="查看JVM启动参数: ps -ef| grep java"></textarea>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="messages">...</div>
+            <div role="tabpanel" class="tab-pane" id="settings">...</div>
         </div>
-        <footer class="footer">
-            <hr>
-            <p align="center">&copy; 2019-2020</p>
-        </footer>
     </div>
+
+    <footer class="footer">
+        <p align="center">&copy; 2019-2020 by Aven & kenel</p>
+    </footer>
 </div> <!-- /container -->
 
 <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.staticfile.org/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+<script src="https://cdn.staticfile.org/pnotify/3.2.1/pnotify.js"></script>
+<script src="https://cdn.staticfile.org/pnotify/3.2.1/pnotify.buttons.js"></script>
+<script src="https://cdn.staticfile.org/pnotify/3.2.1/pnotify.confirm.js"></script>
+<script src="./js/alert.js"></script>
 <script src="./js/app.js"></script>
 </body>
 </html>

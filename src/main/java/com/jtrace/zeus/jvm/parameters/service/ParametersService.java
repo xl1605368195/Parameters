@@ -2,7 +2,7 @@ package com.jtrace.zeus.jvm.parameters.service;
 
 import com.jtrace.zeus.jvm.parameters.mapper.JvmParametersMapper;
 import com.jtrace.zeus.jvm.parameters.parameters.JvmParameterEntity;
-import com.jtrace.zeus.jvm.parameters.parameters.ParametersRegister;
+import com.jtrace.zeus.jvm.parameters.data.ParametersRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

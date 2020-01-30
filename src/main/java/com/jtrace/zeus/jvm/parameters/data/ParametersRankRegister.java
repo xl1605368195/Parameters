@@ -1,0 +1,222 @@
+package com.jtrace.zeus.jvm.parameters.data;
+
+import com.jtrace.zeus.jvm.parameters.parameters.ParametersRankEntity;
+
+import java.util.HashMap;
+import java.util.HashSet;
+
+/**
+ * @author xule05
+ * @date 2020/1/30 下午1:09
+ * 阿里云主机到期后，不需要进行数据恢复
+ */
+public class ParametersRankRegister {
+
+    public static HashMap<String, ParametersRankEntity> map = new HashMap<>();
+
+    static {
+        String s = "-agentlib\n" +
+                "-agentpath\n" +
+                "-client\n" +
+                "-Dproperty\n" +
+                "-jar\n" +
+                "-javaagent\n" +
+                "-verbose:class\n" +
+                "-verbose:gc\n" +
+                "-verbose:jni\n" +
+                "-version\n" +
+                "-version:release\n" +
+                "-jre-restrict-search\n" +
+                "-no-jre-restrict-search\n" +
+                "-server\n" +
+                "-showversion\n" +
+                "-X\n" +
+                "-Xbatch\n" +
+                "-Xcomp\n" +
+                "-Xdebug\n" +
+                "-Xdiag\n" +
+                "-Xfuture\n" +
+                "-Xint\n" +
+                "-Xinternalversion\n" +
+                "-Xmixed\n" +
+                "-Xnoclassgc\n" +
+                "-Xprof\n" +
+                "-Xrs\n" +
+                "-Xss\n" +
+                "-Xms\n" +
+                "-Xmx\n" +
+                "-Xmaxjitcodesize\n" +
+                "-Xbootclasspath:path\n" +
+                "-Xbootclasspath/a:path\n" +
+                "-Xbootclasspath/p:path\n" +
+                "-Xloggc:filename\n" +
+                "-Xshare:mode\n" +
+                "-Xverify:mode\n" +
+                "-XshowSettings:category\n" +
+                "-Xcheck:jni\n" +
+                "-XX:+CheckEndorsedAndExtDirs\n" +
+                "-XX:+DisableAttachMechanism\n" +
+                "-XX:ErrorFile\n" +
+                "-XX:+FailOverToOldVerifier\n" +
+                "-XX:+FlightRecorder\n" +
+                "-XX:-FlightRecorder\n" +
+                "-XX:FlightRecorderOptions\n" +
+                "-XX:LargePageSizeInBytes\n" +
+                "-XX:MaxDirectMemorySize\n" +
+                "-XX:NativeMemoryTracking\n" +
+                "-XX:ObjectAlignmentInBytes\n" +
+                "-XX:OnError\n" +
+                "-XX:OnOutOfMemoryError\n" +
+                "-XX:+PerfDataSaveToFile\n" +
+                "-XX:+PrintCommandLineFlags\n" +
+                "-XX:+PrintNMTStatistics\n" +
+                "-XX:+RelaxAccessControlCheck\n" +
+                "-XX:+ResourceManagement\n" +
+                "-XX:ResourceManagementSampleInterval\n" +
+                "-XX:SharedArchiveFile\n" +
+                "-XX:SharedClassListFile\n" +
+                "-XX:+ShowMessageBoxOnError\n" +
+                "-XX:StartFlightRecording\n" +
+                "-XX:ThreadStackSize\n" +
+                "-XX:+TraceClassLoading\n" +
+                "-XX:+TraceClassLoadingPreorder\n" +
+                "-XX:+TraceClassResolution\n" +
+                "-XX:+TraceClassUnloading\n" +
+                "-XX:+TraceLoaderConstraints\n" +
+                "-XX:+UnlockCommercialFeatures\n" +
+                "-XX:+UseAppCDS\n" +
+                "-XX:-UseBiasedLocking\n" +
+                "-XX:-UseCompressedOops\n" +
+                "-XX:+UseLargePages\n" +
+                "-XX:+UseMembar\n" +
+                "-XX:+UsePerfData\n" +
+                "-XX:+AllowUserSignalHandlers\n" +
+                "-XX:+AggressiveOpts\n" +
+                "-XX:AllocateInstancePrefetchLines\n" +
+                "-XX:AllocatePrefetchDistance\n" +
+                "-XX:AllocatePrefetchInstr\n" +
+                "-XX:AllocatePrefetchLines\n" +
+                "-XX:AllocatePrefetchStepSize\n" +
+                "-XX:AllocatePrefetchStyle\n" +
+                "-XX:+BackgroundCompilation\n" +
+                "-XX:CICompilerCount\n" +
+                "-XX:CodeCacheMinimumFreeSpace\n" +
+                "-XX:CompileCommand\n" +
+                "-XX:CompileCommandFile\n" +
+                "-XX:CompileOnly\n" +
+                "-XX:CompileThreshold\n" +
+                "-XX:+DoEscapeAnalysis\n" +
+                "-XX:InitialCodeCacheSize\n" +
+                "-XX:+Inline\n" +
+                "-XX:InlineSmallCode\n" +
+                "-XX:+LogCompilation\n" +
+                "-XX:MaxInlineSize\n" +
+                "-XX:MaxNodeLimit\n" +
+                "-XX:MaxTrivialSize\n" +
+                "-XX:+OptimizeStringConcat\n" +
+                "-XX:+PrintAssembly\n" +
+                "-XX:+PrintCompilation\n" +
+                "-XX:+PrintInlining\n" +
+                "-XX:ReservedCodeCacheSize\n" +
+                "-XX:RTMAbortRatio\n" +
+                "-XX:RTMRetryCount\n" +
+                "-XX:-TieredCompilation\n" +
+                "-XX:+UseAES\n" +
+                "-XX:+UseAESIntrinsics \n" +
+                "-XX:+UseCodeCacheFlushing\n" +
+                "-XX:+UseCondCardMark\n" +
+                "-XX:+UseRTMDeopt\n" +
+                "-XX:+UseRTMLocking\n" +
+                "-XX:+UseSHA\n" +
+                "-XX:+UseSHA1Intrinsics\n" +
+                "-XX:+UseSHA256Intrinsics\n" +
+                "-XX:+UseSHA512Intrinsics\n" +
+                "-XX:+UseSuperWord\n" +
+                "-XX:+HeapDumpOnOutOfMemoryError\n" +
+                "-XX:HeapDumpPath\n" +
+                "-XX:LogFile\n" +
+                "-XX:+PrintClassHistogram\n" +
+                "-XX:+PrintConcurrentLocks\n" +
+                "-XX:+UnlockDiagnosticVMOptions\n" +
+                "-XX:ActiveProcessorCount\n" +
+                "-XX:+AggressiveHeap\n" +
+                "-XX:+AlwaysPreTouch\n" +
+                "-XX:+CMSClassUnloadingEnabled\n" +
+                "-XX:CMSExpAvgFactor\n" +
+                "-XX:CMSInitiatingOccupancyFraction\n" +
+                "-XX:+CMSScavengeBeforeRemark\n" +
+                "-XX:CMSTriggerRatio\n" +
+                "-XX:ConcGCThreads\n" +
+                "-XX:+DisableExplicitGC\n" +
+                "-XX:+ExplicitGCInvokesConcurrent\n" +
+                "-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses\n" +
+                "-XX:G1HeapRegionSize\n" +
+                "-XX:+G1PrintHeapRegions\n" +
+                "-XX:G1ReservePercent\n" +
+                "-XX:InitialHeapSize\n" +
+                "-XX:InitialRAMPercentage\n" +
+                "-XX:InitialSurvivorRatio\n" +
+                "-XX:InitiatingHeapOccupancyPercent\n" +
+                "-XX:MaxGCPauseMillis\n" +
+                "-XX:MaxHeapSize\n" +
+                "-XX:MaxHeapFreeRatio\n" +
+                "-XX:MaxMetaspaceSize\n" +
+                "-XX:MaxRAMPercentage\n" +
+                "-XX:MaxNewSize\n" +
+                "-XX:MaxTenuringThreshold\n" +
+                "-XX:MetaspaceSize\n" +
+                "-XX:MinHeapFreeRatio\n" +
+                "-XX:MinRAMPercentage\n" +
+                "-XX:NewRatio\n" +
+                "-XX:NewSize\n" +
+                "-XX:ParallelGCThreads\n" +
+                "-XX:+ParallelRefProcEnabled\n" +
+                "-XX:+PrintAdaptiveSizePolicy\n" +
+                "-XX:+PrintGC\n" +
+                "-XX:+PrintGCApplicationConcurrentTime\n" +
+                "-XX:+PrintGCApplicationStoppedTime\n" +
+                "-XX:+PrintGCDateStamps\n" +
+                "-XX:+PrintGCDetails\n" +
+                "-XX:+PrintGCTaskTimeStamps\n" +
+                "-XX:+PrintGCTimeStamps\n" +
+                "-XX:+PrintStringDeduplicationStatistics\n" +
+                "-XX:+PrintTenuringDistribution\n" +
+                "-XX:+ScavengeBeforeFullGC\n" +
+                "-XX:SoftRefLRUPolicyMSPerMB\n" +
+                "-XX:StringDeduplicationAgeThreshold\n" +
+                "-XX:SurvivorRatio\n" +
+                "-XX:TargetSurvivorRatio\n" +
+                "-XX:TLABSize\n" +
+                "-XX:+UseAdaptiveSizePolicy\n" +
+                "-XX:+UseCMSInitiatingOccupancyOnly\n" +
+                "-XX:+UseConcMarkSweepGC\n" +
+                "-XX:+UseG1GC\n" +
+                "-XX:+UseGCOverheadLimit\n" +
+                "-XX:+UseNUMA\n" +
+                "-XX:+UseParallelGC\n" +
+                "-XX:+UseParallelOldGC\n" +
+                "-XX:+UseParNewGC\n" +
+                "-XX:+UseSerialGC\n" +
+                "-XX:+UseStringDeduplication\n" +
+                "-XX:+UseTLAB\n" +
+                "-Xincgc\n" +
+                "-Xrunlibname\n" +
+                "-XX:CMSIncrementalDutyCycle\n" +
+                "-XX:CMSIncrementalDutyCycleMin\n" +
+                "-XX:+CMSIncrementalMode\n" +
+                "-XX:CMSIncrementalOffset\n" +
+                "-XX:+CMSIncrementalPacing\n" +
+                "-XX:CMSIncrementalSafetyFactor\n" +
+                "-XX:CMSInitiatingPermOccupancyFraction\n" +
+                "-XX:MaxPermSize\n" +
+                "-XX:PermSize\n" +
+                "-XX:+UseSplitVerifier\n" +
+                "-XX:+UseStringCache";
+        String[] split = s.split("\\\n");
+        for (String s1 : split) {
+            ParametersRankEntity parametersRankEntity = new ParametersRankEntity(s1);
+            parametersRankEntity.setUseOffLine(0);
+            map.put(s1, parametersRankEntity);
+        }
+    }
+}
