@@ -12,6 +12,7 @@ public class ParametersRegister {
 
     public static HashSet<JvmParameterEntity> set = new HashSet<>();
 
+    // https://blog.csdn.net/unix21/article/details/79849485
     static {
         // Standard Options
         // These are the most commonly used options that are supported by all implementations of the JVM.
@@ -24,7 +25,7 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "Loads the specified native agent library. After the library name, a comma-separated list of options specific to the library can be used.",
-                "输出虚拟机中GC的详细情况",
+                "输出虚拟机中GC日志",
                 "If the option -agentlib:foo is specified, then the JVM attempts to load the library named libfoo.so in the location specified by the LD_LIBRARY_PATH system variable (on OS X this variable is DYLD_LIBRARY_PATH).",
                 "false",
                 "boolean",
@@ -85,7 +86,7 @@ public class ParametersRegister {
                 "all",
                 "Displays information about each garbage collection (GC) event.",
                 "输出虚拟机中GC的详细情况",
-                "-verbose:gc 输出虚拟机中GC的详细情况，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印",
+                "-verbose:gc 输出虚拟机中GC日志，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印",
                 "false",
                 "boolean",
                 "-verbose:gc的VM等价参数是-XX:+PrintGC "
@@ -251,5 +252,95 @@ public class ParametersRegister {
         // -XshowSettings:category
         // -Xsssize
         // -Xverify:mode
+
+        // -XX:-DisableExplicitGC
+        set.add(new JvmParameterEntity(
+                "DisableExplicitGC",
+                new String[]{"jdk7,jdk8"},
+                new String[]{"-XX:-DisableExplicitGC"},
+                "-",
+                "all",
+                "",
+                "默认情况下，此选项处于禁用状态，这意味着忽略来自System.gc()方法触发的GC。",
+                "",
+                "-",
+                "",
+                ""
+        ));
+
+        // UseConcMarkSweepGC
+        set.add(new JvmParameterEntity(
+                "UseConcMarkSweepGC",
+                new String[]{"-"},
+                new String[]{"-XX:-UseConcMarkSweepGC"},
+                "-",
+                "-",
+                "Use concurrent mark-sweep collection for the old generation",
+                "允许对老年代使用CMS垃圾收集器",
+                "-",
+                "不开启",
+                "boolean",
+                "Oracle建议在不能满足应用程序延迟需求时使用CMS垃圾收集器,当启用此选项时,会自动设置-XX:+UseParNewGC选项，不应该禁用(-XX:-UseParNewGC)。在并且jdk8中已经禁用了以下选项组合:-XX:+UseConcMarkSweepGC -XX:-UseParNewGC"
+        ));
+
+        // UseParNewGC
+        set.add(new JvmParameterEntity(
+                "UseParNewGC",
+                new String[]{"-"},
+                new String[]{"-XX:+UseParNewGC"},
+                "-",
+                "-",
+                "Enables the use of parallel threads for collection in the young generation.By default, this option is disabled. It is automatically enabled when you set the -XX:+UseConcMarkSweepGC option. Using the -XX:+UseParNewGC option without the -XX:+UseConcMarkSweepGC option was deprecated in JDK 8.",
+                "允许对新生代使用parallel垃圾收集器",
+                "-",
+                "不开启",
+                "boolean",
+                "当开启-XX:+UseConcMarkSweepGC选项时，-XX:+UseParNewGC将自动启用"
+        ));
+
+        // -XX:MaxPermSize
+        set.add(new JvmParameterEntity(
+                "MaxPermSize",
+                new String[]{"jdk7"},
+                new String[]{"-XX:MaxPermSize=256M"},
+                "-",
+                "-",
+                "Sets the maximum permanent generation space size (in bytes). This option was deprecated in JDK 8, and superseded by the -XX:MaxMetaspaceSize option.",
+                "设置永久带的最大值",
+                "-",
+                "-",
+                "unsigned int",
+                "此选项在jdk8中被弃用，并被-XX:MaxMetaspaceSize选项取代。"
+        ));
+
+        // -XX:PermSize
+        set.add(new JvmParameterEntity(
+                "PermSize",
+                new String[]{"jdk7"},
+                new String[]{"-XX:PermSize=256M"},
+                "-",
+                "-",
+                "Sets the space (in bytes) allocated to the permanent generation that triggers a garbage collection if it is exceeded. This option was deprecated un JDK 8, and superseded by the -XX:MetaspaceSize option.",
+                "分配给永久代的空间，如果超过该值，将触发垃圾回收。",
+                "-",
+                "-",
+                "unsigned int",
+                "这个选项在jdk8中被弃用，取而代之的是-XX:MetaspaceSize选项。"
+        ));
+        // -XX:-PrintGC
+        set.add(new JvmParameterEntity(
+                "PrintGC",
+                new String[]{"jdk7"},
+                new String[]{"-XX:-PrintGC"},
+                "-",
+                "-",
+                "Enables printing of messages at every GC.",
+                "-XX:+PrintGC开启GC日志打印",
+                "-",
+                "不开启",
+                "boolean",
+                "-XX:+PrintGC的VM等价参数是-verbose:gc"
+        ));
+
     }
 }

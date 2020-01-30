@@ -33,10 +33,10 @@ public class ParametersService {
     // 增加
     public int addOne() {
         int count = 0;
-//        for (JvmParameterEntity obj : ParametersRegister.set) {
-//            mapper.insertOne(obj);
-//            count++;
-//        }
+        for (JvmParameterEntity obj : ParametersRegister.set) {
+            mapper.insertOne(obj);
+            count++;
+        }
         return count;
     }
 }
