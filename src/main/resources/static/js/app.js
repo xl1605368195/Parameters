@@ -82,12 +82,11 @@ $("#parameters").change(function(){
     var values=$("#parameters").val();
     $.ajax({
         type: "POST", //请求方式
-        contentType: "application/json;charset=UTF-8",  //请求的媒体类型
         url: "/evaluate",  //请求地址
+        contentType: "application/x-www-form-urlencoded;charset=UTF-8",  //请求的媒体类型
         data: {"parameters": values},    //参数值
         success: function (result) {  //请求成功
             showSuccessNotify("success","参数参数诊断完成");
-
         },
         error: function (e) {//请求失败，包含具体的错误信息
             alert("err");

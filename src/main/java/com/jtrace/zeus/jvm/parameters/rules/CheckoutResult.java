@@ -1,9 +1,18 @@
 package com.jtrace.zeus.jvm.parameters.rules;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 /**
  * @author xule05
  * @date 2020/1/30 下午8:46
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class CheckoutResult {
 
     private Level level;
@@ -16,13 +25,6 @@ public class CheckoutResult {
 
     public static CheckoutResult ok(String title) {
         return new CheckoutResult(Level.OK, title);
-    }
-
-    public CheckoutResult(Level level, String title, String conent, String tips) {
-        this.level = level;
-        this.title = title;
-        this.conent = conent;
-        this.tips = tips;
     }
 
     public CheckoutResult(Level level, String title) {
