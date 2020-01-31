@@ -10,6 +10,7 @@ import java.util.Set;
  * @author xule05
  * @date 2020/1/31 上午2:31
  */
+@Deprecated
 public class ParametersCollection {
     private static final String path = "com.jtrace.zeus.jvm.parameters.rules.parameter";
 

@@ -81,11 +81,12 @@ function appendToTable(tmp) {
 $("#parameters").change(function(){
     var values=$("#parameters").val();
     var jdkVersion=$("input[name='jdkVersion']:checked").val();
+    var totalMem=$("input[name='totalMem']:checked").val();
     $.ajax({
         type: "POST", //请求方式
         url: "/evaluate",  //请求地址
         contentType: "application/x-www-form-urlencoded;charset=UTF-8",  //请求的媒体类型
-        data: {"parameters": values,"jdkVersion":jdkVersion},    //参数值
+        data: {"parameters": values,"jdkVersion":jdkVersion,"totalMem":totalMem},    //参数值
         success: function (result) {  //请求成功
             showSuccessNotify("success","参数参数诊断完成");
         },

@@ -13,5 +13,6 @@ import java.lang.annotation.Target;
  * @author xule05
  * @date 2020/1/30 下午8:42
  */
+@Deprecated
 public @interface ScanParameter {
 }

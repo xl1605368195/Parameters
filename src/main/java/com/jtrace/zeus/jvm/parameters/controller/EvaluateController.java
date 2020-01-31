@@ -26,7 +26,7 @@ public class EvaluateController {
      * 参数打分
      */
     @PostMapping(value = "/evaluate")
-    public ResponseEntity complementeJvmParameters(@RequestParam("parameters") String parameters, @RequestParam("jdkVersion") String jdkVersion) {
+    public ResponseEntity complementeJvmParameters(@RequestParam("parameters") String parameters, @RequestParam("jdkVersion") String jdkVersion,@RequestParam("totalMem") int totalMem) {
         if (StringUtils.isBlank(parameters)) {
             return ResponseEntity.ok("parameters is null.");
         }
@@ -36,7 +36,7 @@ public class EvaluateController {
         // 参数分解
         HashMap<String, String> parametersValuesMap = evaluateService.splitParameters(parameters);
         // 参数检查
-        List<CheckoutResult> results = evaluateService.checkParameters(parametersValuesMap, jdkVersion);
+        List<CheckoutResult> results = evaluateService.checkParameters(parametersValuesMap, jdkVersion,totalMem);
         for (CheckoutResult checkoutResult : results) {
             System.out.println(checkoutResult.toString());
         }
