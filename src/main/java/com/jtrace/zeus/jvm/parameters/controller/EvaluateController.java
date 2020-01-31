@@ -26,15 +26,18 @@ public class EvaluateController {
      * 参数打分
      */
     @PostMapping(value = "/evaluate")
-    public ResponseEntity complementeJvmParameters(@RequestParam("parameters") String parameters) {
+    public ResponseEntity complementeJvmParameters(@RequestParam("parameters") String parameters, @RequestParam("jdkVersion") String jdkVersion) {
         if (StringUtils.isBlank(parameters)) {
             return ResponseEntity.ok("parameters is null.");
+        }
+        if (StringUtils.isBlank(jdkVersion)) {
+            return ResponseEntity.ok("jdkVersion is null.");
         }
         // 参数分解
         HashMap<String, String> parametersValuesMap = evaluateService.splitParameters(parameters);
         // 参数检查
-        List<CheckoutResult> results = evaluateService.checkParameters(parametersValuesMap);
-        for(CheckoutResult checkoutResult:results){
+        List<CheckoutResult> results = evaluateService.checkParameters(parametersValuesMap, jdkVersion);
+        for (CheckoutResult checkoutResult : results) {
             System.out.println(checkoutResult.toString());
         }
         return new ResponseEntity<>(results, HttpStatus.OK);

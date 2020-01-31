@@ -38,7 +38,7 @@ public class ParametersEvaluateService {
     /**
      * step2:参数检查
      */
-    public List<CheckoutResult> checkParameters(HashMap<String, String> parametersValuesMap) {
+    public List<CheckoutResult> checkParameters(HashMap<String, String> parametersValuesMap,String version) {
         List<CheckoutResult> results = new LinkedList<>();
         Map<String, Class<? extends Check>> parametersClassMap = ParametersCollection.getMap();
         try {

@@ -1,4 +1,4 @@
-package com.jtrace.zeus.jvm.parameters.rules.parameter;
+package com.jtrace.zeus.jvm.parameters.rules.parameter.heap;
 
 import com.jtrace.zeus.jvm.parameters.rules.Check;
 import com.jtrace.zeus.jvm.parameters.rules.CheckoutResult;
