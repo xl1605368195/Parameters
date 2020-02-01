@@ -17,7 +17,7 @@ $("#parameter").typeahead({
     minLength: 0,//键入字数多少开始补全
     showHintOnFocus: "true",//将显示所有匹配项
     fitToElement: true,//选项框宽度与输入框一致
-    items: 5,//下拉选项中出现条目的最大数量。也可以设置为“all”
+    items: "all",//下拉选项中出现条目的最大数量。也可以设置为“all”
     autoSelect: true,//允许你决定是否自动选择第一个建议
     //这里一定要return，否则选中不显示，外加调用display的时候null reference错误。
     updater: function (item) {

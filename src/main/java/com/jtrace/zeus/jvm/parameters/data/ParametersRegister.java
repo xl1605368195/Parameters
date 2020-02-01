@@ -20,6 +20,7 @@ public class ParametersRegister {
         // Standard Options
         // These are the most commonly used options that are supported by all implementations of the JVM.
 
+
         // agentlib
         set.add(new JvmParameterEntity(
                 "agentlib",
@@ -39,15 +40,15 @@ public class ParametersRegister {
         set.add(new JvmParameterEntity(
                 "agentpath",
                 new String[]{"all"},
-                new String[]{},
+                new String[]{"-"},
                 "Standard_Options",
                 "all",
-                "Loads the native agent library specified by the absolute path name. This option is equivalent to -agentlib but uses the full path and file name of the library.",
+                "Loads a native agent library by full pathname",
+                "通过全路径加载一个native agent 包",
                 "",
                 "",
-                "",
-                "",
-                ""
+                "boolean",
+                "与agentlib功能相同，加载的native agent路径不同"
         ));
 
         // client
@@ -63,6 +64,51 @@ public class ParametersRegister {
                 "",
                 "",
                 "java -version 可以查看启动模式"
+        ));
+
+        // -D
+        set.add(new JvmParameterEntity(
+                "-D",
+                new String[]{"all"},
+                new String[]{"-Djetty.port=8058"},
+                "Standard_Options",
+                "all",
+                "Sets a system property value. The property variable is a string with no spaces that represents the name of the property. The value variable is a string that represents the value of the property. If value is a string with spaces, then enclose it in quotation marks .",
+                "设置系统属性值",
+                "",
+                "",
+                "",
+                ""
+        ));
+
+        // -jar
+        set.add(new JvmParameterEntity(
+                "server",
+                new String[]{"all"},
+                new String[]{"-jar a.jar"},
+                "Standard_Options",
+                "all",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+        ));
+
+        // -javaagent:
+        set.add(new JvmParameterEntity(
+                "javaagent",
+                new String[]{"all"},
+                new String[]{"-javaagent:jarpath[=options]"},
+                "Standard_Options",
+                "all",
+                "Loads the specified Java programming language agent.",
+                "加载一个Java语言编写的 agent 包",
+                "",
+                "",
+                "",
+                "-javaagent:/opt/qa_test/jacocoagent.jar=output=tcpserver,port=6300,address=*,excludes=com.jtrace.*"
         ));
 
         // server
@@ -158,10 +204,6 @@ public class ParametersRegister {
         // Non-Standard Options
         // These options are general purpose options that are specific to the Java HotSpot Virtual Machine.
 
-        // -X
-
-        // -Xbatch
-
         // -Xbootclasspath:path
         set.add(new JvmParameterEntity(
                 "Xbootclasspath",
@@ -170,16 +212,68 @@ public class ParametersRegister {
                 "Non_Standard_Options",
                 "all",
                 "",
+                "完全取代基本核心的Java class搜索路径。不常用,否则要重新写所有Java 核心class",
                 "",
+                "",
+                "",
+                "禁用"
+        ));
+        // -Xbootclasspath/a:path
+        set.add(new JvmParameterEntity(
+                "Xbootclasspath/a",
+                new String[]{""},
+                new String[]{""},
+                "Non_Standard_Options",
+                "all",
+                "",
+                "path指定的路径仅次于核心class搜索路径.",
                 "",
                 "",
                 "",
                 ""
         ));
-        // -Xbootclasspath/a:path
         // -Xbootclasspath/p:path
+        set.add(new JvmParameterEntity(
+                "Xbootclasspath/p",
+                new String[]{""},
+                new String[]{"-Xbootclasspath/p:path"},
+                "Non_Standard_Options",
+                "all",
+                "",
+                "path指定的路径在核心class搜索路径前.",
+                "",
+                "",
+                "",
+                "禁用"
+        ));
         // -Xcheck:jni
+        set.add(new JvmParameterEntity(
+                "Xcheck",
+                new String[]{"?"},
+                new String[]{"-Xcheck:jni"},
+                "Non_Standard_Options",
+                "all",
+                "",
+                "",
+                "",
+                "-",
+                "-",
+                "-"
+        ));
         // -Xcomp
+        set.add(new JvmParameterEntity(
+                "Xcomp",
+                new String[]{"?"},
+                new String[]{"-Xcomp"},
+                "Non_Standard_Options",
+                "all",
+                "",
+                "",
+                "",
+                "-",
+                "-",
+                "-"
+        ));
         // -Xdebug
         set.add(new JvmParameterEntity(
                 "Xdebug",
@@ -202,8 +296,8 @@ public class ParametersRegister {
         // -Xloggc:filename
         set.add(new JvmParameterEntity(
                 "Xloggc",
-                new String[]{"?"},
-                new String[]{"-Xloggc:/opt/logs/ipu-learning-report/app.gc.log.201912191644", "-Xloggc:/opt/logs/es_logs/elasticsearch.gc.log"},
+                new String[]{"*"},
+                new String[]{"-Xloggc:/app/logs/elasticsearch_%t.gc.log"},
                 "Non_Standard_Options",
                 "all",
                 "Sets the file to which verbose GC events information should be redirected for logging. ",
@@ -211,15 +305,28 @@ public class ParametersRegister {
                 "",
                 "-",
                 "String",
-                "-Xloggc选项会覆盖-verbose:gc(如果两者同时使用)"
+                "-Xloggc选项会覆盖-verbose:gc(如果两者同时使用); -Xloggc的文件名称使用`%t`可以附加文件创建的时间,偏于排查问题"
         ));
         // -Xmaxjitcodesize=size
 
         // -Xmixed
 
         // -Xmn
+        set.add(new JvmParameterEntity(
+                "Xmn",
+                new String[]{"?"},
+                new String[]{"-Xmn256m"},
+                "Non_Standard_Options",
+                "all",
+                "Sets the initial and maximum size of the heap for the young generation",
+                "设置新生代的初始大小和最大大小",
+                "",
+                "-",
+                "unsigned int",
+                "建议新生代的大小保持整个堆的大小的25%~50%之间;-Xmn的VM等价参数为 -XX:NewSize(新生代初始大小) 和 -XX:MaxNewSize(新生代最大大小)"
+        ));
 
-        // -Xmssize
+        // -Xms
         set.add(new JvmParameterEntity(
                 "Xms",
                 new String[]{"?"},
@@ -234,7 +341,7 @@ public class ParametersRegister {
                 "-Xms的VM等价参数是-XX:InitialHeapSize"
         ));
 
-        // -Xmxsize
+        // -Xmx
         set.add(new JvmParameterEntity(
                 "Xmx",
                 new String[]{"?"},
@@ -248,28 +355,79 @@ public class ParametersRegister {
                 "unsigned int",
                 "-Xmx的VM等价参数是-XX:MaxHeapSize."
         ));
+
         // -Xnoclassgc
-        // -Xprof
+        set.add(new JvmParameterEntity(
+                "Xnoclassgc",
+                new String[]{"all"},
+                new String[]{"-Xnoclassgc"},
+                "-",
+                "all",
+                "Disables garbage collection (GC) of classes. This can save some GC time, which shortens interruptions during the application run.",
+                "禁用Class对象的垃圾收集（GC）",
+                "",
+                "关闭",
+                "",
+                "开启-Xnoclassgc时，应用程序中的 Class对象将在GC期间保持不变，并且将始终被视为活动的。这会导致更多的内存被永久占用，如果不小心使用，将引发内存不足异常"
+        ));
+
+        // Xprof
         // -Xrs
         // -Xshare:mode
         // -XshowSettings:category
-        // -Xsssize
+
+        // -Xss
+        set.add(new JvmParameterEntity(
+                "Xss",
+                new String[]{"all"},
+                new String[]{"-Xss1024k","-Xss1m"},
+                "-",
+                "all",
+                "Sets the thread stack size",
+                "设置线程栈的大小",
+                "",
+                "1024k",
+                "",
+                "-Xss的VM等价参数是-XX:ThreadStackSize"
+        ));
+        // Xusealtsigs
+
         // -Xverify:mode
+
+//        Advanced Runtime Options
+//        These options control the runtime behavior of the Java HotSpot VM.
+
+        // -XX:ThreadStackSize
+        set.add(new JvmParameterEntity(
+                "ThreadStackSize",
+                new String[]{"all"},
+                new String[]{"-XX:ThreadStackSize=1024k","-XX:ThreadStackSize=1m"},
+                "-",
+                "all",
+                "Sets the thread stack size",
+                "设置线程栈的大小",
+                "",
+                "1024k",
+                "",
+                "-XX:ThreadStackSize的VM等价参数是-Xss"
+        ));
 
         // -XX:-DisableExplicitGC
         set.add(new JvmParameterEntity(
                 "DisableExplicitGC",
-                new String[]{"jdk7,jdk8"},
+                new String[]{"all"},
                 new String[]{"-XX:-DisableExplicitGC"},
                 "-",
                 "all",
                 "",
-                "默认情况下，此选项处于禁用状态，这意味着忽略来自System.gc()方法触发的GC。",
+                "默认情况下，此选项处于开启状态，这意味着忽略来自System.gc()方法触发的GC。",
                 "",
-                "-",
+                "开启",
                 "",
                 ""
         ));
+
+
 
         // UseConcMarkSweepGC
         set.add(new JvmParameterEntity(
@@ -346,6 +504,21 @@ public class ParametersRegister {
                 "-XX:+PrintGC的VM等价参数是-verbose:gc"
         ));
 
+        // -XX:+PrintGCDetails
+        set.add(new JvmParameterEntity(
+                "PrintGC",
+                new String[]{"jdk7"},
+                new String[]{"-XX:-PrintGC"},
+                "-",
+                "-",
+                "Enables printing of messages at every GC.",
+                "-XX:+PrintGC开启GC日志打印",
+                "-",
+                "不开启",
+                "boolean",
+                "-XX:+PrintGC的VM等价参数是-verbose:gc"
+        ));
+
         // 2020.1.30
         // -XX:+UseG1GC
         set.add(new JvmParameterEntity(
@@ -391,7 +564,6 @@ public class ParametersRegister {
                 "boolean",
                 ""
         ));
-
 
         // -XX:+TraceClassUnloading
         set.add(new JvmParameterEntity(
@@ -467,6 +639,93 @@ public class ParametersRegister {
                 "20M",
                 "unsigned int",
                 "metaspace的大小表示首次使用不够而触发FGC的阈值，只对触发起作用"
+        ));
+        // 2.1
+        // -XX:+CMSClassUnloadingEnabled
+        set.add(new JvmParameterEntity(
+                "CMSClassUnloadingEnabled",
+                new String[]{"*"},
+                new String[]{"-XX:+CMSClassUnloadingEnabled"},
+                "-",
+                "-",
+                "Enables class unloading when using the concurrent mark-sweep (CMS) garbage collector. This option is enabled by default. To disable class unloading for the CMS garbage collector, specify -XX:-CMSClassUnloadingEnabled." ,
+                "使用CMS垃圾收集器时启用类卸载。默认情况下，此选项处于启用状态。要禁用CMS垃圾收集器的类卸载，请指定-XX:-CMSClassUnloadingEnabled。",
+                "-",
+                "开启",
+                "boolean",
+                ""
+        ));
+        // -XX:CMSExpAvgFactor=percent
+        set.add(new JvmParameterEntity(
+                "CMSExpAvgFactor",
+                new String[]{"*"},
+                new String[]{"-XX:CMSExpAvgFactor=15"},
+                "-",
+                "-",
+                "Sets the percentage of time (0 to 100) used to weight the current sample when computing exponential averages for the concurrent collection statistics. By default, the exponential averages factor is set to 25%." ,
+                "使用CMS垃圾收集器时启用类卸载。默认情况下，此选项处于启用状态。要禁用CMS垃圾收集器的类卸载，请指定-XX:-CMSClassUnloadingEnabled。",
+                "-",
+                "25",
+                "boolean",
+                ""
+        ));
+        // -XX:CMSInitiatingOccupancyFraction
+        set.add(new JvmParameterEntity(
+                "CMSInitiatingOccupancyFraction",
+                new String[]{"*"},
+                new String[]{"-XX:CMSInitiatingOccupancyFraction=20"},
+                "-",
+                "-",
+                "Sets the percentage of the old generation occupancy (0 to 100) at which to start a CMS collection cycle. The default value is set to -1. Any negative value (including the default) implies that -XX:CMSTriggerRatio is used to define the value of the initiating occupancy fraction." ,
+                "",
+                "-",
+                "-1",
+                "unsigned int",
+                ""
+        ));
+
+        // -XX:ConcGCThreads=threads
+        set.add(new JvmParameterEntity(
+                "ConcGCThreads",
+                new String[]{"*"},
+                new String[]{"-XX:ConcGCThreads=2"},
+                "-",
+                "-",
+                "Sets the number of threads used for concurrent GC. The default value depends on the number of CPUs available to the JVM" ,
+                "设置用于并发GC的线程数。默认值取决于JVM可用的cpu数量",
+                "-",
+                "?",
+                "unsigned int",
+                "以CMS GC为例，-XX:ConcGCThreads是指并发阶段例如：并发标记，标记清理，标记重置时GC线程数。"
+        ));
+
+        // -XX:InitialHeapSize
+        set.add(new JvmParameterEntity(
+                "InitialHeapSize",
+                new String[]{"*"},
+                new String[]{"-XX:InitialHeapSize=2"},
+                "-",
+                "-",
+                "Sets the number of threads used for concurrent GC. The default value depends on the number of CPUs available to the JVM" ,
+                "Heap初始化的大小",
+                "-",
+                "?",
+                "unsigned int",
+                ""
+        ));
+        // -XX:MaxHeapFreeRatio
+        set.add(new JvmParameterEntity(
+                "MaxHeapFreeRatio",
+                new String[]{"*"},
+                new String[]{"-XX:InitialHeapSize=2"},
+                "-",
+                "-",
+                "Sets the number of threads used for concurrent GC. The default value depends on the number of CPUs available to the JVM" ,
+                "Heap初始化的大小",
+                "-",
+                "?",
+                "unsigned int",
+                ""
         ));
     }
 }
