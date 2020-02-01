@@ -397,6 +397,77 @@ public class ParametersRegister {
 //        Advanced Runtime Options
 //        These options control the runtime behavior of the Java HotSpot VM.
 
+        // -XX:+CheckEndorsedAndExtDirs
+
+        // -XX:+DisableAttachMechanism
+        set.add(new JvmParameterEntity(
+                "DisableAttachMechanism",
+                new String[]{"all"},
+                new String[]{"-XX:-DisableAttachMechanism"},
+                "-",
+                "all",
+                "Enables the option that disables the mechanism that lets tools attach to the JVM. By default, this option is disabled, meaning that the attach mechanism is enabled and you can use tools such as jcmd, jstack, jmap, and jinfo.",
+                "此选项将禁止工具连接到JVM，默认，这个选项是关闭的",
+                "",
+                "false",
+                "",
+                "默认情况下，允许工具连接之JVM，所以你可以使用jcmd、jstack、jmap和jinfo等命令"
+        ));
+
+        // -XX:ErrorFile
+        set.add(new JvmParameterEntity(
+                "ErrorFile",
+                new String[]{"@since 1.6+"},
+                new String[]{"-XX:ErrorFile=filename"},
+                "-",
+                "-",
+                "If an error occurs, save the error data to this file.",
+                "",
+                "-",
+                "./hs_err_pid<pid>.log",
+                "String",
+                "-XX:ErrorFile=targetDir/hs_err_pid_%p.log, 可以自定义输出目录;如果这个文件不能被创建在指定的目录下的话（因为空间不足、权限问题、或者其他问题）。这个文件就会创建在临时目录，临时目录的值通过TMP" +
+                        "环境变量指定，如果这个环境变量没有定义，那么就是用TEMP环境变量 "
+        ));
+
+        // -XX:+FailOverToOldVerifier
+
+        // -XX:+FlightRecorder
+
+        // -XX:-FlightRecorde
+
+        // -XX:FlightRecorderOptions=parameter=value
+
+        // -XX:LargePageSizeInByte
+        set.add(new JvmParameterEntity(
+                "LargePageSizeInByte",
+                new String[]{"all"},
+                new String[]{"-XX:LargePageSizeInByte=4m"},
+                "-",
+                "all",
+                "-",
+                "-",
+                "",
+                "0",
+                "",
+                "-"
+        ));
+
+        // -XX:MaxDirectMemorySize
+        set.add(new JvmParameterEntity(
+                "MaxDirectMemorySize",
+                new String[]{"all"},
+                new String[]{"-XX:MaxDirectMemorySize=1g"},
+                "-",
+                "all",
+                "Sets the maximum total size (in bytes) of the New I/O (the java.nio package) direct-buffer allocations. By default, the size is set to 0, meaning that the JVM chooses the size for NIO direct-buffer allocations automatically.",
+                "指定最大可用堆外内存, 该参数并不会立即占用指定的内存, 是限制程序最大可使用的堆外内存, 建议尽量写大一点.如果不配置,则默认为maxMemory的大小.",
+                "",
+                "-",
+                "",
+                "-"
+        ));
+
         // -XX:ThreadStackSize
         set.add(new JvmParameterEntity(
                 "ThreadStackSize",
@@ -467,7 +538,7 @@ public class ParametersRegister {
                 "-",
                 "-",
                 "Sets the maximum permanent generation space size (in bytes). This option was deprecated in JDK 8, and superseded by the -XX:MaxMetaspaceSize option.",
-                "设置永久带的最大值",
+                "设置永久代的最大值",
                 "-",
                 "-",
                 "unsigned int",
@@ -580,20 +651,7 @@ public class ParametersRegister {
                 ""
         ));
 
-        // -XX:ErrorFile
-        set.add(new JvmParameterEntity(
-                "ErrorFile",
-                new String[]{"@since 1.6+"},
-                new String[]{"-XX:ErrorFile=filename"},
-                "-",
-                "-",
-                "If an error occurs, save the error data to this file. (Introduced in 6.)",
-                "",
-                "-",
-                "./hs_err_pid<pid>.log",
-                "String",
-                "-XX:ErrorFile=targetDir/hs_err_pid_%p.log, 可以自定义输出目录"
-        ));
+
 
         // -Xnoagent
         set.add(new JvmParameterEntity(
@@ -713,6 +771,7 @@ public class ParametersRegister {
                 "unsigned int",
                 ""
         ));
+
         // -XX:MaxHeapFreeRatio
         set.add(new JvmParameterEntity(
                 "MaxHeapFreeRatio",
