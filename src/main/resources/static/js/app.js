@@ -91,10 +91,19 @@ $("#parameters").change(function () {
             showSuccessNotify("success", "参数诊断完成");
             $("#result2").show();
             $("#result2-table > tbody").empty();
+            let errcount=0,warncount=0,okcount=0;
             for (let i = 0; i < result.length; i++) {
+                if (result[i].level==="OK"){
+                    okcount++;
+                } else if (result[i].level==="WARN"){
+                    warncount++;
+                }else if (result[i].level==="ERROR"){
+                    errcount++;
+                }
                 let tr = appendToTable2(result[i], i);
                 $("#result2-table > tbody").append($(tr));
             }
+            $("#totalResult").text("发现ERROR级别参数有"+errcount+"个,发现WARN级别的参数有"+warncount+"个,配置正确的参数有"+okcount+"个");
         },
         error: function (e) {//请求失败，包含具体的错误信息
             alert("err");
