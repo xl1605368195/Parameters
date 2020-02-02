@@ -20,14 +20,17 @@ public class HeapDumpOnOutOfMemoryError implements Check {
                     Level.ERROR,
                     "不存在+HeapDumpOnOutOfMemoryError参数",
                     "未启用堆区溢出时的错误处理机制，请在启动参数中添加 -XX:+HeapDumpOnOutOfMemoryError 开启",
-                    ""
+                    "",
+                    "heap"
+
             );
         }
         return new CheckoutResult(
                 Level.OK,
                 "+HeapDumpOnOutOfMemoryError参数设置正确",
                 "",
-                ""
+                "",
+                "heap"
         );
     }
 

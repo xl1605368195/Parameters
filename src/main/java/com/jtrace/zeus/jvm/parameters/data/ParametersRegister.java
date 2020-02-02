@@ -574,6 +574,7 @@ public class ParametersRegister {
                 "boolean",
                 "-XX:+PrintGC的VM等价参数是-verbose:gc"
         ));
+        // PrintFlagsInitial
 
         // -XX:+PrintGCDetails
         set.add(new JvmParameterEntity(

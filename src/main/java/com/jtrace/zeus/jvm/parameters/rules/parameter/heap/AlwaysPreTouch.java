@@ -27,6 +27,7 @@ public class AlwaysPreTouch implements Check {
             // 不存在该值
             return new CheckoutResult(
                     Level.ERROR,
+                    "heap",
                     "最大堆超过4G，如果堆内存较大，请添加 -XX:+AlwaysPreTouch 参数强制 JVM 在启动时分配内存，可使得后续运行更顺畅（副作用：启动速度变慢）",
                     "",
                     ""
@@ -34,6 +35,7 @@ public class AlwaysPreTouch implements Check {
         }
         return new CheckoutResult(
                 Level.OK,
+                "heap",
                 "AlwaysPreTouch 设置正确",
                 "",
                 ""

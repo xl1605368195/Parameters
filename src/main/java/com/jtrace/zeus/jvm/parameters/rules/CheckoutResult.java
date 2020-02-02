@@ -17,18 +17,21 @@ public class CheckoutResult {
 
     private Level level;
 
+    private String category;
+
     private String title = "";
 
     private String conent = "";
 
     private String tips = "";
 
-    public static CheckoutResult ok(String title) {
-        return new CheckoutResult(Level.OK, title);
+    public static CheckoutResult ok(String title,String category) {
+        return new CheckoutResult(Level.OK, title,category);
     }
 
-    public CheckoutResult(Level level, String title) {
+    public CheckoutResult(Level level, String title,String category) {
         this.level = level;
         this.title = title;
+        this.category=category;
     }
 }

@@ -18,6 +18,7 @@ public class HeapDumpPath implements Check {
         if (!isExist) {
             return new CheckoutResult(
                     Level.WARN,
+                    "heap",
                     "不存在HeapDumpPath参数",
                     "未启用堆区溢出时的日志路径，请在启动参数中添加 -XX:HeapDumpPath=your_path/xxx.heap.log",
                     ""
@@ -25,6 +26,7 @@ public class HeapDumpPath implements Check {
         }
         return new CheckoutResult(
                 Level.OK,
+                "heap",
                 "-XX:HeapDumpPath设置正确",
                 "",
                 ""

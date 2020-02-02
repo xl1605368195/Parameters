@@ -1,15 +1,12 @@
 package com.jtrace.zeus.jvm.parameters.service;
 
-import com.jtrace.zeus.jvm.parameters.rules.Check;
 import com.jtrace.zeus.jvm.parameters.rules.CheckoutResult;
 import com.jtrace.zeus.jvm.parameters.rules.Level;
-import com.jtrace.zeus.jvm.parameters.rules.ParametersCollection;
 import com.jtrace.zeus.jvm.parameters.utils.ParseParameterUtils;
 import com.jtrace.zeus.jvm.parameters.utils.Units;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Constructor;
 import java.util.*;
 
 /**
@@ -80,7 +77,7 @@ public class ParametersEvaluateService {
         String maxHeapSize2 = parametersValuesMap.get("MaxHeapSize");
         // 没有发现 -Xmx 或者 -XX:MaxHeapSize
         if (StringUtils.isBlank(maxHeapSize1) && StringUtils.isBlank(maxHeapSize2)) {
-            return new CheckoutResult(Level.ERROR, "未设置最大堆内存", "启动参数中使用 -Xmx=xxxg（或者-XX:MaxHeapSize=xxxg)来指定最大堆大小", "推荐将最大堆大小设置为物理内存的50%~80%");
+            return new CheckoutResult(Level.ERROR, "heap","未设置最大堆内存", "启动参数中使用 -Xmx=xxxg（或者-XX:MaxHeapSize=xxxg)来指定最大堆大小", "推荐将最大堆大小设置为物理内存的50%~80%");
         } else if (StringUtils.isNoneBlank(maxHeapSize1) || StringUtils.isBlank(maxHeapSize2)) {
             // 发现 -Xmx
             return getCheckout(maxHeapSize1, totalMem, "-Xmx");
@@ -89,7 +86,7 @@ public class ParametersEvaluateService {
             return getCheckout(maxHeapSize2, totalMem, "-XX:MaxHeapSize=");
         } else {
             // 错误配置参数
-            return new CheckoutResult(Level.ERROR, "设置了-Xmx,又设置了-XX:MaxHeapSize，重复了");
+            return new CheckoutResult(Level.ERROR, "设置了-Xmx,又设置了-XX:MaxHeapSize，重复了","heap");
         }
     }
 
@@ -99,6 +96,7 @@ public class ParametersEvaluateService {
         if (maxHeap1 < totalMem / 2) {
             return new CheckoutResult(
                     Level.WARN,
+                    "heap",
                     "最大堆大小设置小于物理内存1/2",
                     "如果服务运行正常，最大堆大小设置过小",
                     "建议值 " + param + (totalMem / 2) + "g"
@@ -108,6 +106,7 @@ public class ParametersEvaluateService {
         if (maxHeap1 <= totalMem * 4 / 5 && (totalMem - maxHeap1) < 1) {
             return new CheckoutResult(
                     Level.WARN,
+                    "heap",
                     "最大堆大小设置过大,堆外内存小于1g",
                     "最大堆大小设置过大，应预留一部分给堆外内存",
                     "建议值 " + param + totalMem * 3 / 4 + "g"
@@ -117,12 +116,13 @@ public class ParametersEvaluateService {
         if (maxHeap1 > totalMem * 4 / 5 && (totalMem - maxHeap1) >= 1) {
             return new CheckoutResult(
                     Level.WARN,
+                    "heap",
                     "最大堆大小设置大于物理内存4/5",
                     "最大堆大小设置过大，应预留一部分给堆外内存",
                     "建议值 " + param + totalMem * 3 / 4 + "g"
             );
         }
-        return CheckoutResult.ok("最大堆参数设置正确");
+        return CheckoutResult.ok("最大堆参数设置正确","heap");
     }
 
     // MaxMetaSpaceSize
@@ -132,6 +132,7 @@ public class ParametersEvaluateService {
             // 不存在该值
             return new CheckoutResult(
                     Level.ERROR,
+                    "heap",
                     "不存在MaxMetaspaceSize参数",
                     "未设置元空间的上限，存在系统内存OOM的风险，请在启动参数中添加 -XX:MaxMetaspaceSize=xxx 设置（过小会导致频繁Full GC）",
                     "MetaspaceSize和MaxMetaspaceSize设置一样大;具体设置多大，建议稳定运行一段时间后通过`jstat -gc pid`确认且这个值大一些，对于大部分项目256m即可"
@@ -142,12 +143,13 @@ public class ParametersEvaluateService {
             if (value < 128) {
                 return new CheckoutResult(
                         Level.WARN,
+                        "heap",
                         "MaxMetaspaceSize小于128m",
                         "MaxMetaspaceSize过小会导致频繁Full GC）",
                         "建议值 -XX:MaxMetaspaceSize=256m 或者 -XX:MaxMetaspaceSize=512m "
                 );
             }
-            return CheckoutResult.ok("MaxMetaspaceSize参数设置正确");
+            return CheckoutResult.ok("MaxMetaspaceSize参数设置正确","heap");
         }
     }
 
@@ -156,10 +158,10 @@ public class ParametersEvaluateService {
         String HeapDumpPath = parametersValuesMap.get("HeapDumpPath");
         if (StringUtils.isBlank(HeapDumpPath)) {
             // 不存在该值
-            return new CheckoutResult(Level.WARN, "不存在HeapDumpPath参数",
+            return new CheckoutResult(Level.WARN, "heap","不存在HeapDumpPath参数",
                     "未启用堆区溢出时的日志路径，请在启动参数中添加 -XX:HeapDumpPath=your_path/xxx.heap.log", "");
         } else {
-            return new CheckoutResult(Level.OK, "-XX:HeapDumpPath设置正确");
+            return new CheckoutResult(Level.OK, "-XX:HeapDumpPath设置正确","heap");
         }
     }
 
@@ -169,6 +171,7 @@ public class ParametersEvaluateService {
         if (StringUtils.isBlank(HeapDumpOnOutOfMemoryError)) {
             return new CheckoutResult(
                     Level.ERROR,
+                    "heap",
                     "不存在+HeapDumpOnOutOfMemoryError参数",
                     "未启用堆区溢出时的错误处理机制，请在启动参数中添加 -XX:+HeapDumpOnOutOfMemoryError 开启",
                     ""
@@ -176,7 +179,7 @@ public class ParametersEvaluateService {
         } else {
             return new CheckoutResult(
                     Level.OK,
-                    "-XX:+HeapDumpOnOutOfMemoryError参数设置正确"
+                    "-XX:+HeapDumpOnOutOfMemoryError参数设置正确","heap"
             );
         }
     }
@@ -195,9 +198,9 @@ public class ParametersEvaluateService {
         }
         if (StringUtils.isBlank(AlwaysPreTouch) && maxHeap > 4) {
             // 不存在该值并且最大堆内存大于4 g
-            return new CheckoutResult(Level.ERROR, "最大堆超过4g，如果堆内存较大，请添加 -XX:+AlwaysPreTouch 参数强制 JVM 在启动时分配内存，可使得后续运行更顺畅（副作用：启动速度变慢）");
+            return new CheckoutResult(Level.ERROR, "最大堆超过4g，如果堆内存较大，请添加 -XX:+AlwaysPreTouch 参数强制 JVM 在启动时分配内存，可使得后续运行更顺畅（副作用：启动速度变慢）","heap");
         } else {
-            return new CheckoutResult(Level.OK, "-XX:+AlwaysPreTouch 设置正确");
+            return new CheckoutResult(Level.OK, "-XX:+AlwaysPreTouch 设置正确","heap");
         }
     }
 }

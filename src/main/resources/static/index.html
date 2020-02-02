@@ -14,6 +14,7 @@
 
 <body>
 <div class="container">
+    <div>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -73,10 +74,16 @@
                         <p><span class="label label-danger">例子</span>&nbsp;&nbsp;-verbose:gc</p>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item"><span class="label label-success">含义</span>&nbsp;&nbsp;输出虚拟机中GC的详细情况</li>
-                        <li class="list-group-item"><span class="label label-warning">扩展</span>&nbsp;&nbsp;-verbose:gc的VM等价参数是-XX:+PrintGC</li>
-                        <li class="list-group-item"><span class="label label-primary">使用</span>&nbsp;&nbsp;-verbose:gc 输出虚拟机中GC的详细情况，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，
-                            收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印</li>
+                        <li class="list-group-item">
+                            <span class="label label-success">含义</span>&nbsp;&nbsp;输出虚拟机中GC的详细情况
+                        </li>
+                        <li class="list-group-item">
+                            <span class="label label-warning">扩展</span>&nbsp;&nbsp;-verbose:gc的VM等价参数是-XX:+PrintGC
+                        </li>
+                        <li class="list-group-item">
+                            <span class="label label-primary">使用</span>&nbsp;&nbsp;-verbose:gc 输出虚拟机中GC的详细情况，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，
+                            收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -112,9 +119,55 @@
                             <input type="radio" name="totalMem" value="12"> 12G+
                         </label>
                     </div>
+                    输入Java进程的参数:
                     <div class="form-group">
-                        <textarea  id="parameters" class="form-control" rows="10" placeholder="查看JVM启动参数: ps -ef| grep java"></textarea>
+                        <textarea  style="font-size:1px" id="parameters" class="form-control" rows="3" placeholder="查看JVM启动参数: ps -ef| grep java"></textarea>
                     </div>
+                <div id="result2" hidden>
+                    <div class="panel panel-default" >
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">诊断结果</div>
+                        <div class="panel-body">
+                            <p>发现ERROR级别参数有_个,发现WARN级别的参数有_个,配置正确的参数有_个</p>
+                        </div>
+                        <!-- Table -->
+                        <table class="table" id="result2-table">
+                            <thead>
+                            <tr>
+                                <th>#</th><th>级别</th><th>诊断项目</th><th>错误原因</th><th>诊断意见</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="qrcode" tabindex="-1" role="dialog" aria-labelledby="information">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                                <h4 class="modal-title">诊断结果</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="modelText1" class="control-label">意见:</label>
+                                        <textarea class="form-control" id="modelText1" style="width: 100%; height: 50px ;overflow: auto;word-break: break-all; resize: none;" readonly></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="modelText2" class="control-label">tips:</label>
+                                        <textarea class="form-control" id="modelText2" style="width: 100%; height: 50px ;overflow: auto;word-break: break-all; resize: none;" readonly></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="messages">规划中...</div>
             <div role="tabpanel" class="tab-pane" id="settings">规划中..</div>
@@ -124,7 +177,8 @@
     <footer class="footer">
         <p align="center">&copy; 2019-2020 by Aven & kenel</p>
     </footer>
-</div> <!-- /container -->
+    </div>
+</div>
 
 <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>

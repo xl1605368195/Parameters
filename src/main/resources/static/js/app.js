@@ -42,9 +42,9 @@ function send(value) {
         data: {"parameter": value},    //参数值
         success: function (result) {  //请求成功
             $("#result").empty();
-            var body =appendToTable(result);
+            var body = appendToTable(result);
             $("#result").append($(body));
-             showSuccessNotify("success","参数["+value+"]查询成功");
+            showSuccessNotify("success", "参数[" + value + "]查询成功");
         },
         error: function (e) {//请求失败，包含具体的错误信息
             alert("err");
@@ -64,34 +64,79 @@ function appendToTable(tmp) {
     let defaultValue = tmp.defaultValue;
     let valueType = tmp.valueType;
     let extend = tmp.extend;
-    let body=$('<div class="panel-heading">'+name+'&nbsp;&nbsp;<span class="badge badge-primary">'+versions+'</span>&nbsp;&nbsp;<span class="badge label-info">'+defaultValue+'</span></div>\n' +
+    let body = $('<div class="panel-heading">' + name + '&nbsp;&nbsp;<span class="badge badge-primary">' + versions + '</span>&nbsp;&nbsp;<span class="badge label-info">' + defaultValue + '</span></div>\n' +
         '<div class="panel-body">\n' +
-        '    <p><span class="label label-danger">例子</span>&nbsp;&nbsp;'+examples+'</p>\n' +
+        '    <p><span class="label label-danger">例子</span>&nbsp;&nbsp;' + examples + '</p>\n' +
         '</div>\n' +
         '<ul class="list-group">\n' +
-        '    <li class="list-group-item"><span class="label label-success">含义</span>&nbsp;&nbsp;'+hanyi+'</li>\n' +
-        '    <li class="list-group-item"><span class="label label-warning">扩展</span>&nbsp;&nbsp;'+extend+'</li>\n' +
-        '    <li class="list-group-item"><span class="label label-primary">使用</span>&nbsp;&nbsp;'+use+'</li>\n' +
+        '    <li class="list-group-item"><span class="label label-success">含义</span>&nbsp;&nbsp;' + hanyi + '</li>\n' +
+        '    <li class="list-group-item"><span class="label label-warning">扩展</span>&nbsp;&nbsp;' + extend + '</li>\n' +
+        '    <li class="list-group-item"><span class="label label-primary">使用</span>&nbsp;&nbsp;' + use + '</li>\n' +
         '</ul>'
     );
     return body;
 }
 
 // 参数诊断
-$("#parameters").change(function(){
-    let values=$("#parameters").val();
-    let jdkVersion=$("input[name='jdkVersion']:checked").val();
-    let totalMem=$("input[name='totalMem']:checked").val();
+$("#parameters").change(function () {
+    let values = $("#parameters").val();
+    let jdkVersion = $("input[name='jdkVersion']:checked").val();
+    let totalMem = $("input[name='totalMem']:checked").val();
     $.ajax({
         type: "POST", //请求方式
         url: "/evaluate",  //请求地址
         contentType: "application/x-www-form-urlencoded;charset=UTF-8",  //请求的媒体类型
-        data: {"parameters": values,"jdkVersion":jdkVersion,"totalMem":totalMem},    //参数值
+        data: {"parameters": values, "jdkVersion": jdkVersion, "totalMem": totalMem},    //参数值
         success: function (result) {  //请求成功
-            showSuccessNotify("success","参数参数诊断完成");
+            showSuccessNotify("success", "参数诊断完成");
+            $("#result2").show();
+            $("#result2-table > tbody").empty();
+            for (let i = 0; i < result.length; i++) {
+                let tr = appendToTable2(result[i], i);
+                $("#result2-table > tbody").append($(tr));
+            }
         },
         error: function (e) {//请求失败，包含具体的错误信息
             alert("err");
         }
     });
+});
+
+function appendToTable2(tmp, indedx) {
+    let level = tmp.level;
+    let category = tmp.category;
+    let title = tmp.title;
+    let conent = tmp.conent;
+    let tips = tmp.tips;
+    let tr = $('<tr>\n' +
+        '      <th scope="row">' + indedx + '</th>\n' +
+        '      <td>' + level + '</td>\n' +
+        '      <td>' + category + '</td>\n' +
+        '      <td>' + title + '</td>\n' +
+        '      <td>' +
+        '          <div class="btn-group">' +
+        '             <button class="btn btn-xs btn-info center" onclick="showDetail(this)"> >>> </button>' +
+        '         <div>' +
+        '      </td>' +
+        '      <td class="center hidden">' + conent + '</td>' +  // 该列隐藏，由模态框触发
+        '      <td class="center hidden">' + tips + '</td>' +  // 该列隐藏，由模态框触发
+        '   </tr>\n');
+    return tr;
+}
+
+var modelText1;
+var modelText2;
+
+function showDetail(obj) {
+    var thisObj = $(obj);//js对象转jquery对象 关键
+    var td = thisObj.closest("td");
+    modelText1 = td.next().text();
+    modelText2 = td.next().next().text();
+    $('#qrcode').modal('show');
+}
+
+$('#qrcode').on('show.bs.modal', function (event) {
+    var modal = $(this);  //get modal itself
+    modal.find('.modal-body #modelText1').text(modelText1);
+    modal.find('.modal-body #modelText2').text(modelText2);
 });

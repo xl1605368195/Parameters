@@ -32,6 +32,7 @@ public class MaxHeapSize implements Check {
             // 不存在该值
             return new CheckoutResult(
                     Level.ERROR,
+                    "heap",
                     "未设置最大堆内存",
                     "",
                     ""
@@ -41,6 +42,7 @@ public class MaxHeapSize implements Check {
             if (value < totalMem / 2) {
                 return new CheckoutResult(
                         Level.WARN,
+                        "heap",
                         "最大堆大小设置小于物理内存1/2",
                         "如果服务运行正常，最大堆大小设置过小，请降低机器配置，或在启动参数中使用 -Xmx=" + totalMem / 2 + "g 指定最大堆大小",
                         "建议值 -Xmx=" + totalMem / 2 + "g  "
@@ -50,6 +52,7 @@ public class MaxHeapSize implements Check {
             if (value > totalMem * 4 / 5 && (totalMem - value) >= 1) {
                 return new CheckoutResult(
                         Level.WARN,
+                        "heap",
                         "最大堆大小设置大于物理内存4/5",
                         "最大堆大小设置过大，应预留一部分给堆外内存",
                         "建议值 -Xmx=" + totalMem * 3 / 4 + "g"
@@ -59,13 +62,14 @@ public class MaxHeapSize implements Check {
             if (value <= totalMem * 4 / 5 && (totalMem - value) < 1) {
                 return new CheckoutResult(
                         Level.WARN,
+                        "heap",
                         "最大堆大小设置过大,堆外内存小于1g",
                         "最大堆大小设置过大，应预留一部分给堆外内存",
                         "建议值 -Xmx=" + totalMem * 3 / 4 + "g"
                 );
             }
 
-            return CheckoutResult.ok("MaxMetaspaceSize参数设置正确");
+            return CheckoutResult.ok("MaxMetaspaceSize参数设置正确","heap");
         }
     }
 
