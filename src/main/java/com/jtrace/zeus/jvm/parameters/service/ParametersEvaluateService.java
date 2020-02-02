@@ -41,6 +41,7 @@ public class ParametersEvaluateService {
      */
     public List<CheckoutResult> checkParameters(HashMap<String, String> parametersValuesMap, String version, int totalMem) {
         List<CheckoutResult> results = new LinkedList<>();
+        checkGlobalParameters(parametersValuesMap,results);
         checkHeapParameters(parametersValuesMap, totalMem, version, results);
         return results;
     }
@@ -70,6 +71,27 @@ public class ParametersEvaluateService {
         list.add(checkoutAlwaysPreTouch);
     }
 
+    /**
+     * 检查全局参数
+     * @param parametersValuesMap
+     * @param list
+     */
+    public void checkGlobalParameters(HashMap<String, String> parametersValuesMap,List<CheckoutResult> list){
+
+        String printFlagsFinal = parametersValuesMap.get("PrintFlagsFinal");
+        if (StringUtils.isBlank(printFlagsFinal) || printFlagsFinal.equals("false")) {
+            CheckoutResult checkoutResult= new CheckoutResult(Level.WARN, "global","未开启-XX:+PrintFlagsFinal", "启动时添加 -XX:+PrintFlagsFinal 参数，可以在 JVM 启动时输出所有参数值，便于检查参数是否被覆盖", "");
+            list.add(checkoutResult);
+        }
+
+        String useBiasedLocking = parametersValuesMap.get("UseBiasedLocking");
+        if (StringUtils.isBlank(useBiasedLocking) || useBiasedLocking.equals("true")) {
+            CheckoutResult checkoutResult= new CheckoutResult(Level.WARN, "global","默认开启了偏向锁", "如果服务存在明显的锁竞争，请使用 -XX:-UseBiasedLocking 参数取消偏向锁", "");
+            list.add(checkoutResult);
+        }
+
+    }
+
     //最大堆参数检查
     private CheckoutResult checkoutMaxHeapSize(HashMap<String, String> parametersValuesMap, int totalMem) {
         // -Xmx 或者 -XX:MaxHeapSize
@@ -89,6 +111,15 @@ public class ParametersEvaluateService {
             return new CheckoutResult(Level.ERROR, "设置了-Xmx,又设置了-XX:MaxHeapSize，重复了","heap");
         }
     }
+
+    // 堆震荡检查
+//    private CheckoutResult checkMaxAndMin(){
+//        if (Math.abs(initialHeapSize - maxHeapSize) > 0.000001) {
+//            diagnoseResults.add(new DiagnoseResult("jvmParameter", "heap", SeverityEnum.CRITICAL,
+//                    "初始堆大小应和最大堆大小保持一致，避免堆震荡，请在启动参数中使用 -Xmx -Xms 分别指定",
+//                    Constant.DEFAULT_IDENTITY, serialNumber));
+//        }
+//    }
 
     // param=-Xmx 或者 -XX:MaxHeapSize
     private CheckoutResult getCheckout(String maxHeapSizeStr, int totalMem, String param) {
