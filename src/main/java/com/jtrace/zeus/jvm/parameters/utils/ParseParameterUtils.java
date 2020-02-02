@@ -72,20 +72,17 @@ public class ParseParameterUtils {
             }
         } else {
             // -XX:+UseConcMarkSweepGC
-            if (tmp.contains("+")) {
+            if (tmp.startsWith("-XX:+")) {
                 String[] keyAndValue = tmp.split("\\+");
                 if (keyAndValue.length == 2) {
                     String name = keyAndValue[1];
                     maps.put(name, "true");
                 }
-            } else if (tmp.contains("-")) {
+            } else if ((tmp.startsWith("-XX:-"))) {
+                // -XX:-UseConcMarkSweepGC
                 String[] keyAndValue = tmp.split("-");
-                if (keyAndValue.length == 2) {
-                    String name = keyAndValue[1];
-                    maps.put(name, "false");
-                }
-            } else {
-                // ignore.... 未知参数
+                String name = keyAndValue[keyAndValue.length-1];
+                maps.put(name, "false");
             }
         }
     }
