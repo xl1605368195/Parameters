@@ -35,6 +35,8 @@ public class EvaluateController {
         }
         // 参数分解
         HashMap<String, String> parametersValuesMap = evaluateService.splitParameters(parameters);
+        // GC策略检查
+
         // 参数检查
         List<CheckoutResult> results = evaluateService.checkParameters(parametersValuesMap, jdkVersion,totalMem);
         for (CheckoutResult checkoutResult : results) {
