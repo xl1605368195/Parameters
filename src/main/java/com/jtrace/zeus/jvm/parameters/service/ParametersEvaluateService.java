@@ -1,6 +1,7 @@
 package com.jtrace.zeus.jvm.parameters.service;
 
 import com.jtrace.zeus.jvm.parameters.rules.CheckoutResult;
+import com.jtrace.zeus.jvm.parameters.rules.parameter.heap.HeapParametersCheck;
 import com.jtrace.zeus.jvm.parameters.utils.ParseParameterUtils;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,8 @@ public class ParametersEvaluateService {
      */
     public List<CheckoutResult> checkParameters(HashMap<String, String> parametersValuesMap, String version, int totalMem) {
         List<CheckoutResult> results = new LinkedList<>();
+        HeapParametersCheck heapParametersCheck=new HeapParametersCheck(parametersValuesMap,totalMem,version);
+        heapParametersCheck.checkout(results);
 //        checkGlobalParameters(parametersValuesMap,results);
 //        checkHeapParameters(parametersValuesMap, totalMem, version, results);
         return results;

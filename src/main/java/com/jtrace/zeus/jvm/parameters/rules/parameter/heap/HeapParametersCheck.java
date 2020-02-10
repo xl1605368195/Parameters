@@ -15,18 +15,23 @@ import java.util.List;
  */
 public class HeapParametersCheck {
 
+    private HashMap<String, String> parametersValuesMap;
 
+    private String jdkVersion;
+
+    private int totalMem;
     /**
      * 0代表-Xmx 简写模式; 1代表MaxHeapSize
      */
     private int maxHeapType;
     private double maxHeap;
 
-    private String jdkVersion;
-
-    private int totalMem;
 
     public HeapParametersCheck(HashMap<String, String> parametersValuesMap, int totalMem, String jdkVersion) {
+        this.totalMem = totalMem;
+        this.jdkVersion = jdkVersion;
+        this.parametersValuesMap = parametersValuesMap;
+
         String maxHeapSize1 = parametersValuesMap.get("-Xmx");
         String maxHeapSize2 = parametersValuesMap.get("MaxHeapSize");
         if (StringUtils.isNoneBlank(maxHeapSize1)) {
@@ -36,14 +41,12 @@ public class HeapParametersCheck {
             this.maxHeapType = 1;
             this.maxHeap = Units.getGNumber(maxHeapSize2);
         }
-        this.totalMem = totalMem;
-        this.jdkVersion = jdkVersion;
     }
 
-    public void checkout(HashMap<String, String> parametersValuesMap, int totalMem, String version, List<CheckoutResult> list) {
+    public void checkout(List<CheckoutResult> list) {
         CheckoutResult checkoutMaxHeap = checkoutMaxHeapSize(parametersValuesMap, totalMem);
         CheckoutResult checkoutMaxMetaSpaceSize;
-        if (version.equals("jdk7")) {
+        if (jdkVersion.equals("jdk7")) {
             checkoutMaxMetaSpaceSize = checkoutMaxPermSpaceSize(parametersValuesMap);
         } else {
             checkoutMaxMetaSpaceSize = checkoutMaxMetaSpaceSize(parametersValuesMap);
