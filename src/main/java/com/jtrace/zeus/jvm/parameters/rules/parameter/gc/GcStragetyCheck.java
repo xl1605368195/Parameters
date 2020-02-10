@@ -1,19 +1,15 @@
 package com.jtrace.zeus.jvm.parameters.rules.parameter.gc;
 
-import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 /**
  * @author xule05
  * @date 2020/2/2 下午10:27
  */
-@Data
 public class GcStragetyCheck {
-
     private GcCollectorEnum youngCollector;
 
     private GcCollectorEnum oldCollector;
@@ -23,10 +19,7 @@ public class GcStragetyCheck {
      */
     private int maxMemorySize;
 
-
-    private GcStragetyCheck(HashMap<String, String> parametersValuesMap, int maxMemorySize) {
-        setGcType(parametersValuesMap);
-        this.maxMemorySize = maxMemorySize;
+    public GcStragetyCheck(HashMap<String, String> parametersValuesMap, int maxMemorySize) {
     }
 
     private void setGcType(HashMap<String, String> parametersValuesMap) {
@@ -60,11 +53,10 @@ public class GcStragetyCheck {
             oldCollector = GcCollectorEnum.SERIAL_OLD;
         }
 
-        String useG1GC = parametersValuesMap.get("UseG1GC");
-        if (StringUtils.isNotBlank(useG1GC) && StringUtils.equals(useG1GC, "true")) {
+        String useG1Gc = parametersValuesMap.get("UseG1GC");
+        if (StringUtils.isNotBlank(useG1Gc) && StringUtils.equals(useG1Gc, "true")) {
             youngCollector = GcCollectorEnum.G1;
             oldCollector = GcCollectorEnum.G1;
         }
     }
-
 }

@@ -2,7 +2,6 @@ package com.jtrace.zeus.jvm.parameters.service;
 
 import com.jtrace.zeus.jvm.parameters.mapper.ParametersRankMapper;
 import com.jtrace.zeus.jvm.parameters.parameters.ParametersRankEntity;
-import com.jtrace.zeus.jvm.parameters.data.ParametersRankRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

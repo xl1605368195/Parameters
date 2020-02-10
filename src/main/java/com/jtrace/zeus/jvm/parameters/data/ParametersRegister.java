@@ -33,7 +33,7 @@ public class ParametersRegister {
                 "If the option -agentlib:foo is specified, then the JVM attempts to load the library named libfoo.so in the location specified by the LD_LIBRARY_PATH system variable (on OS X this variable is DYLD_LIBRARY_PATH).",
                 "不开启",
                 "boolean",
-                "-verbose:gc的VM等价参数是-XX:+PrintGC "
+                ""
         ));
 
         // agentpath
@@ -104,7 +104,7 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "Loads the specified Java programming language agent.",
-                "加载一个Java语言编写的 agent 包",
+                "加载一个由Java语言编写的agent包",
                 "",
                 "",
                 "",
@@ -134,7 +134,7 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "Displays information about each garbage collection (GC) event.",
-                "输出虚拟机中GC的详细情况",
+                "输出虚拟机中GC的日志",
                 "-verbose:gc 输出虚拟机中GC日志，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印",
                 "false",
                 "boolean",
@@ -149,7 +149,7 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "Displays information about each loaded or unloaded class.",
-                "-",
+                "跟踪jvm类的加载与卸载情况",
                 "-",
                 "false",
                 "boolean",
@@ -784,6 +784,37 @@ public class ParametersRegister {
                 "Heap初始化的大小",
                 "-",
                 "?",
+                "unsigned int",
+                ""
+        ));
+
+        // 2020.2.8
+        // -XX:NewRatio=2
+        // 新生代（Eden + 2*S）与老年代（不包括永久区）的比值
+        set.add(new JvmParameterEntity(
+                "NewRatio",
+                new String[]{"*"},
+                new String[]{"-XX:NewRatio=2"},
+                "-",
+                "-",
+                "Sets the ratio between young and old generation sizes. By default, this option is set to 2. " ,
+                "新生代（Eden + 2*S）与老年代的比值",
+                "-",
+                "2",
+                "unsigned int",
+                ""
+        ));
+
+        set.add(new JvmParameterEntity(
+                "SurvivorRatio",
+                new String[]{"*"},
+                new String[]{"-XX:SurvivorRatio=8"},
+                "-",
+                "-",
+                "Sets the ratio between eden space size and survivor space size. By default, this option is set to 8." ,
+                "新生代中Eden区域和Survivor区域（From幸存区或To幸存区）的比例，默认为8，也就是说Eden占新生代的8/10，From幸存区和To幸存区各占新生代的1/10",
+                "-",
+                "",
                 "unsigned int",
                 ""
         ));
