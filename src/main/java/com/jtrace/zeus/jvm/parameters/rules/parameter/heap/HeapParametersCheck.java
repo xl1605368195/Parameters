@@ -24,7 +24,8 @@ public class HeapParametersCheck {
      * 0代表-Xmx 简写模式; 1代表MaxHeapSize
      */
     private int maxHeapType;
-    private double maxHeap;
+
+    private double maxHeapSize;
 
 
     public HeapParametersCheck(HashMap<String, String> parametersValuesMap, int totalMem, String jdkVersion) {
@@ -36,10 +37,10 @@ public class HeapParametersCheck {
         String maxHeapSize2 = parametersValuesMap.get("MaxHeapSize");
         if (StringUtils.isNoneBlank(maxHeapSize1)) {
             this.maxHeapType = 0;
-            this.maxHeap = Units.getGNumber(maxHeapSize1);
+            this.maxHeapSize = Units.getGNumber(maxHeapSize1);
         } else if (StringUtils.isNoneBlank(maxHeapSize2)) {
             this.maxHeapType = 1;
-            this.maxHeap = Units.getGNumber(maxHeapSize2);
+            this.maxHeapSize = Units.getGNumber(maxHeapSize2);
         }
     }
 
@@ -226,7 +227,7 @@ public class HeapParametersCheck {
     // AlwaysPreTouch
     private CheckoutResult checkoutAlwaysPreTouch(HashMap<String, String> parametersValuesMap) {
         String alwaysPreTouch = parametersValuesMap.get("AlwaysPreTouch");
-        if (StringUtils.isBlank(alwaysPreTouch) && maxHeap > 4) {
+        if (StringUtils.isBlank(alwaysPreTouch) && maxHeapSize > 4) {
             // 不存在该值并且最大堆内存大于4 g
             return new CheckoutResult(Level.ERROR, "最大堆超过4g，如果堆内存较大，请添加 -XX:+AlwaysPreTouch 参数强制 JVM 在启动时分配内存，可使得后续运行更顺畅（副作用：启动速度变慢）", "heap");
         } else {

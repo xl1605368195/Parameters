@@ -1,9 +1,12 @@
 package com.jtrace.zeus.jvm.parameters.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author xule05
@@ -29,5 +32,17 @@ public class Utils {
         }
         // 返回数组
         return arrayList;
+    }
+
+    public static double getMaxHeapMemory(HashMap<String, String> parametersValuesMap) {
+        double maxHeapSize = 0;
+        String maxHeapSize1 = parametersValuesMap.get("-Xmx");
+        String maxHeapSize2 = parametersValuesMap.get("MaxHeapSize");
+        if (StringUtils.isNoneBlank(maxHeapSize1)) {
+            maxHeapSize = Units.getGNumber(maxHeapSize1);
+        } else if (StringUtils.isNoneBlank(maxHeapSize2)) {
+            maxHeapSize = Units.getGNumber(maxHeapSize2);
+        }
+        return maxHeapSize;
     }
 }
