@@ -10,11 +10,11 @@ import lombok.ToString;
  * @date 2020/1/27 下午8:01
  */
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class JvmParameterEntity {
 
+    public static String hostname="http://zeus.yitrace.com:8080";
     /**
      * 参数命令或者完整的模式
      **/
@@ -70,9 +70,31 @@ public class JvmParameterEntity {
      **/
     private String extend;
 
+    /**
+     *  链接
+     **/
+    private String url;
 
     public JvmParameterEntity(String name) {
         this.name = name;
     }
 
+    public JvmParameterEntity(String name, String[] versions, String[] examples, String type, String os, String meaning, String hanyi, String use, String defaultValue, String valueType, String extend) {
+        this.name = name;
+        this.versions = versions;
+        this.examples = examples;
+        this.type = type;
+        this.os = os;
+        this.meaning = meaning;
+        this.hanyi = hanyi;
+        this.use = use;
+        this.defaultValue = defaultValue;
+        this.valueType = valueType;
+        this.extend = extend;
+    }
+
+    public JvmParameterEntity(String name, String[] versions, String[] examples, String type, String os, String meaning, String hanyi, String use, String defaultValue, String valueType, String extend, String url) {
+        this(name,versions,examples,type,os,meaning,hanyi,use,defaultValue,valueType,extend);
+        this.url = hostname+url;
+    }
 }

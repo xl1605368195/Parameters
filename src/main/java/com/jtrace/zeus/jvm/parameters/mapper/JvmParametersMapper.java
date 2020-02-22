@@ -20,8 +20,8 @@ public interface JvmParametersMapper {
     @Select("SELECT name from tb_jvm_parameters where name LIKE CONCAT('%',#{name},'%')")
     List<String> matchByName(@Param("name") String name);
 
-    @Insert("INSERT INTO `tb_jvm_parameters`(`name`, `versions`, `examples`, `type`, `os`,`meaning`, `hanyi`, `use`, `extend`, `default_value`,`create_time`, `modify_time`) " +
-            "VALUES(#{name},#{versions}, #{examples}, #{type},#{os}, #{meaning},#{hanyi},#{use}, #{extend}, #{defaultValue},now(), now())")
+    @Insert("INSERT INTO `tb_jvm_parameters`(`name`, `versions`, `examples`, `type`, `os`,`meaning`, `hanyi`, `use`, `extend`,`url`, `default_value`,`create_time`, `modify_time`) " +
+            "VALUES(#{name},#{versions}, #{examples}, #{type},#{os}, #{meaning},#{hanyi},#{use}, #{extend},#{url}, #{defaultValue},now(), now())")
     @Options(useGeneratedKeys = true, keyColumn = "id")
     int insertOne(JvmParameterEntity user);
 

@@ -11,6 +11,7 @@ CREATE TABLE `tb_jvm_parameters` (
   `hanyi`         text          DEFAULT NULL            COMMENT '中文解释',
   `use`           text          DEFAULT NULL            COMMENT '使用',
   `extend`        text          DEFAULT NULL            COMMENT '备注',
+  `url`           varchar(1024)  DEFAULT NULL           COMMENT '链接',
   `default_value` varchar(128)  DEFAULT NULL            COMMENT '默认值',
   `create_time`   datetime      DEFAULT NULL            COMMENT '创建时间/注册时间',
   `modify_time`   datetime      DEFAULT NULL            COMMENT '最后更新时间',

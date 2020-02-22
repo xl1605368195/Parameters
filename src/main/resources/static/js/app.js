@@ -64,6 +64,7 @@ function appendToTable(tmp) {
     let defaultValue = tmp.defaultValue;
     let valueType = tmp.valueType;
     let extend = tmp.extend;
+    let url = tmp.url;
     let body = $('<div class="panel-heading">' + name + '&nbsp;&nbsp;<span class="badge badge-primary">' + versions + '</span>&nbsp;&nbsp;<span class="badge label-info">' + defaultValue + '</span></div>\n' +
         '<div class="panel-body">\n' +
         '    <p><span class="label label-danger">例子</span>&nbsp;&nbsp;' + examples + '</p>\n' +
