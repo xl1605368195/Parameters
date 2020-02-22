@@ -43,8 +43,8 @@
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">参数查询</a></li>
             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">参数评估</a></li>
-            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">定制参数</a></li>
-            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">热门参数</a></li>
+            <li role="presentation"><a href="#custom" aria-controls="custom" role="tab" data-toggle="tab">定制参数</a></li>
+            <li role="presentation"><a href="#hot" aria-controls="hot" role="tab" data-toggle="tab">热门参数</a></li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -160,8 +160,115 @@
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="messages">规划中...</div>
-            <div role="tabpanel" class="tab-pane" id="settings">规划中..</div>
+            <div role="tabpanel" class="tab-pane" id="custom" style="padding-top: 20px">
+                <div class="panel panel-default" id="result" >
+                    <div class="panel-heading">系统基本参数</div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            JDK版本:
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk7"> JDK7
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk8" checked> JDK8
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk9"> JDK9
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk10"> JDK10
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            物理内存:
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <input type="radio" name="totalMem" value="2"> 2G
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="totalMem" value="4" checked> 4G
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="totalMem" value="8"> 8G
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="totalMem" value="12"> 12G+
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            运行平台:
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <input type="radio" name="system" value="linux"checked> Linux
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="system" value="maxOS"> maxOS
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="system" value="windows"> Windows
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel panel-success" id="result" >
+                    <div class="panel-heading">系统基本参数</div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            JDK版本:
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk7"> JDK7
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk8" checked> JDK8
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk9"> JDK9
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk10"> JDK10
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            物理内存:
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <input type="radio" name="totalMem" value="2"> 2G
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="totalMem" value="4" checked> 4G
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="totalMem" value="8"> 8G
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="totalMem" value="12"> 12G+
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            运行平台:
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <input type="radio" name="system" value="linux"checked> Linux
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="system" value="maxOS"> maxOS
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="system" value="windows"> Windows
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="hot">规划中..</div>
         </div>
     </div>
 
