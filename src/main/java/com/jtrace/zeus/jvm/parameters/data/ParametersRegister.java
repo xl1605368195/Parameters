@@ -29,7 +29,7 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "Loads the specified native agent library. After the library name, a comma-separated list of options specific to the library can be used.",
-                "输出虚拟机中GC日志",
+                "-agentlib使用的是本地代理也就是c/c++写的本地库（例如动态链接库dll和静态链接库lib），libname的路径是相对路径",
                 "If the option -agentlib:foo is specified, then the JVM attempts to load the library named libfoo.so in the location specified by the LD_LIBRARY_PATH system variable (on OS X this variable is DYLD_LIBRARY_PATH).",
                 "不开启",
                 "boolean",
@@ -44,7 +44,7 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "Loads a native agent library by full pathname",
-                "通过全路径加载一个native agent 包",
+                "通过全路径加载一个c/c++语言编写的agent包",
                 "",
                 "",
                 "boolean",
@@ -150,7 +150,7 @@ public class ParametersRegister {
                 "all",
                 "Displays information about each loaded or unloaded class.",
                 "跟踪jvm类的加载与卸载情况",
-                "-",
+                "调试时开启这个选项可以查看某个类是否加载以及从哪个jar加载",
                 "false",
                 "boolean",
                 "-verbose:class的VM等价参数是-XX:+TraceClassLoading -XX:+TraceClassUnloading"
@@ -806,18 +806,19 @@ public class ParametersRegister {
                 ""
         ));
 
+        // SurvivorRatio
         set.add(new JvmParameterEntity(
                 "SurvivorRatio",
-                new String[]{"*"},
+                new String[]{"all jdk"},
                 new String[]{"-XX:SurvivorRatio=8"},
                 "-",
                 "-",
                 "Sets the ratio between eden space size and survivor space size. By default, this option is set to 8." ,
                 "新生代中Eden区域和Survivor区域（From幸存区或To幸存区）的比例，默认为8，也就是说Eden占新生代的8/10，From幸存区和To幸存区各占新生代的1/10",
-                "-",
-                "",
+                "如果我们通过设置-Xmn1000m来指定新生代分配的空间大小，那么Eden则会分配1000M * 0.8 = 800M，Survivor一共分配1000M * 0.2 = 200M的内存空间",
+                "8",
                 "unsigned int",
-                ""
+                "一般情况下该参数使用默认值即可，除非你在JVM优化领域有着非常丰富的经验。"
         ));
     }
 }

@@ -71,8 +71,8 @@ function appendToTable(tmp) {
         '</div>\n' +
         '<ul class="list-group">\n' +
         '    <li class="list-group-item"><span class="label label-success">含义</span>&nbsp;&nbsp;' + hanyi + '</li>\n' +
-        '    <li class="list-group-item"><span class="label label-warning">扩展</span>&nbsp;&nbsp;' + extend + '</li>\n' +
         '    <li class="list-group-item"><span class="label label-primary">使用</span>&nbsp;&nbsp;' + use + '</li>\n' +
+        '    <li class="list-group-item"><span class="label label-warning">扩展</span>&nbsp;&nbsp;' + extend + '</li>\n' +
         '</ul>'
     );
     return body;

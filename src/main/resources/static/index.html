@@ -69,11 +69,11 @@
                             <span class="label label-success">含义</span>&nbsp;&nbsp;输出虚拟机中GC的详细情况
                         </li>
                         <li class="list-group-item">
-                            <span class="label label-warning">扩展</span>&nbsp;&nbsp;-verbose:gc的VM等价参数是-XX:+PrintGC
-                        </li>
-                        <li class="list-group-item">
                             <span class="label label-primary">使用</span>&nbsp;&nbsp;-verbose:gc 输出虚拟机中GC的详细情况，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，
                             收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印 <a target="_blank" href="http://zeus.yitrace.com:8080/articles/2020/02/10/1581324180818.html"> >>> </a>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="label label-warning">扩展</span>&nbsp;&nbsp;-verbose:gc的VM等价参数是-XX:+PrintGC
                         </li>
                     </ul>
                 </div>
@@ -161,7 +161,8 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="custom" style="padding-top: 20px">
-                <div class="panel panel-default" id="result" >
+                <!--系统基本参数-->
+                <div class="panel panel-default" id="result1" >
                     <div class="panel-heading">系统基本参数</div>
                     <ul class="list-group">
                         <li class="list-group-item">
@@ -214,11 +215,12 @@
                         </li>
                     </ul>
                 </div>
-                <div class="panel panel-success" id="result" >
-                    <div class="panel-heading">系统基本参数</div>
+                <!--堆参数-->
+                <div class="panel panel-success" id="result2" >
+                    <div class="panel-heading">堆空间参数</div>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            JDK版本:
+                            堆空间
                             <div class="form-group">
                                 <label class="radio-inline">
                                     <input type="radio" name="jdkVersion" value="jdk7"> JDK7
@@ -235,7 +237,24 @@
                             </div>
                         </li>
                         <li class="list-group-item">
-                            物理内存:
+                            新生代
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk7"> JDK7
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk8" checked> JDK8
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk9"> JDK9
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="jdkVersion" value="jdk10"> JDK10
+                                </label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            老年代
                             <div class="form-group">
                                 <label class="radio-inline">
                                     <input type="radio" name="totalMem" value="2"> 2G
@@ -252,7 +271,7 @@
                             </div>
                         </li>
                         <li class="list-group-item">
-                            运行平台:
+                            元空间(永久带)
                             <div class="form-group">
                                 <label class="radio-inline">
                                     <input type="radio" name="system" value="linux"checked> Linux
@@ -267,6 +286,7 @@
                         </li>
                     </ul>
                 </div>
+                <!--GC参数-->
             </div>
             <div role="tabpanel" class="tab-pane" id="hot">规划中..</div>
         </div>
