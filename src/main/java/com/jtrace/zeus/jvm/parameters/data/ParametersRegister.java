@@ -569,8 +569,9 @@ public class ParametersRegister {
                 "-",
                 "-",
                 "Enables printing of messages at every GC.",
-                "-XX:+PrintGC开启GC日志打印",
-                "-",
+                "开启了简单GC日志模式，为每一次新生代（young generation）的GC和每一次的Full GC打印一行信息",
+                "[GC 246656K->243120K(376320K), 0.0929090 secs]\n" +
+                        "[Full GC 243120K->241951K(629760K), 1.5589690 secs]",
                 "不开启",
                 "boolean",
                 "-XX:+PrintGC的VM等价参数是-verbose:gc"
