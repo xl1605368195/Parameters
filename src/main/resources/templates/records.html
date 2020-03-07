@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{})">
+    <title>诊断记录</title>
+</head>
+<body class="no-skin">
+<div th:replace="common :: navbar"></div>
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">try {
+        ace.settings.loadState('main-container')
+    } catch (e) {
+    }</script>
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <script type="text/javascript">try {
+            ace.settings.loadState('sidebar')
+        } catch (e) {
+        }</script>
+        <!--侧面导航栏目-->
+        <ul class="nav nav-list">
+            <li><a href="/index"><i class="menu-icon fa fa-sitemap"></i><span class="menu-text">系统架构</span></a></li>
+            <li><a href="/arthas"><i class="menu-icon fa fa-android"></i><span class="menu-text">arthas-web</span></a></li>
+            <li><a href="/build"><i class="menu-icon fa fa-desktop"></i><span class="menu-text">新建诊断</span></a></li>
+            <li class="active"><a href="/records"><i class="menu-icon fa fa-pencil-square-o"></i><span
+                    class="menu-text">诊断记录</span></a></li>
+            <li><a href="#" class="dropdown-toggle"><i class="menu-icon fa fa-file-o"></i><span
+                    class="menu-text">技术文档</span><b class="arrow fa fa-angle-down"></b></a>
+                <ul class="submenu">
+                    <li><a href="/join"><i class="menu-icon fa fa-caret-right"></i>接入</a></li>
+                    <li><a href="/faq"><i class="menu-icon fa fa-caret-right"></i>FAQ</a></li>
+                    <li><a href="/examples"><i class="menu-icon fa fa-caret-right"></i>诊断案例</a></li>
+                    <li><a href="/introduction"><i class="menu-icon fa fa-caret-right"></i>RD简介</a></li>
+                </ul>
+            </li>
+        </ul><!-- /.nav-list -->
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
+               data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li><i class="ace-icon fa fa-home home-icon"></i><a href="#">首页</a></li>
+                    <li class="active">诊断记录</li>
+                </ul><!-- /.breadcrumb -->
+            </div>
+
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <h5 class="lighter"><span href="#">服务器存储资源有限，仅保留最近<span style="color:red;">10</span>条记录</span>
+                        </h5>
+                        <div class="hr hr-18 hr-double dotted"></div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <table id="simple-table"
+                                       class="table table-hover table-responsive table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <!--序号 主机IP 进程信息 诊断项目 诊断时间 运行状态 操作-->
+                                        <th class="center">序号</th>
+                                        <th class="center">主机IP</th>
+                                        <th class="center">进程信息</th>
+                                        <th class="center">诊断项目</th>
+                                        <th class="center"><i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>诊断时间
+                                        </th>
+                                        <th class="center">运行状态</th>
+                                        <th class="left">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--表格内容-->
+
+                                    <!--表格内容-->
+                                    </tbody>
+                                </table>
+                            </div><!-- /.span -->
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+    <div th:replace="common :: footer-1"></div>
+    <div th:replace="common :: footer-2"></div>
+</div><!-- /.main-container -->
+<!-- basic scripts -->
+<div th:replace="common :: script"></div>
+<!-- page specific plugin scripts -->
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/jquery.dataTables.bootstrap.min.js"></script>
+<script src="js/dataTables.buttons.min.js"></script>
+<script src="js/buttons.flash.min.js"></script>
+<script src="js/buttons.html5.min.js"></script>
+<script src="js/buttons.print.min.js"></script>
+<script src="js/buttons.colVis.min.js"></script>
+<script src="js/dataTables.select.min.js"></script>
+<script type="text/javascript">
+    jQuery(function ($) {
+        $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+        //table checkboxes
+        $('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+        //And for the first simple table, which doesn't have TableTools or dataTables
+        //select/deselect all rows according to table header checkbox
+        var active_class = 'active';
+        $('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function () {
+            var th_checked = this.checked;//checkbox inside "TH" table header
+            $(this).closest('table').find('tbody > tr').each(function () {
+                var row = this;
+                if (th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+                else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+            });
+        });
+
+        // 勾选或者反选列： 如果已经被勾选，则取消；
+        $('#simple-table').on('click', 'td input[type=checkbox]', function () {
+            var $row = $(this).closest('tr');
+            if (this.checked) {
+                $row.addClass(active_class);
+            }
+            else {
+                $row.removeClass(active_class);
+            }
+        });
+    })
+
+    // 产生表格行记录
+    $(document).ready(function () {
+        recordsTableInit();
+    });
+
+    function recordsTableInit(){
+        // 发请求
+        $.ajax({
+            url: "/dashboard/rank",
+            dataType: 'json', // 服务器预期返回数据格式
+            type: "get",
+            success: function (response) {
+                // 填充表格
+                if (response.isSuccess) {
+                    for (var i = 0; i < response.data.length; i++) {
+                        var tmp = response.data[i];
+                        var tr = appendToTable(tmp)
+                        $("#simple-table > tbody").append(tr);
+                    }
+                     // showSuccessNotify("success", "获取诊断数据");
+                } else {
+                    showNoticeNotiy("info", "历史诊断数据为空");
+                }
+            },
+            error: function (error) {
+                showErrorNotiy("error", "获取诊断数据的请求失败！");
+            }
+        });
+    }
+
+    function appendToTable(tmp) {
+        var id = tmp.id;
+        var ip = tmp.ip;
+        var pid = tmp.pid;
+        var content = tmp.content;
+        var create_time = tmp.createTime;
+        var success = tmp.success;
+        var running = tmp.running;
+        var status_tb;
+        var op_button;
+        if (running){
+            var status_tb = '<td class="center"><span class="label label-sm label-info"> 运行中(...) </span></td>';
+            op_button = '<button class="btn btn-xs btn-danger center" onclick="stopProfiling('+id+',this)"><i class="ace-icon fa fa-power-off smaller-30"></i>停止 </button>';
+        }else{
+            if (success) {
+                var status_tb = '<td class="center"><span class="label label-sm label-success"> 诊断成功 </span></td>';
+            } else {
+                var status_tb = '<td class="center"><span class="label label-sm label-warning"> 诊断失败 </span></td>';
+            }
+            op_button = '<button class="btn btn-xs btn-warning center" onclick="deleteProfiling('+id+',this)"><i class="ace-icon fa fa-remove smaller-30"></i>删除 </button>';
+        }
+        <!--序号 主机IP 进程信息 诊断项目 诊断时间 运行状态 操作-->
+        var tr = $('<tr id="record_'+id+'" class="">\n' +
+            '<td class="center">' + id + '</td>' +
+            '<td class="center"><i class="fa-"></i>' + ip + '</td>' +
+            '<td class="center" >' + pid + '</td>' +
+            '<td class="center">' + content + '</td>' +
+            '<td class="center">' + create_time + '</td>' +
+            status_tb +
+            '<td>' +
+            '<div class="btn-group">' +
+            '<button class="btn btn-xs btn-info center" onclick="showDetail(' + id + ')"><i class="ace-icon fa fa-eye smaller-30"></i>查看 </button>' +
+            op_button+
+            '<div>' +
+            '</td>\n' +
+            '</tr>');
+        return tr;
+    }
+
+    function showDetail(id) {
+        $.ajax({
+            url: "/report/diagnoseResult/get",
+            type: "get",
+            data: {
+                'serialNumber': id
+            },
+            dataType: 'json', // 服务器预期返回数据格式
+            success: function (response) {
+                if (response.status) {
+                    var baseUrl = window.location.protocol + "//" + window.location.host;
+                    $(location).attr('href', baseUrl + '/record_detail?serialNumber=' + id);
+                } else {
+                    showNoticeNotiy("警告", response.data);
+                }
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    function stopProfiling(id,obj) {
+        var thisObj = $(obj);
+        var tr=thisObj.closest("tr");
+        var tr=thisObj.closest("td").prev();
+        $.ajax({
+            url: "/profiling/cancel",
+            type: "post",
+            data: {
+                'serialNumber': id
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.isSuccess) {
+                    // css 更新
+                    // button 更改
+                    thisObj.replaceWith('<button class="btn btn-xs btn-warning center" onclick="deleteProfiling('+id+',this)"><i class="ace-icon fa fa-remove smaller-30"></i>删除 </button>');
+                    // 运行状态更改
+                    tr.replaceWith('<td class="center"><span class="label label-sm label-warning"> 诊断失败 </span></td>');
+                    showNoticeNotiy("success", response.data);
+                } else {
+                    showNoticeNotiy("警告", response.data);
+                }
+            },
+            error: function (error) {
+
+            }
+        });
+    }
+
+    function deleteProfiling(id,obj) {
+        bootbox.dialog({
+            title: "确定删除诊断记录?",
+            message: "<ul class='list-unstyled spaced'>" +
+            "<li><i class='ace-icon fa fa-circle green'></i>该诊断配置的所有数据将被删除</li></ul>",
+            buttons: {
+                "cancel": {
+                    "label": "<i class='icon-info'></i> 取消",
+                    "className": "btn-sm btn-danger"
+                },
+                "success": {
+                    "label": "<i class='icon-ok'></i> 立即删除",
+                    "className": "btn-sm btn-success",
+                    "callback": function () {
+                        var thisObj = $(obj);//js对象转jquery对象 关键
+                        var tr=thisObj.closest("tr");
+                        $.ajax({
+                            url: "/profiling/delete",
+                            type: "post",
+                            data: {
+                                'serialNumber': id
+                            },
+                            dataType: 'json', // 服务器预期返回数据格式
+                            success: function (response) {
+                                if (response.isSuccess) {
+                                    tr.remove();
+                                    showSuccessNotify("success", response.data);
+                                } else {
+                                    showNoticeNotiy("error", response.data);
+                                }
+                            },
+                            error: function (error) {
+                                showErrorNotiy()("error", "请求失败请重试");
+                            }
+                        });
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

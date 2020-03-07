@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{::link})">
+    <title>首页</title>
+    <link rel="stylesheet" th:href="@{css/chosen.min.css}"/>
+</head>
+<body class="no-skin">
+<div th:replace="common :: navbar"></div>
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">try {ace.settings.loadState('main-container')} catch (e) {}</script>
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <script type="text/javascript">try {ace.settings.loadState('sidebar')} catch (e) {}</script>
+        <!--侧面导航栏目-->
+        <ul class="nav nav-list">
+            <li class="active"><a href="/"><i class="menu-icon fa fa-search"></i><span class="menu-text">查询参数</span></a></li>
+            <!--<li><a href="/arthas"><i class="menu-icon fa fa-android"></i><span class="menu-text">诊断参数</span></a></li>
+            <li><a href="/build"><i class="menu-icon fa fa-desktop"></i><span class="menu-text">定义参数</span></a></li>
+            <li><a href="/records"><i class="menu-icon fa fa-pencil-square-o"></i><span class="menu-text">热门参数</span></a></li>
+            <li><a href="#" class="dropdown-toggle"><i class="menu-icon fa fa-file-o"></i><span class="menu-text">RD简介</span><b class="arrow fa fa-angle-down"></b></a>
+                <ul class="submenu">
+                    <li><a href="/join"><i class="menu-icon fa fa-caret-right"></i>接入</a></li>
+                    <li><a href="/faq"><i class="menu-icon fa fa-caret-right"></i>FAQ</a></li>
+                    <li><a href="/examples"><i class="menu-icon fa fa-caret-right"></i>诊断案例</a></li>
+                    <li><a href="/introduction"><i class="menu-icon fa fa-caret-right"></i>RD简介</a></li>
+                </ul>
+            </li>
+            -->
+        </ul><!-- /.nav-list -->
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li><i class="ace-icon fa fa-home home-icon"></i><a href="/index">首页</a></li>
+                    <li class="active">查询参数</li>
+                </ul><!-- /.breadcrumb -->
+            </div>
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        JVM参数查询平台
+                        <small>
+                            支持参数自动补全;提供100多个系统常用参数
+                        </small>
+                    </h1>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- 参数查询框 -->
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div >
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">查询框</label>
+                                        <input type="text" data-provide="typeahead" autocomplete="off" class="form-control" id="parameter" placeholder="verbose:gc">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="panel panel-success" id="result">
+                                <div class="panel-heading">verbose:gc&nbsp;&nbsp;<span class="badge badge-primary">jdk8</span>&nbsp;&nbsp;<span class="badge label-info">false</span></div>
+                                <div class="panel-body">
+                                    <p><span class="label label-danger">例子</span>&nbsp;&nbsp;-verbose:gc</p>
+                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span class="label label-success">含义</span>&nbsp;&nbsp;输出虚拟机中GC的详细情况
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="label label-primary">使用</span>&nbsp;&nbsp;-verbose:gc 输出虚拟机中GC的详细情况，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，
+                                        收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印 <a target="_blank" href="http://zeus.yitrace.com:8080/articles/2020/02/10/1581324180818.html"> >>> </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="label label-warning">扩展</span>&nbsp;&nbsp;-verbose:gc的VM等价参数是-XX:+PrintGC
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- /.col -->
+                </div>
+            </div>
+        </div>
+    </div><!-- /.main-content -->
+    <div th:replace="common :: footer-1"></div>
+    <div th:replace="common :: footer-2"></div>
+</div><!-- /.main-container -->
+<div th:replace="common :: script"></div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{})">
+    <title>RD简介</title>
+</head>
+<body class="no-skin">
+<div th:replace="common :: navbar"></div>
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">try {ace.settings.loadState('main-container')} catch (e) {}</script>
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <script type="text/javascript">try {ace.settings.loadState('sidebar')} catch (e) {}</script>
+        <!--侧面导航栏目-->
+        <ul class="nav nav-list">
+            <li ><a href="/index"><i class="menu-icon fa fa-sitemap"></i><span class="menu-text">系统架构</span></a></li>
+            <li><a href="/arthas"><i class="menu-icon fa fa-android"></i><span class="menu-text">arthas-web</span></a></li>
+            <li><a href="/build"><i class="menu-icon fa fa-desktop"></i><span class="menu-text">新建诊断</span></a></li>
+            <li><a href="/records"><i class="menu-icon fa fa-pencil-square-o"></i><span class="menu-text">诊断记录</span></a></li>
+            <li class="active open"><a href="#" class="dropdown-toggle"><i class="menu-icon fa fa-file-o"></i><span class="menu-text">技术文档</span><b class="arrow fa fa-angle-down"></b></a>
+                <ul class="submenu">
+                    <li><a href="/join"><i class="menu-icon fa fa-caret-right"></i>接入</a></li>
+                    <li><a href="/faq"><i class="menu-icon fa fa-caret-right"></i>FAQ</a></li>
+                    <li><a href="/examples"><i class="menu-icon fa fa-caret-right"></i>诊断案例</a></li>
+                    <li class="active"><a href="/introduction"><i class="menu-icon fa fa-caret-right"></i>RD简介</a></li>
+                </ul>
+            </li>
+        </ul><!-- /.nav-list -->
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li><i class="ace-icon fa fa-home home-icon"></i><a href="/index">首页</a></li>
+                    <li><a href="#">技术文档</a></li>
+                    <li class="active">RD简介</li>
+                </ul><!-- /.breadcrumb -->
+            </div>
+            <div class="page-content">
+                <div class="page-content-rows">
+                    ......
+                </div>
+            </div></div>
+    </div><!-- /.main-content -->
+    <div th:replace="common :: footer-1"></div>
+    <div th:replace="common :: footer-2"></div>
+</div><!-- /.main-container -->
+<!-- basic scripts -->
+<div th:replace="common :: script"></div>
+<script type="text/javascript">
+    // logout
+    $("#logout").on(ace.click_event, function() {
+        bootbox.confirm("确定退出?", function(result) {
+            if(result) {$.ajax({url: "/user/logout/", type: "GET", success: function (response) {window.location.reload();}});}
+        });
+    });
+</script>
+</body>
+</html>

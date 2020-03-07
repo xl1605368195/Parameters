@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{})">
+    <title>注册</title>
+</head>
+<body class="login-layout">
+<div class="main-container">
+    <div class="main-content">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="login-container">
+                    <div class="center">
+                        <h1>
+                            <i class="ace-icon fa fa-leaf green"></i>
+                            <span class="red">Zeus</span>
+                            <span class="white" id="id-text2">宙斯</span>
+                        </h1>
+                        <h4 class="blue" id="id-company-text">&copy; Easy Profiling</h4>
+                    </div>
+
+                    <div class="space-6"></div>
+                    <div id="signup-box" class="signup-box widget-box no-border visible">
+                        <div class="widget-body">
+                            <div class="widget-main">
+                                <h4 class="header green lighter bigger">
+                                    <i class="ace-icon fa fa-users blue"></i>
+                                    新用户注册
+                                </h4>
+
+                                <div class="space-6"></div>
+                                <p> 输入注册信息 </p>
+                                <form action="/user/register" method="post">
+                                    <fieldset>
+                                        <label class="block clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="text" class="form-control" id="username" name="username" placeholder="username"/>
+                                                <i class="ace-icon fa fa-user"></i>
+                                            </span>
+                                        </label>
+                                        <label class="block clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="password"/>
+                                                <i class="ace-icon fa fa-lock"></i>
+                                            </span>
+                                        </label>
+                                        <label class="block clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="email"/>
+                                                <i class="ace-icon fa fa-envelope"></i>
+                                            </span>
+                                        </label>
+                                        <div class="space-24"></div>
+                                        <div class="clearfix">
+                                            <button type="reset" class="width-30 pull-left btn btn-sm">
+                                                <i class="ace-icon fa fa-refresh"></i>
+                                                <span class="bigger-110">重置</span>
+                                            </button>
+
+                                            <button type="submit" class="width-65 pull-right btn btn-sm btn-success">
+                                                <span class="bigger-110">注册</span>
+
+                                                <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                                            </button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                            <div class="toolbar center">
+                                <a href="/login" class="back-to-login-link">
+                                    <i class="ace-icon fa fa-arrow-left"></i>
+                                    返回登录
+                                </a>
+                            </div>
+                        </div><!-- /.widget-body -->
+                    </div><!-- /.signup-box -->
+                </div><!-- /.position-relative -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.main-content -->
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script src='js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

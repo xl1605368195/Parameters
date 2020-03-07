@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{})">
+    <title>诊断记录</title>
+</head>
+<body class="no-skin">
+<div th:replace="common :: navbar"></div>
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">try {
+        ace.settings.loadState('main-container')
+    } catch (e) {
+    }</script>
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <script type="text/javascript">try {
+            ace.settings.loadState('sidebar')
+        } catch (e) {
+        }</script>
+        <!--侧面导航栏目-->
+        <ul class="nav nav-list">
+            <li><a href="/index"><i class="menu-icon fa fa-sitemap"></i><span class="menu-text">系统架构</span></a></li>
+            <li class="active"><a href="/arthas"><i class="menu-icon fa fa-android"></i><span class="menu-text">arthas-web</span></a>
+            </li>
+            <li><a href="/build"><i class="menu-icon fa fa-desktop"></i><span class="menu-text">新建诊断</span></a></li>
+            <li><a href="/records"><i class="menu-icon fa fa-pencil-square-o"></i><span
+                    class="menu-text">诊断记录</span></a></li>
+            <li><a href="#" class="dropdown-toggle"><i class="menu-icon fa fa-file-o"></i><span
+                    class="menu-text">技术文档</span><b class="arrow fa fa-angle-down"></b></a>
+                <ul class="submenu">
+                    <li><a href="/join"><i class="menu-icon fa fa-caret-right"></i>接入</a></li>
+                    <li><a href="/faq"><i class="menu-icon fa fa-caret-right"></i>FAQ</a></li>
+                    <li><a href="/examples"><i class="menu-icon fa fa-caret-right"></i>诊断案例</a></li>
+                    <li><a href="/introduction"><i class="menu-icon fa fa-caret-right"></i>RD简介</a></li>
+                </ul>
+            </li>
+
+        </ul><!-- /.nav-list -->
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
+               data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li><i class="ace-icon fa fa-home home-icon"></i><a href="#">首页</a></li>
+                    <li class="active">arthas-plus</li>
+                </ul><!-- /.breadcrumb -->
+            </div>
+
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <h5 class="lighter"><span href="#">发送命令之前，请先建立agent与Server的连接</span></h5>
+                        <hr>
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs padding-18 tab-size-bigger" id="myTab">
+                                <li class="active"><a data-toggle="tab" href="#faq-tab-1" aria-expanded="true">基础命令</a>
+                                </li>
+                                <li class=""><a data-toggle="tab" href="#faq-tab-2" aria-expanded="false">jvm相关</a></li>
+                                <li class=""><a data-toggle="tab" href="#faq-tab-3" aria-expanded="false">class相关</a>
+                                </li>
+                                <li class=""><a data-toggle="tab" href="#faq-tab-4" aria-expanded="true">trace相关</a>
+                                </li>
+                                <li class=""><a data-toggle="tab" href="#faq-tab-5" aria-expanded="false">火焰图</a></li>
+                            </ul>
+                            <div class="tab-content no-border padding-24">
+                                <div id="faq-tab-1" class="tab-pane fade active in">
+                                    <div class="col-sm-12">
+                                        <div class="widget-box transparent">
+                                            <div class="widget-body">
+                                                <div class="widget-main padding-24">
+                                                    <div class="space"></div>
+                                                    <div>
+
+                                                    </div>
+
+                                                    <div class="hr hr8 hr-double hr-dotted"></div>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-5 pull-right">
+                                                            <h4 class="pull-right">
+                                                                Total amount :
+                                                                <span class="red">$395</span>
+                                                            </h4>
+                                                        </div>
+                                                        <div class="col-sm-7 pull-left"> Extra Information</div>
+                                                    </div>
+
+                                                    <div class="space-6"></div>
+                                                    <div class="well">
+                                                        Thank you for choosing Ace Company products.
+                                                        We believe you will be satisfied by our services.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="faq-tab-2" class="tab-pane fade">
+                                </div>
+                                <div id="faq-tab-3" class="tab-pane fade">
+                                    <div class="row">
+                                        <h3 class="header smaller lighter grey">线程模块</h3>
+                                        <p>
+                                            <button class="btn btn-default" onclick="showThreadTable()">查看线程</button>
+                                            <button class="btn btn-primary" onclick="closeThreadTable()">关闭模块</button>
+                                            <button class="btn btn-yellow" onclick="showThreadTable()">刷新数据</button>
+                                        </p>
+                                        <div class="col-xs-12 hidden" id="thread-div">
+                                            <div>
+                                                <table id="thread-table"
+                                                       class="table table-hover table-responsive table-striped table-bordered">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="center">tid</th>
+                                                        <th class="center">thread-name</th>
+                                                        <th class="center">state</th>
+                                                        <th class="center">%CPU</th>
+                                                        <th class="center">thread-group</th>
+                                                        <th class="center">priority</th>
+                                                        <th class="center">action</th>
+                                                        <!--<th class="center">INTERRUPTE</th>-->
+                                                        <!--<th class="left">DAEMON</th>-->
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <!--表格内容-->
+
+                                                    <!--表格内容-->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div><!-- /.span -->
+                                    </div>
+                                    <div class="row">
+                                        <h3 class="header smaller lighter grey">类加载器模块</h3>
+                                        <p>
+                                            <button class="btn btn-default" onclick="sendClassLoaderMsg()">
+                                                查看classloader
+                                            </button>
+                                            <button class="btn btn-primary" onclick="sendClassLoaderMsg()">关闭模块</button>
+                                            <button class="btn btn-yellow" onclick="sendJvmParametersMsg()">查看参数
+                                            </button>
+                                        </p>
+                                        <div class="col-sm-12">
+                                            <div class="widget-box widget-color-green2">
+                                                <div class="widget-header">
+                                                    <h4 class="widget-title lighter smaller">
+                                                        按类加载类型查看统计信息
+                                                    </h4>
+                                                </div>
+                                                <div class="widget-body">
+                                                    <div class="widget-main padding-8">
+                                                        <ul id="tree" class="tree tree-unselectable tree-folder-select"
+                                                            role="tree">
+                                                            // 数据
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="faq-tab-4" class="tab-pane fade">
+                                </div>
+                                <div id="faq-tab-5" class="tab-pane fade">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="qrcode" tabindex="-1" role="dialog" aria-labelledby="information">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span>&times;</span>
+                                        </button>
+                                        <h4 class="modal-title">调用栈</h4>
+                                    </div>
+                                    <div class="modal-body" style="text-align: center">
+                                        <textarea id="message"
+                                                  style="width: 100%; height: 300px ;overflow: auto;word-break: break-all; resize: none;"
+                                                  readonly></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hr hr-18 hr-double dotted"></div>
+                        <div class="row">
+                            <!--<div class="col-xs-12">-->
+                            <!--<form onsubmit="return false">-->
+                            <!--<textarea style="width: 300px; height: 200px;" name="message"></textarea>-->
+                            <!--<input type="button" onclick="sendMsg(this.form.message.value)" value="发送"><br>-->
+                            <!--<h3>信息</h3>-->
+                            <!--<textarea style="width: 300px; height: 200px;" id="respMessage"></textarea>-->
+                            <!--<input type="button" value="清空"-->
+                            <!--onclick="javascript:document.getElementById('respMessage').value = ''">-->
+                            <!--</form>-->
+                            <!--</div>-->
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+    <div th:replace="common :: footer-1"></div>
+    <div th:replace="common :: footer-2"></div>
+</div><!-- /.main-container -->
+<!-- basic scripts -->
+<div th:replace="common :: script"></div>
+<!-- page specific plugin scripts -->
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/jquery.dataTables.bootstrap.min.js"></script>
+<script src="js/dataTables.buttons.min.js"></script>
+<script src="js/buttons.flash.min.js"></script>
+<script src="js/buttons.html5.min.js"></script>
+<script src="js/buttons.print.min.js"></script>
+<script src="js/buttons.colVis.min.js"></script>
+<script src="js/dataTables.select.min.js"></script>
+<script type="text/javascript">
+    var websocket;
+
+    var nodeData;
+
+    //如果浏览器支持WebSocket
+    if (window.WebSocket) {
+        websocket = new WebSocket("ws://localhost:9527/ws?method=connectArthas&id=bvDOe8XbTM2pQWjF4cfw");  //获得WebSocket对象
+        //当有消息过来的时候触发
+        websocket.onmessage = function (event) {
+            // var respMessage = document.getElementById("respMessage");
+            // respMessage.value = respMessage.value + "\n" + event.data;
+            // 数据分发展示
+            var data = event.data;
+            // data： 字符串
+            var obj = $.parseJSON(data)
+            var commandName = obj.commandName;
+            if (commandName == "classLoaderCommand") {
+                nodeData = obj;
+                // alert(data)
+                console.warn(data)
+            } else if (commandName == "jvmParametersCommand") {
+                nodeData = obj;
+                // alert(data)
+                console.warn(data)
+            } else {
+                recordsTableInit(obj);
+            }
+        }
+        //连接关闭的时候触发
+        websocket.onclose = function (event) {
+            // var respMessage = document.getElementById("respMessage");
+            // respMessage.value = respMessage.value + "\n断开连接";
+        }
+        //连接打开的时候触发
+        websocket.onopen = function (event) {
+            // var respMessage = document.getElementById("respMessage");
+            // respMessage.value = "建立连接";
+        }
+    } else {
+        alert("浏览器不支持WebSocket");
+    }
+
+
+    // thread Command
+    // 查询所有线程
+    function getAllThreadsInfoCommand() {
+        var obj = createDefaultThreadCommand();
+        return obj;
+    }
+
+    // 获取单个线程
+    function getAllThreadInfoById(id) {
+        var threadCommand = createDefaultThreadCommand();
+        threadCommand.id = id;
+        return threadCommand;
+    }
+
+    // 获取 topN
+    function getTopThreadInfo(number) {
+        var threadCommand = createDefaultThreadCommand();
+        threadCommand.topNBusy = number;
+        return threadCommand;
+    }
+
+    // 获取topN 自定义采样时间
+    function getTopThreadInfo(number, sampleInterval) {
+        var threadCommand = createDefaultThreadCommand();
+        threadCommand.topNBusy = number;
+        threadCommand.sampleInterval = sampleInterval;
+        return threadCommand;
+    }
+
+    //获取阻塞线程
+    function findMostBlockingThread() {
+        var threadCommand = createDefaultThreadCommand();
+        threadCommand.findMostBlockingThread = true;
+        return threadCommand;
+    }
+
+    // command=threadCommand;id=-1;topNBusy=-1;findMostBlockingThread=false;sampleInterval=100
+    function createDefaultThreadCommand() {
+        var command = new Object;
+        // command.name = "threadCommand";
+        command.id = -1;
+        command.topNBusy = -1;
+        command.findMostBlockingThread = false;
+        command.sampleInterval = 100;
+        return command;
+    }
+
+    function recordsTableInit(response) {
+        // 刷新数据之前，先清除表中数据
+        $("#thread-table tr").empty();
+        // 填充表格
+        if (response.status != "") {
+            for (var i = 0; i < response.list.length; i++) {
+                var tmp = response.list[i];
+                var tr1 = appendToTable(tmp);
+                $("#thread-table > tbody").append($(tr1));
+            }
+            showSuccessNotify("success", "获取诊断数据");
+        } else {
+            // showNoticeNotiy("info", "历史诊断数据为空");
+            alert("error");
+        }
+    }
+
+    function appendToTable(tmp) {
+        var cpu = tmp.cpu;
+        var priority = tmp.priority;
+        var threadGroup = tmp.threadGroup;
+        var threadId = tmp.threadId;
+        var threadName = tmp.threadName;
+        var threadState = tmp.threadState;
+        var stacktrace = tmp.stack;
+        var status;
+        // NEW，RUNNABLE,BLOCKED,WAITING,TIMED_WAITING,TERMINATED;
+        if (threadState == "NEW") {
+            status = '<td class="center"><span class="label label-sm label-grey"> 新建(...) </span></td>';
+        } else if (threadState == "RUNNABLE") {
+            status = '<td class="center"><span class="label label-sm label-success"> 运行(...) </span></td>';
+        } else if (threadState == "BLOCKED") {
+            status = '<td class="center"><span class="label label-sm label-holder"> 阻塞(...) </span></td>';
+        } else if (threadState == "WAITING") {
+            status = '<td class="center"><span class="label label-sm label-yellow"> 等待(...) </span></td>';
+        } else if (threadState == "TIMED_WAITING") {
+            status = '<td class="center"><span class="label label-sm label-pink"> 超时等待(...) </span></td>';
+        } else if (threadState == "TERMINATED") {
+            status = '<td class="center"><span class="label label-sm label-purple"> 终止(...) </span></td>';
+        } else {
+            status = '<td class="center"><span class="label label-sm label-warning"> 未知(...) </span></td>';
+        }
+        <!--序号 主机IP 进程信息 诊断项目 诊断时间 运行状态 操作-->
+        var tr = $('<tr id="record_' + threadId + '" class="">' +
+                '<td class="center">' + threadId + '</td>' +
+                '<td class="left">' + threadName + '</td>' +
+                status +
+                '<td class="center">' + cpu + '</td>' +
+                '<td class="center">' + threadGroup + '</td>' +
+                '<td class="center">' + priority + '</td>' +
+                '<td>' +
+                '<div class="btn-group">' +
+                '<button class="btn btn-xs btn-info center" onclick="showDetail(this)"><i class="ace-icon fa fa-eye smaller-30"></i>查看 </button>' +
+                '<div>' +
+                '</td>' +
+                '<td class="center hidden">' + stacktrace + '</td>' +  // 该列隐藏，由模态框触发
+                '</tr>'
+        );
+        return tr;
+    }
+
+    var modelText;
+
+    function showDetail(obj) {
+        var thisObj = $(obj);//js对象转jquery对象 关键
+        var td = thisObj.closest("td");
+        modelText = td.next().text();
+        $('#qrcode').modal('show');
+    }
+
+    $('#qrcode').on('show.bs.modal', function (event) {
+        var modal = $(this);  //get modal itself
+        modal.find('.modal-body #message').text(modelText);
+    });
+
+    function closeThreadTable() {
+        $("#thread-div").addClass('hidden');
+    }
+
+    function showThreadTable() {
+        $("#thread-div").removeClass('hidden');
+        sendMsg();
+    }
+
+    function sendMsg() { //发送消息
+        if (window.WebSocket) {
+            if (websocket.readyState == WebSocket.OPEN) { //如果WebSocket是打开状态
+                var command = getTopThreadInfo(100);
+                var msg = "threadCommand" + JSON.stringify(command);
+                websocket.send(msg.toString()); //send()发送消息
+            }
+        } else {
+            return;
+        }
+    }
+
+    $(function () {
+        // $('#tree').tree({
+        //     dataSource: staticDataSource,
+        //     multiSelect: false,
+        //     folderSelect: true
+        // });
+    });
+
+    //
+    function createClassloader() {
+        var command = new Object;
+        // command.name = "threadCommand";
+        command.classLoaderName = "bootStrapClassloader";
+        return command;
+    }
+    function sendClassLoaderMsg() { //发送消息
+        if (window.WebSocket) {
+            if (websocket.readyState == WebSocket.OPEN) { //如果WebSocket是打开状态
+                var command = createClassloader();
+                var msg = "classLoaderCommand" + JSON.stringify(command);
+                console.warn("send:" + msg);
+                websocket.send(msg.toString()); //send()发送消息
+            }
+        } else {
+            return;
+        }
+    }
+
+    function staticDataSource(openedParentData, callback) {
+        var classLoader = nodeData.node;
+        childNodesArray = [
+            {"name": classLoader.urls, "type": "item"}
+        ];
+        // private LinkedHashSet<ClassLoaderNode> childrens = new LinkedHashSet<>();
+        for (var i = 0; i < classLoader.childrens.length; i++) {
+            var node = classLoader.childrens[i];
+            var namehash = node.name + "@" + node.hashCode;
+            var tmp = {"name": namehash, "type": "item"};
+            childNodesArray.push(tmp);
+        }
+        callback({
+            data: childNodesArray
+        });
+    }
+
+    //
+    function sendJvmParametersMsg() { //发送消息
+        if (window.WebSocket) {
+            if (websocket.readyState == WebSocket.OPEN) { //如果WebSocket是打开状态
+                var command = createJvm();
+                var msg = "jvmParametersCommand" + JSON.stringify(command);
+                console.warn("send:" + msg);
+                websocket.send(msg.toString()); //send()发送消息
+            }
+        } else {
+            return;
+        }
+    }
+
+    //
+    function createJvm() {
+        var command = new Object;
+        command.flag = 1;
+        return command;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="common_head(title,links)">
+    <meta charset="UTF-8">
+    <title th:replace="${title}">布局</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{css/font-awesome.min.css}"/>
+    <!--start: page specific plugin styles -->
+    <th:block th:replace="${links}" />
+    <!-- end: page specific plugin styles -->
+    <link rel="stylesheet" th:href="@{css/fonts.googleapis.com.css}"/>
+    <link rel="stylesheet" th:href="@{css/ace.min.css}" class="ace-main-stylesheet" id="main-ace-style"/>
+    <link rel="stylesheet" th:href="@{css/ace-skins.min.css}"/>
+    <link rel="stylesheet" th:href="@{css/ace-rtl.min.css}"/>
+    <link rel="stylesheet" th:href="@{css/select2.min.css}" />
+    <link rel="stylesheet" th:href="@{css/jquery-ui.min.css}"/>
+    <link rel="stylesheet" th:href="@{css/pnotify.css}"/>
+    <link rel="stylesheet" th:href="@{css/pnotify.buttons.css}"/>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{::link})">
+    <title>诊断记录</title>
+    <link rel="stylesheet" th:href="@{css/treeview.css}"/>
+</head>
+<body class="no-skin">
+<div th:replace="common :: navbar"></div>
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">try {
+        ace.settings.loadState('main-container')
+    } catch (e) {}</script>
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <script type="text/javascript">try {ace.settings.loadState('sidebar')} catch (e) {}</script>
+        <!--侧面导航栏目-->
+        <ul class="nav nav-list">
+            <li><a href="/index"><i class="menu-icon fa fa-sitemap"></i><span class="menu-text">系统架构</span></a></li>
+            <li><a href="/arthas"><i class="menu-icon fa fa-android"></i><span class="menu-text">arthas-web</span></a></li>
+            <li><a href="/build"><i class="menu-icon fa fa-desktop"></i><span class="menu-text">新建诊断</span></a></li>
+            <li class="active"><a href="/records"><i class="menu-icon fa fa-pencil-square-o"></i><span class="menu-text">诊断记录</span></a></li>
+            <li ><a href="#" class="dropdown-toggle"><i class="menu-icon fa fa-file-o"></i><span class="menu-text">技术文档</span><b class="arrow fa fa-angle-down"></b></a>
+                <ul class="submenu">
+                    <li><a href="/join"><i class="menu-icon fa fa-caret-right"></i>接入</a></li>
+                    <li><a href="/faq"><i class="menu-icon fa fa-caret-right"></i>FAQ</a></li>
+                    <li><a href="/examples"><i class="menu-icon fa fa-caret-right"></i>诊断案例</a></li>
+                    <li><a href="/introduction"><i class="menu-icon fa fa-caret-right"></i>RD简介</a></li>
+                </ul>
+            </li>
+        </ul><!-- /.nav-list -->
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li><i class="ace-icon fa fa-home home-icon"></i><a href="#">首页</a></li>
+                    <li class="active"><a href="/records">诊断记录</a></li>
+                    <li class="active">诊断详情</li>
+                </ul><!-- /.breadcrumb -->
+            </div>
+
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <input type="hidden" th:if="${serialNumber!=null}" th:value="${serialNumber}" id="serialNumber"/>
+
+                        <div class="row">
+                            <div class="page-content">
+                                <div class="page-content-rows">
+                                    <div class="tabbable">
+                                        <ul class="nav nav-tabs padding-18 tab-size-bigger" id="myTab">
+                                            <li class="active"><a data-toggle="tab" href="#faq-tab-1" aria-expanded="true"><i class="blue ace-icon fa fa-file-text-o bigger-120"></i>诊断日志</a></li>
+                                            <li class=""><a data-toggle="tab" href="#faq-tab-2" aria-expanded="false"><i class="green ace-icon fa fa-sort-amount-desc  bigger-120"></i>调用栈</a></li>
+                                            <li class=""><a data-toggle="tab" href="#faq-tab-3" aria-expanded="false"><i class="red ace-icon fa fa-fire bigger-120"></i>热点函数</a></li>
+                                            <li class=""><a data-toggle="tab" href="#faq-tab-3" aria-expanded="false"><i class="orange ace-icon fa  fa-file-picture-o bigger-120"></i>火焰图</a></li>
+                                        </ul>
+                                        <div class="tab-content no-border padding-24">
+                                            <div id="faq-tab-1" class="tab-pane fade active in">
+                                                <div class="space-8"></div>
+                                                <div id="faq-list-1" class="panel-group accordion-style1 accordion-style2">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <!-- PAGE CONTENT BEGINS -->
+                                                            <div class="timeline-container">
+                                                                <div class="timeline-label"><span class="label label-grey arrowed-in-right label-lg"><b>诊断开始</b></span></div>
+                                                                <div class="timeline-items">
+                                                                    <div class="timeline-item clearfix">
+                                                                        <div class="timeline-info">
+                                                                            <i class="timeline-indicator ace-icon fa fa-leaf btn btn-primary no-hover green"></i>
+                                                                        </div>
+                                                                        <div class="widget-box transparent">
+                                                                            <div class="widget-header widget-header-small">
+                                                                                <h5 class="widget-title smaller">2019-08-10 10:22 通信建立连接</h5>
+                                                                                <!--<span class="widget-toolbar no-border"></span>-->
+                                                                                <!--<span class="widget-toolbar">-->
+																	                <!--<a href="#" data-action="reload"><i class="ace-icon fa fa-refresh"></i></a>-->
+																	                <!--<a href="#" data-action="collapse"><i class="ace-icon fa fa-chevron-up"></i></a>-->
+                                                                                <!--</span>-->
+                                                                            </div>
+                                                                            <div class="widget-body">
+                                                                                <div class="widget-main">
+                                                                                    诊断进行中......
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- /.timeline-items -->
+                                                            </div>
+                                                            <!-- PAGE CONTENT ENDS -->
+                                                        </div><!-- /.col -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="faq-tab-2" class="tab-pane fade">
+                                                <div>
+                                                    <div class="row animated fadeInUp" id="callTree">
+                                                        <div id="call_tree_wrapper">
+                                                            <div class="col-md-12">
+                                                                <div class="panel">
+                                                                    <div class="panel-content pb-lg">
+                                                                        <span class="panel-subtitle">
+                                                                            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                                                                            Tips：选中方法可自动复制方法名</span>
+                                                                            <div style="padding: 12px;">
+                                                                                <div id="treeTips" style="text-align: center;padding: 20px;">
+                                                                                    <i class="fa fa-spinner fa-spin fa-2x" aria-hidden="true"></i>
+                                                                                    <span style="padding-left: 10px;">加载中...</span>
+                                                                                </div>
+                                                                            <div id="treeView"></div>
+                                                                            <div id="tree"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="faq-tab-3" class="tab-pane fade">
+
+                                            </div>
+
+                                            <div id="faq-tab-4" class="tab-pane fade">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+    <div th:replace="common :: footer-1"></div>
+    <div th:replace="common :: footer-2"></div>
+</div><!-- /.main-container -->
+<!-- basic scripts -->
+<div th:replace="common :: script"></div>
+<script src="js/treeview.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var data = initTreeData();
+        $('#treeView').treeview({
+            expandIcon: 'fa fa-caret-right fa-lg',
+            collapseIcon: 'fa fa-caret-down fa-lg',
+            showTags: true,
+            showBorder: false,
+            data: data ,
+            onNodeSelected: function (event, data) {
+                copyToClipboard(data.methodName);
+            },
+            onNodeExpanded: function (event, node) {
+                var parent = $('#treeView').treeview('getParent', node);
+                getChildren(parent, node);
+            }
+        });
+    });
+
+    var initTreeData = function () {
+        var serialNumber = 1; //--- todo 动态获取诊断号
+        var result = [];
+        $.ajax({
+            url: "/profiling/tree/init/" + serialNumber + "/callTree",
+            type: "POST",
+            async: false,
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8',
+            success: function (response) {
+                if (response.status) {
+                    $("#treeTips").css('display', 'none');//隐藏不显示
+                    $("#treeView").css('display', 'block');
+                    result.push(response.data);
+                } else {
+                    new PNotify({
+                        title: '获取失败',
+                        text: response.data,
+                        icon: "fa fa-exclamation-triangle",
+                        type: 'error'
+                    });
+                }
+            },
+            error: function () {
+                new PNotify({
+                    title: '获取失败',
+                    text: '获取堆栈树信息失败',
+                    icon: "fa fa-exclamation-triangle",
+                    type: 'error'
+                });
+            }
+        });
+        return result;
+    };
+
+
+    var copyToClipboard = function (text) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(text).select();
+        document.execCommand("copy");
+        $temp.remove();
+    };
+
+    var getChildren = function (parentNode, childNode) {
+        var serialNumber = 1; //--- todo 动态获取诊断号
+        $.ajax({
+            url: "/profiling/tree/children/" + serialNumber + "/callTree/" + parentNode.id + "/" + childNode.methodName,
+            type: "POST",
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8', //contentType很重要
+            success: function (response) {
+                if (response.status) {
+                    if (response.data.length > 0) {
+                        $('#treeView').treeview("deleteChildrenNode", childNode.nodeId);
+                        $('#treeView').treeview("addNode", [childNode.nodeId, {node: response.data}]);
+                    }
+                }
+            }
+        });
+    };
+
+</script>
+</body>
+</html>
