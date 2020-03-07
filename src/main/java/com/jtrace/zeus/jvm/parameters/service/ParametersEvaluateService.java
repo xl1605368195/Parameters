@@ -4,6 +4,8 @@ import com.jtrace.zeus.jvm.parameters.rules.CheckoutResult;
 import com.jtrace.zeus.jvm.parameters.rules.parameter.gc.GcStragetyCheck;
 import com.jtrace.zeus.jvm.parameters.rules.parameter.heap.HeapParametersCheck;
 import com.jtrace.zeus.jvm.parameters.utils.ParseParameterUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -14,6 +16,8 @@ import java.util.*;
  */
 @Service
 public class ParametersEvaluateService {
+
+    private final static Logger logger = LoggerFactory.getLogger(ParametersEvaluateService.class);
 
     /**
      * step1:参数分解与过滤
@@ -30,6 +34,7 @@ public class ParametersEvaluateService {
                 ParseParameterUtils.parseStandardOptions(maps, tmp);
             } else {
                 // ignore.... 未知参数
+                logger.warn("未知参数:" + tmp);
             }
         }
         return maps;

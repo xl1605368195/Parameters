@@ -821,5 +821,36 @@ public class ParametersRegister {
                 "unsigned int",
                 "一般情况下该参数使用默认值即可，除非你在JVM优化领域有着非常丰富的经验。"
         ));
+
+        // -XX:TargetSurvivorRatio=percent
+        // https://www.jianshu.com/p/989d3b06a49d
+        set.add(new JvmParameterEntity(
+                "TargetSurvivorRatio",
+                new String[]{"all jdk"},
+                new String[]{"-XX:TargetSurvivorRatio=60"},
+                "-",
+                "-",
+                "Sets the desired percentage of survivor space (0 to 100) used after young garbage collection. By default, this option is set to 50%" ,
+                "设置一次YGC后Survivor区的占用率",
+                "Survivor空间分配200M的内存空间,并且设定-XX:TargetSurvivorRatio=60,则YGC之后Survivor空间还有200m*60%=120m的对象留存",
+                "50",
+                "unsigned int",
+                "一般情况下该参数使用默认值即可。"
+        ));
+
+        // TLABSize
+        set.add(new JvmParameterEntity(
+                "TLABSize",
+                new String[]{"all jdk"},
+                new String[]{"-XX:TLABSize=512k"},
+                "-",
+                "-",
+                "Sets the initial size of a thread-local allocation buffer (TLAB). " ,
+                "设置一次YGC后Survivor区的占用率",
+                "Survivor空间分配200M的内存空间,并且设定-XX:TargetSurvivorRatio=60,则YGC之后Survivor空间还有200m*60%=120m的对象留存",
+                "50",
+                "unsigned int",
+                "一般情况下该参数使用默认值即可。"
+        ));
     }
 }

@@ -1,5 +1,7 @@
 package com.jtrace.zeus.jvm.parameters.ip;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletContext;
@@ -14,6 +16,7 @@ import java.util.Map;
 
 @Component
 public class RequestContextListener implements ServletRequestListener {
+
     @Override
     public void requestInitialized(ServletRequestEvent sre) {
         ServletRequest servletRequest = sre.getServletRequest();

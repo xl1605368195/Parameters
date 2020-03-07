@@ -15,7 +15,6 @@ public class CustomJvmParametersController {
     // 自定义参数
     @PostMapping(value = "/custom")
     public ResponseEntity customJvmParameters(@RequestParam("parameters") String parameters, @RequestParam("jdkVersion") String jdkVersion, @RequestParam("totalMem") int totalMem) {
-
         return null;
     }
 }

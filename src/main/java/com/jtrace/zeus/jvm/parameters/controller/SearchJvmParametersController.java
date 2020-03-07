@@ -2,6 +2,8 @@ package com.jtrace.zeus.jvm.parameters.controller;
 
 import com.jtrace.zeus.jvm.parameters.parameters.JvmParameterEntity;
 import com.jtrace.zeus.jvm.parameters.service.ParametersService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ import java.util.List;
  */
 @Controller
 public class SearchJvmParametersController {
+
+    private final static Logger logger = LoggerFactory.getLogger(SearchJvmParametersController.class);
 
     @Autowired
     private ParametersService parametersService;
@@ -39,10 +43,10 @@ public class SearchJvmParametersController {
     @RequestMapping(value = "/query")
     public ResponseEntity queryJvmParameters(@RequestParam("parameter") String parameter) {
         JvmParameterEntity parameterEntity = parametersService.getJvmParametersByName(parameter);
-        if (parameterEntity == null || parameterEntity.getName() == "") {
+        if (parameterEntity == null || "".equals(parameterEntity.getName())) {
             return new ResponseEntity<>("查询参数[" + parameter + "]不存在!", HttpStatus.BAD_REQUEST);
         }
-        System.out.println("parameterEntity:"+parameterEntity.toString());
+        logger.info("parameterEntity:" + parameterEntity.toString());
         return new ResponseEntity<>(parameterEntity, HttpStatus.OK);
     }
 

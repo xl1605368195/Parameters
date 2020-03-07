@@ -5,6 +5,8 @@ import com.jtrace.zeus.jvm.parameters.parameters.JavaInfoEntity;
 import com.jtrace.zeus.jvm.parameters.parameters.ParametersRankEntity;
 import com.jtrace.zeus.jvm.parameters.service.JavaInfoService;
 import com.jtrace.zeus.jvm.parameters.service.ParametersRankService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,8 @@ import java.util.Map;
 @RequestMapping(value = "/rank")
 public class RankJvmParametersController {
 
+    private final static Logger logger = LoggerFactory.getLogger(RankJvmParametersController.class);
+
     @Autowired
     private ParametersRankService parametersRankService;
 
@@ -33,25 +37,16 @@ public class RankJvmParametersController {
         List<JavaInfoEntity> allJavaInfo = javaInfoService.getAll();
         for (JavaInfoEntity javaInfoEntity : allJavaInfo) {
             String javaInfo = javaInfoEntity.getJavaInfo();
-            System.out.println(javaInfoEntity.getHostname());
+            logger.info(javaInfoEntity.getHostname());
             for (Map.Entry<String, ParametersRankEntity> entry : ParametersRankRegister.map.entrySet()) {
                 String key = entry.getKey();
-                if(javaInfo.contains(key)){
+                if (javaInfo.contains(key)) {
                     ParametersRankEntity mapValue = entry.getValue();
-                    mapValue.setUseOffLine(mapValue.getUseOffLine()+1);
+                    mapValue.setUseOffLine(mapValue.getUseOffLine() + 1);
                 }
             }
         }
         parametersRankService.addOne(ParametersRankRegister.map);
         return new ResponseEntity<>("success", HttpStatus.OK);
     }
-//
-//    @RequestMapping(value = "/info")
-//    public ResponseEntity complementeJvmParameters(@RequestParam("hostname") String hostname,@RequestParam("javaInfo") String javaInfo) {
-//
-//        if (list == null || list.size() == 0) {
-//            return new ResponseEntity<>("模糊查询参数[" + parameter + "]不存在!", HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(list, HttpStatus.OK);
-//    }
 }
