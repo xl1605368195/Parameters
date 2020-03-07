@@ -1,7 +1,5 @@
 package com.jtrace.zeus.jvm.parameters.ip;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletContext;
@@ -10,9 +8,7 @@ import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class RequestContextListener implements ServletRequestListener {
@@ -26,16 +22,14 @@ public class RequestContextListener implements ServletRequestListener {
         //获取session
         HttpSession session = request.getSession();
         session.setAttribute("ip", ip);
-        //获取map集合
         ServletContext servletContext = sre.getServletContext();
-        Map<String, List<HttpSession>> userMap = (Map<String, List<HttpSession>>) servletContext.getAttribute("userMap");
-        //获取sessionList
-        List<HttpSession> sessionList = userMap.containsKey(ip) ? userMap.get(ip) : new ArrayList<>();
+        Map<String, String> userIp = (Map<String, String>) servletContext.getAttribute("userIp");
+        userIp.put(ip, new Date().toString());
+        Map<String, Set<HttpSession>> userMap = (Map<String, Set<HttpSession>>) servletContext.getAttribute("userMap");
+        Set<HttpSession> sessionList = userMap.containsKey(ip) ? userMap.get(ip) : new HashSet<>();
         if (!sessionList.contains(session)) {
             sessionList.add(session);
         }
         userMap.put(ip, sessionList);
-        //存入userMap
-        servletContext.setAttribute("userMap", userMap);
     }
 }
