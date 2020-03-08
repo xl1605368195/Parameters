@@ -25,8 +25,8 @@ public class SaticScheduleTask {
     // 每个小时执行一次
     @Scheduled(cron = "0 0 0-23 * * ?")
     private void task2() {
-        logger.warn("在线用户量为:" + PageController.IPInfo.size());
-        PageController.IPInfo.clear();
+        logger.warn("在线用户量为:" + PageController.OnlineInfo.size());
+        PageController.OnlineInfo.clear();
         logger.warn("在线用户量已经清零");
     }
 }
