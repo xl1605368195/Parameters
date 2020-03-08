@@ -22,7 +22,7 @@
         <div class="navbar-buttons navbar-header pull-right visible-lg-block" role="navigation">
             <ul class="nav ace-nav">
                 <li>
-                    当前在线人数:<span th:text="${application.userMap.size()}"></span>
+                    在线:<span th:text="${session.online}"></span> 访问:<span th:text="${session.total}"></span>
                 </li>
             </ul>
         </div>

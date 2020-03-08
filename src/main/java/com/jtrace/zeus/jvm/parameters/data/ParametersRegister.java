@@ -58,7 +58,7 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "Selects the Java HotSpot Client VM. The 64-bit version of the Java SE Development Kit (JDK) currently ignores this option and instead uses the Server JVM.",
-                "",
+                "设置jvm使用client模式，特点是启动速度比较快，但运行时性能和内存管理效率不高,通常用于客户端应用程序或者PC应用开发和调试",
                 "",
                 "",
                 "",
@@ -67,13 +67,13 @@ public class ParametersRegister {
 
         // -D
         set.add(new JvmParameterEntity(
-                "-D",
+                "D",
                 new String[]{"all jdk"},
                 new String[]{"-Djetty.port=8888"},
                 "Standard_Options",
                 "—",
                 "Sets a system property value. The property variable is a string with no spaces that represents the name of the property. The value variable is a string that represents the value of the property. If value is a string with spaces, then enclose it in quotation marks .",
-                "在启动一个Java程序时设置系统属性值",
+                "该参数通常用于设置系统级全局变量值，如配置文件路径，以便该属性在程序中任何地方都可访问",
                 "启动Java程序传递参数的正确姿势: -DkeyName=value。在Java程序内可以使用System类中的getProperties(keyName)获取系统属性的值value",
                 "-",
                 "String",
@@ -88,11 +88,11 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "",
+                "以jar包的形式执行一个应用程序",
                 "",
                 "",
                 "",
-                "",
-                ""
+                "要这样执行一个应用程序，必须让jar包的manifest文件中声明初始加载的Main-class，当然那Main-class必须有public static void main(String[] args)方法"
         ));
 
         // -javaagent:
@@ -118,7 +118,7 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "Selects the Java HotSpot Server VM. The 64-bit version of the JDK supports only the Server VM, so in that case the option is implicit.",
-                "在多个CPU时性能佳",
+                "设置jvm使server模式，特点是启动速度比较慢，但运行时性能和内存管理效率很高，适用于生产环境",
                 "",
                 "",
                 "",
@@ -135,7 +135,7 @@ public class ParametersRegister {
                 "Displays information about each garbage collection (GC) event.",
                 "输出虚拟机中GC的日志",
                 "-verbose:gc 输出虚拟机中GC日志，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印",
-                "false",
+                "默认关闭",
                 "boolean",
                 "-verbose:gc的VM等价参数是-XX:+PrintGC"
         ));
@@ -150,7 +150,7 @@ public class ParametersRegister {
                 "Displays information about each loaded or unloaded class.",
                 "输出jvm类的加载与卸载信息",
                 "调试时开启这个选项可以查看某个类是否加载以及从哪个jar加载",
-                "false",
+                "默认关闭",
                 "boolean",
                 "-verbose:class的VM等价参数是-XX:+TraceClassLoading -XX:+TraceClassUnloading"
         ));
@@ -165,7 +165,7 @@ public class ParametersRegister {
                 "Displays information about each garbage collection (GC) event.",
                 "输出native方法调用的相关情况，一般用于诊断jni调用错误信息。",
                 "",
-                "false",
+                "默认关闭",
                 "boolean",
                 "-verbose:jni的VM等价参数是-XX:+PrintJNIResolving"
         ));
@@ -180,7 +180,7 @@ public class ParametersRegister {
                 "Displays version information and then exits. This option is equivalent to the -showversion option except that the latter does not instruct the JVM to exit after displaying version information.",
                 "",
                 "-",
-                "false",
+                "默认关闭",
                 "boolean",
                 ""
         ));
@@ -195,7 +195,7 @@ public class ParametersRegister {
                 "Specifies the release version to be used for running the application. If the version of the java command called does not meet this specification and an appropriate implementation is found on the system, then the appropriate implementation will be used.",
                 "",
                 "",
-                "false",
+                "默认关闭",
                 "boolean",
                 ""
         ));

@@ -1,9 +1,18 @@
 package com.jtrace.zeus.jvm.parameters.controller;
 
+import com.jtrace.zeus.jvm.parameters.utils.IPUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author xule05
@@ -11,10 +20,30 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class PageController {
+    private final static Logger logger = LoggerFactory.getLogger(PageController.class);
+
+    public static ConcurrentHashMap<String, String> IPInfo = new ConcurrentHashMap<>();
+
+    public static ConcurrentHashMap<String, String> OnlineInfo = new ConcurrentHashMap<>();
 
     @GetMapping(value = {"/index", "/"})
-    public String pageIndex() {
-        // 首页
+    public String pageIndex(HttpServletRequest request, Model model) {
+        // 获取用户IP
+        String ip = IPUtils.getIP(request);
+        String time = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
+        // 在线用户(24小时统计一次)
+        if (!IPInfo.containsKey(ip)) {
+            IPInfo.put(ip, time);
+            logger.info(time + " IP[" + ip + "]用户登录了,今日总的登录人数[" + IPInfo.size() + "]");
+        }
+        // 在线用户(1小时统计一次)
+        if (!OnlineInfo.containsKey(ip)) {
+            OnlineInfo.put(ip, time);
+            logger.info(time + " IP[" + ip + "]用户登录了,当前在线登录人数[" + IPInfo.size() + "]");
+        }
+        HttpSession session = request.getSession();
+        session.setAttribute("total", IPInfo.size());
+        session.setAttribute("online", OnlineInfo.size());
         return "index";
     }
 
