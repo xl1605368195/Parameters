@@ -97,7 +97,7 @@ function appendToTable(tmp) {
     let url = tmp.url;
     let body = $('<div class="panel-heading">' + name + '&nbsp;&nbsp;<span class="badge badge-primary">' + versions + '</span>&nbsp;&nbsp;<span class="badge label-info">' + defaultValue + '</span></div>\n' +
         '<div class="panel-body">\n' +
-        '    <li class="list-group-item"><span class="label label-success">含义</span>&nbsp;&nbsp;' + hanyi + '</li>\n'+
+        '    <p><span class="label label-success">含义</span>&nbsp;&nbsp;&nbsp;&nbsp;' + hanyi +'</p>\n'+
         '</div>\n' +
         '<ul class="list-group">\n' +
         '    <li class="list-group-item"><span class="label label-primary">例子</span>&nbsp;&nbsp;' + examples + '</li>\n' +
