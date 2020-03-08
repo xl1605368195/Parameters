@@ -20,7 +20,6 @@ public class ParametersRegister {
         // Standard Options
         // These are the most commonly used options that are supported by all implementations of the JVM.
 
-
         // agentlib
         set.add(new JvmParameterEntity(
                 "agentlib",
@@ -69,16 +68,16 @@ public class ParametersRegister {
         // -D
         set.add(new JvmParameterEntity(
                 "-D",
-                new String[]{"all"},
-                new String[]{"-Djetty.port=8058"},
+                new String[]{"all jdk"},
+                new String[]{"-Djetty.port=8888"},
                 "Standard_Options",
-                "all",
+                "—",
                 "Sets a system property value. The property variable is a string with no spaces that represents the name of the property. The value variable is a string that represents the value of the property. If value is a string with spaces, then enclose it in quotation marks .",
-                "设置系统属性值",
-                "",
-                "",
-                "",
-                ""
+                "在启动一个Java程序时设置系统属性值",
+                "启动Java程序传递参数的正确姿势: -DkeyName=value。在Java程序内可以使用System类中的getProperties(keyName)获取系统属性的值value",
+                "-",
+                "String",
+                "如果系统属性值是一个包含空格的字符串，那么需要包在一对双引号中 例如：-Dfoo=\"some string\""
         ));
 
         // -jar
@@ -402,41 +401,65 @@ public class ParametersRegister {
         // -XX:+DisableAttachMechanism
         set.add(new JvmParameterEntity(
                 "DisableAttachMechanism",
-                new String[]{"all"},
-                new String[]{"-XX:-DisableAttachMechanism"},
+                new String[]{"@since 1.6+"},
+                new String[]{"-XX:+DisableAttachMechanism"},
                 "-",
-                "all",
+                "-",
                 "Enables the option that disables the mechanism that lets tools attach to the JVM. By default, this option is disabled, meaning that the attach mechanism is enabled and you can use tools such as jcmd, jstack, jmap, and jinfo.",
-                "此选项将禁止工具连接到JVM，默认，这个选项是关闭的",
-                "",
-                "false",
-                "",
-                "默认情况下，允许工具连接之JVM，所以你可以使用jcmd、jstack、jmap和jinfo等命令"
+                "开启此选项将禁止attach到目标JVM，默认这个选项是关闭的",
+                "你可以通过-XX:+DisableAttachMechanism禁止attach，或者-XX:-DisableAttachMechanism允许attach",
+                "默认关闭",
+                "boolean",
+                "默认情况下，允许attach连接到目标JVM，所以你可以使用jcmd、jstack、jmap和jinfo等命令"
         ));
 
         // -XX:ErrorFile
         set.add(new JvmParameterEntity(
                 "ErrorFile",
                 new String[]{"@since 1.6+"},
-                new String[]{"-XX:ErrorFile=filename"},
+                new String[]{"-XX:ErrorFile=./jvm-parameters.20200129.vmerr.log"},
                 "-",
                 "-",
                 "If an error occurs, save the error data to this file.",
-                "",
-                "-",
-                "./hs_err_pid<pid>.log",
+                "输出jvm错误信息到指定文件",
+                "使用该参数的正确姿势是-XX:ErrorFile=___",
+                "默认值 ./hs_err_pid<pid>.log",
                 "String",
-                "-XX:ErrorFile=targetDir/hs_err_pid_%p.log, 可以自定义输出目录;如果这个文件不能被创建在指定的目录下的话（因为空间不足、权限问题、或者其他问题）。这个文件就会创建在临时目录，临时目录的值通过TMP" +
-                        "环境变量指定，如果这个环境变量没有定义，那么就是用TEMP环境变量 "
+                "-XX:ErrorFile=targetDir/hs_err_pid_%p.log, 可以自定义输出目录;如果这个文件不能被创建在指定的目录下的话（因为空间不足、权限问题、或者其他问题）。这个文件就会创建在临时目录，临时目录的值通过TMP环境变量指定，如果这个环境变量没有定义，那么就是用TEMP环境变量 "
         ));
 
         // -XX:+FailOverToOldVerifier
+        set.add(new JvmParameterEntity(
+                "FailOverToOldVerifier",
+                new String[]{"@since 1.6+"},
+                new String[]{"-XX:+FailOverToOldVerifier"},
+                "-",
+                "-",
+                "Enables automatic failover to the old verifier when the new type checker fails. By default, this option is disabled and it is ignored (that is, treated as disabled) for classes with a recent bytecode version. You can enable it for classes with older versions of the bytecode",
+                "开启时如果新的Class校验器检查失败，则使用老的校验器",
+                "你可以通过-XX:+FailOverToOldVerifier开启，或者-XX:-FailOverToOldVerifier关闭",
+                "默认关闭",
+                "boolean",
+                "因为JDK6最高向下兼容到JDK1.2，而JDK1.2的class info与JDK6的info存在较大的差异，所以新校验器可能会出现校验失败的情况"
+        ));
 
         // -XX:+FlightRecorder
-
-        // -XX:-FlightRecorde
-
-        // -XX:FlightRecorderOptions=parameter=value
+        set.add(new JvmParameterEntity(
+                "FlightRecorder",
+                new String[]{"@since 1.7+"},
+                new String[]{"-XX:+FlightRecorder"},
+                "-",
+                "-",
+                "Enables the use of the Java Flight Recorder (JFR) during the runtime of the application. This is a commercial feature that works in conjunction with the -XX:+UnlockCommercialFeatures option as follows:\n" +
+                        "\n" +
+                        "java -XX:+UnlockCommercialFeatures -XX:+FlightRecorder\n" +
+                        "If this option is not provided, Java Flight Recorder can still be enabled in a running JVM by providing the appropriate jcmd diagnostic commands.",
+                "开启JFR功能，Java Flight Recorder是JVM内置的记录引擎，能收集JVM和Java应用数据，帮助开发者诊断分析Java应用",
+                "你可以通过-XX:+FlightRecorder开启，或者-XX:-FlightRecorder关闭",
+                "默认关闭",
+                "boolean",
+                "生成环境开启需要授权，与-XX:+UnlockCommercialFeature一起使用"
+        ));
 
         // -XX:LargePageSizeInByte
         set.add(new JvmParameterEntity(
@@ -483,38 +506,7 @@ public class ParametersRegister {
                 "-XX:ThreadStackSize的VM等价参数是-Xss"
         ));
 
-        // -XX:-DisableExplicitGC
-        set.add(new JvmParameterEntity(
-                "DisableExplicitGC",
-                new String[]{"all"},
-                new String[]{"-XX:-DisableExplicitGC"},
-                "-",
-                "all",
-                "",
-                "默认情况下，此选项处于开启状态，这意味着忽略来自System.gc()方法触发的GC。",
-                "",
-                "开启",
-                "",
-                "",
-                "/articles/2020/02/16/1581833097466.html"
-        ));
 
-
-
-        // UseConcMarkSweepGC
-        set.add(new JvmParameterEntity(
-                "UseConcMarkSweepGC",
-                new String[]{"-"},
-                new String[]{"-XX:-UseConcMarkSweepGC"},
-                "-",
-                "-",
-                "Use concurrent mark-sweep collection for the old generation",
-                "允许对老年代使用CMS垃圾收集器",
-                "-",
-                "不开启",
-                "boolean",
-                "Oracle建议在不能满足应用程序延迟需求时使用CMS垃圾收集器,当启用此选项时,会自动设置-XX:+UseParNewGC选项，不应该禁用(-XX:-UseParNewGC)。在并且jdk8中已经禁用了以下选项组合:-XX:+UseConcMarkSweepGC -XX:-UseParNewGC"
-        ));
 
         // UseParNewGC
         set.add(new JvmParameterEntity(
@@ -561,53 +553,11 @@ public class ParametersRegister {
                 "这个选项在jdk8中被弃用，取而代之的是-XX:MetaspaceSize选项。"
         ));
 
-        // -XX:-PrintGC
-        set.add(new JvmParameterEntity(
-                "PrintGC",
-                new String[]{"jdk7"},
-                new String[]{"-XX:-PrintGC"},
-                "-",
-                "-",
-                "Enables printing of messages at every GC.",
-                "开启了简单GC日志模式，为每一次新生代（young generation）的GC和每一次的Full GC打印一行信息",
-                "[GC 246656K->243120K(376320K), 0.0929090 secs]\n" +
-                        "[Full GC 243120K->241951K(629760K), 1.5589690 secs]",
-                "不开启",
-                "boolean",
-                "-XX:+PrintGC的VM等价参数是-verbose:gc"
-        ));
+
         // PrintFlagsInitial
 
-        // -XX:+PrintGCDetails
-        set.add(new JvmParameterEntity(
-                "PrintGC",
-                new String[]{"jdk7"},
-                new String[]{"-XX:-PrintGC"},
-                "-",
-                "-",
-                "Enables printing of messages at every GC.",
-                "-XX:+PrintGC开启GC日志打印",
-                "-",
-                "不开启",
-                "boolean",
-                "-XX:+PrintGC的VM等价参数是-verbose:gc"
-        ));
 
-        // 2020.1.30
-        // -XX:+UseG1GC
-        set.add(new JvmParameterEntity(
-                "UseG1GC",
-                new String[]{"jdk7"},
-                new String[]{"-XX:-UseG1GC"},
-                "-",
-                "-",
-                "Enables printing of messages at every GC.",
-                "-XX:+PrintGC开启GC日志打印",
-                "-",
-                "不开启",
-                "boolean",
-                "-XX:+PrintGC的VM等价参数是-verbose:gc"
-        ));
+
 
         // -XX:+HeapDumpOnOutOfMemoryError
         set.add(new JvmParameterEntity(
@@ -654,8 +604,6 @@ public class ParametersRegister {
                 ""
         ));
 
-
-
         // -Xnoagent
         set.add(new JvmParameterEntity(
                 "Xnoagent",
@@ -670,38 +618,13 @@ public class ParametersRegister {
                 "",
                 "-Xnoagent参数主要是JDK早期用于禁止JPDA远程调试用，现在已经弃用了"
         ));
+        //=============Advanced Garbage Collection Options============================================
+        // -XX:ActiveProcessorCount=x
 
-        // https://www.jianshu.com/p/b448c21d2e71
-        // -XX:MaxMetaspaceSize
-        set.add(new JvmParameterEntity(
-                "MaxMetaspaceSize",
-                new String[]{"@since1.8+"},
-                new String[]{"-XX:MaxMetaspaceSize=256m"},
-                "-",
-                "-",
-                "" ,
-                "MaxMetaspaceSize用于设置metaspace区域的最大值",
-                "-",
-                "-1",
-                "",
-                ""
-        ));
+        // -XX:+AggressiveHeap
 
-        // -XX:MetaspaceSize
-        set.add(new JvmParameterEntity(
-                "MetaspaceSize",
-                new String[]{"@since1.8+"},
-                new String[]{"-XX:MetaspaceSize=256m"},
-                "-",
-                "-",
-                "" ,
-                "",
-                "-",
-                "20M",
-                "unsigned int",
-                "metaspace的大小表示首次使用不够而触发FGC的阈值，只对触发起作用"
-        ));
-        // 2.1
+        // -XX:+AlwaysPreTouch
+
         // -XX:+CMSClassUnloadingEnabled
         set.add(new JvmParameterEntity(
                 "CMSClassUnloadingEnabled",
@@ -730,6 +653,7 @@ public class ParametersRegister {
                 "boolean",
                 ""
         ));
+
         // -XX:CMSInitiatingOccupancyFraction
         set.add(new JvmParameterEntity(
                 "CMSInitiatingOccupancyFraction",
@@ -744,6 +668,9 @@ public class ParametersRegister {
                 "unsigned int",
                 ""
         ));
+        // -XX:+CMSScavengeBeforeRemark
+
+        // -XX:CMSTriggerRatio=percent
 
         // -XX:ConcGCThreads=threads
         set.add(new JvmParameterEntity(
@@ -760,6 +687,32 @@ public class ParametersRegister {
                 "以CMS GC为例，-XX:ConcGCThreads是指并发阶段例如：并发标记，标记清理，标记重置时GC线程数。"
         ));
 
+        // -XX:-DisableExplicitGC
+        set.add(new JvmParameterEntity(
+                "DisableExplicitGC",
+                new String[]{"all jdk"},
+                new String[]{"-XX:+DisableExplicitGC"},
+                "-",
+                "-",
+                "",
+                "默认情况下，此选项处于开启状态，这意味着忽略来自System.gc()方法触发的GC。",
+                "你可以通过-XX:+DisableExplicitGC开启，或者-XX:-DisableExplicitGC关闭",
+                "默认开启",
+                "boolean",
+                "",
+                "/articles/2020/02/16/1581833097466.html"
+        ));
+
+        // -XX:+ExplicitGCInvokesConcurrent
+
+        // -XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses
+
+        // -XX:G1HeapRegionSize=size
+
+        // -XX:+G1PrintHeapRegions
+
+        // -XX:G1ReservePercent=percent
+
         // -XX:InitialHeapSize
         set.add(new JvmParameterEntity(
                 "InitialHeapSize",
@@ -774,6 +727,15 @@ public class ParametersRegister {
                 "unsigned int",
                 ""
         ));
+        // -XX:InitialRAMPercentage=percent
+
+        // -XX:InitialSurvivorRatio=ratio
+
+        // XX:InitiatingHeapOccupancyPercent=percent
+
+        // -XX:MaxGCPauseMillis=time
+
+        // -XX:MaxHeapSize
 
         // -XX:MaxHeapFreeRatio
         set.add(new JvmParameterEntity(
@@ -790,7 +752,46 @@ public class ParametersRegister {
                 ""
         ));
 
-        // 2020.2.8
+        // https://www.jianshu.com/p/b448c21d2e71
+        // -XX:MaxMetaspaceSize
+        set.add(new JvmParameterEntity(
+                "MaxMetaspaceSize",
+                new String[]{"@since 1.8+"},
+                new String[]{"-XX:MaxMetaspaceSize=256m"},
+                "-",
+                "-",
+                "" ,
+                "MaxMetaspaceSize用于设置metaspace区域的最大值",
+                "-",
+                "-1",
+                "",
+                ""
+        ));
+
+        // -XX:MaxNewSize=size
+
+        // -XX:MaxRAMPercentage=percent
+
+        // XX:MaxTenuringThreshold=threshold
+
+        // -XX:MetaspaceSize
+        set.add(new JvmParameterEntity(
+                "MetaspaceSize",
+                new String[]{"@since 1.8+"},
+                new String[]{"-XX:MetaspaceSize=256m"},
+                "-",
+                "-",
+                "" ,
+                "",
+                "-",
+                "20M",
+                "unsigned int",
+                "metaspace的大小表示首次使用不够而触发FGC的阈值，只对触发起作用"
+        ));
+
+
+        // -XX:MinRAMPercentage=percent
+
         // -XX:NewRatio=2
         // 新生代（Eden + 2*S）与老年代（不包括永久区）的比值
         set.add(new JvmParameterEntity(
@@ -806,6 +807,60 @@ public class ParametersRegister {
                 "unsigned int",
                 ""
         ));
+        // -XX:NewSize=size
+
+        // -XX:ParallelGCThreads=threads
+
+        // -XX:+ParallelRefProcEnabled
+
+        // -XX:+PrintAdaptiveSizePolicy
+
+        // -XX:-PrintGC
+        set.add(new JvmParameterEntity(
+                "PrintGC",
+                new String[]{"jdk7"},
+                new String[]{"-XX:-PrintGC"},
+                "-",
+                "-",
+                "Enables printing of messages at every GC.",
+                "开启了简单GC日志模式，为每一次新生代（young generation）的GC和每一次的Full GC打印一行信息",
+                "[GC 246656K->243120K(376320K), 0.0929090 secs]\n" +
+                        "[Full GC 243120K->241951K(629760K), 1.5589690 secs]",
+                "不开启",
+                "boolean",
+                "-XX:+PrintGC的VM等价参数是-verbose:gc"
+        ));
+
+        // -XX:+PrintGCApplicationConcurrentTime
+
+        // -XX:+PrintGCApplicationStoppedTime
+
+        // -XX:+PrintGCDateStamps
+
+        // -XX:+PrintGCDetails
+        set.add(new JvmParameterEntity(
+                "PrintGC",
+                new String[]{"jdk7"},
+                new String[]{"-XX:-PrintGC"},
+                "-",
+                "-",
+                "Enables printing of messages at every GC.",
+                "-XX:+PrintGC开启GC日志打印",
+                "-",
+                "不开启",
+                "boolean",
+                "-XX:+PrintGC的VM等价参数是-verbose:gc"
+        ));
+
+        // -XX:+PrintStringDeduplicationStatistics
+
+        // -XX:+PrintTenuringDistribution
+
+        // -XX:+ScavengeBeforeFullGC
+
+        // -XX:SoftRefLRUPolicyMSPerMB=time
+
+        // XX:StringDeduplicationAgeThreshold=threshold
 
         // SurvivorRatio
         set.add(new JvmParameterEntity(
@@ -846,11 +901,225 @@ public class ParametersRegister {
                 "-",
                 "-",
                 "Sets the initial size of a thread-local allocation buffer (TLAB). " ,
-                "设置一次YGC后Survivor区的占用率",
+                "设置一次YGC之后Survivor区的预期占用率",
                 "Survivor空间分配200M的内存空间,并且设定-XX:TargetSurvivorRatio=60,则YGC之后Survivor空间还有200m*60%=120m的对象留存",
                 "50",
                 "unsigned int",
                 "一般情况下该参数使用默认值即可。"
         ));
+
+        // UseAdaptiveSizePolicy
+        // 是否采取动态控制策略，会动态调整java堆中各个区域大小及进入老年代的年龄
+        // https://www.jianshu.com/p/7414fd6862c5
+        set.add(new JvmParameterEntity(
+                "UseAdaptiveSizePolicy",
+                new String[]{"all jdk"},
+                new String[]{"-XX:+UseAdaptiveSizePolicy"},
+                "-",
+                "-",
+                "Enables the use of adaptive generation sizing. This option is enabled by default. To disable adaptive generation sizing, specify -XX:-UseAdaptiveSizePolicy and set the size of the memory allocation pool explicitly (see the -XX:SurvivorRatio option)." ,
+                "是否采取动态控制策略，会动态调整java堆中各个区域大小及进入老年代的年龄",
+                "如果开启 AdaptiveSizePolicy，则每次GC后会重新计算Eden、From和To区的大小，计算依据是GC过程中统计的GC时间、吞吐量、内存占用量",
+                "true",
+                "bool",
+                "JDK1.8默认使用UseParallelGC垃圾回收器，该垃圾回收器默认启动了AdaptiveSizePolicy"
+        ));
+
+        // -XX:+UseCMSInitiatingOccupancyOnly
+        set.add(new JvmParameterEntity(
+                "UseCMSInitiatingOccupancyOnly",
+                new String[]{"all jdk"},
+                new String[]{"-XX:+UseCMSInitiatingOccupancyOnly"},
+                "-",
+                "-",
+                "Enables the use of the occupancy value as the only criterion for initiating the CMS collector. By default, this option is disabled and other criteria may be used." ,
+                "开启后使用CMSInitiatingOccupancyFraction值作为启动CMS收集器的唯一条件",
+                "-XX:+UseCMSInitiatingOccupancyOnly指定HotSpot VM总是使用-XX:CMSInitiatingOccupancyFraction的值作为old的空间使用率限制来启动CMS垃圾回收。如果没有使用-XX:+UseCMSInitiatingOccupancyOnly，那么HotSpot VM只是利用这个值来启动第一次CMS垃圾回收，后面都是使用HotSpot VM自动计算出来的值",
+                "false",
+                "bool",
+                "大多数情况下，JVM比我们自己能作出更好的垃圾收集决策。因此，只有当我们充足的理由(比如测试)并且对应用程序产生的对象的生命周期有深刻的认知时，才应该使用该标志"
+        ));
+
+        // -XX:UseConcMarkSweepGC
+        set.add(new JvmParameterEntity(
+                "UseConcMarkSweepGC",
+                new String[]{"-"},
+                new String[]{"-XX:+UseConcMarkSweepGC"},
+                "-",
+                "-",
+                "Use concurrent mark-sweep collection for the old generation",
+                "允许对老年代使用CMS垃圾收集器",
+                "-",
+                "不开启",
+                "boolean",
+                "Oracle建议在不能满足应用程序延迟需求时使用CMS垃圾收集器,当启用此选项时,会自动设置-XX:+UseParNewGC选项，不应该禁用(-XX:-UseParNewGC)。在并且jdk8中已经禁用了以下选项组合:-XX:+UseConcMarkSweepGC -XX:-UseParNewGC"
+        ));
+
+        // -XX:+UseG1GC
+        set.add(new JvmParameterEntity(
+                "UseG1GC",
+                new String[]{"@since 1.7+"},
+                new String[]{"-XX:-UseG1GC"},
+                "-",
+                "-",
+                "Enables the use of the garbage-first (G1) garbage collector. It is a server-style garbage collector, targeted for multiprocessor machines with a large amount of RAM. It meets GC pause time goals with high probability, while maintaining good throughput. The G1 collector is recommended for applications requiring large heaps (sizes of around 6 GB or larger) with limited GC latency requirements (stable and predictable pause time below 0.5 seconds).",
+                "开启或者关闭G1垃圾收集器",
+                "你可以通过-XX:+UseG1GC开启，或者-XX:-UseG1GC关闭",
+                "不开启",
+                "boolean",
+                "当堆内存较大时(>=6G)推荐使用G1收集器"
+        ));
+
+        // UseGCOverheadLimit
+        set.add(new JvmParameterEntity(
+                "UseGCOverheadLimit",
+                new String[]{"all"},
+                new String[]{"-XX:+UseGCOverheadLimit"},
+                "-",
+                "-",
+                "Enables the use of a policy that limits the proportion of time spent by the JVM on GC before an OutOfMemoryError exception is thrown. This option is enabled, by default and the parallel GC will throw an OutOfMemoryError if more than 98% of the total time is spent on garbage collection and less than 2% of the heap is recovered. When the heap is small, this feature can be used to prevent applications from running for long periods of time with little or no progress. To disable this option, specify -XX:-UseGCOverheadLimit.",
+                "限制GC的运行时间。如果GC耗时过长，就抛OOM",
+                "你可以通过-XX:+UseGCOverheadLimit开启，或者-XX:-UseGCOverheadLimit关闭",
+                "默认开启",
+                "boolean",
+                "建议关闭"
+        ));
+
+        // UseNUMA
+        set.add(new JvmParameterEntity(
+                "UseNUMA",
+                new String[]{"all"},
+                new String[]{"-XX:+UseNUMA"},
+                "-",
+                "-",
+                "Enables performance optimization of an application on a machine with nonuniform memory architecture (NUMA) by increasing the application's use of lower latency memory. By default, this option is disabled and no optimization for NUMA is made. The option is only available when the parallel garbage collector is used (-XX:+UseParallelGC).",
+                "对象分配优先使用 NUMA 本地内存",
+                "你可以通过-XX:+UseNUMA开启，或者-XX:-UseNUMA关闭",
+                "默认关闭",
+                "boolean",
+                "-XX:+UseNUMA只对ParallelGC的Eden space起作用,对TO_SPACE/FROM_SPACE都不起作用"
+        ));
+
+        // UseParallelGC
+        set.add(new JvmParameterEntity(
+                "UseParallelGC",
+                new String[]{"all"},
+                new String[]{"-XX:+UseParallelGC"},
+                "-",
+                "-",
+                "Enables performance optimization of an application on a machine with nonuniform memory architecture (NUMA) by increasing the application's use of lower latency memory. By default, this option is disabled and no optimization for NUMA is made. The option is only available when the parallel garbage collector is used (-XX:+UseParallelGC).",
+                "对象分配优先使用 NUMA 本地内存",
+                "你可以通过-XX:+UseNUMA开启，或者-XX:-UseNUMA关闭",
+                "默认关闭",
+                "boolean",
+                "-XX:+UseNUMA只对ParallelGC的Eden space起作用,对TO_SPACE/FROM_SPACE都不起作用"
+        ));
+
+        // -XX:+UseParallelOldGC
+        set.add(new JvmParameterEntity(
+                "UseParallelGC",
+                new String[]{"@since 1.5+"},
+                new String[]{"-XX:+UseParallelGC"},
+                "-",
+                "-",
+                "Enables the use of the parallel garbage collector for full GCs. By default, this option is disabled. Enabling it automatically enables the -XX:+UseParallelGC option.",
+                "老年代和新生代都使用并行清除的垃圾收集器。开启此选项将自动开启-XX:+UseParallelGC 选项",
+                "你可以通过-XX:+UseParallelGC开启，或者-XX:-UseParallelGC关闭",
+                "默认关闭",
+                "boolean",
+                ""
+        ));
+
+        // -XX:+UseParallelGC
+        set.add(new JvmParameterEntity(
+                "UseParallelGC",
+                new String[]{"all"},
+                new String[]{"-XX:+UseParallelGC"},
+                "-",
+                "-",
+                "Enables performance optimization of an application on a machine with nonuniform memory architecture (NUMA) by increasing the application's use of lower latency memory. By default, this option is disabled and no optimization for NUMA is made. The option is only available when the parallel garbage collector is used (-XX:+UseParallelGC).",
+                "对象分配优先使用 NUMA 本地内存",
+                "你可以通过-XX:+UseNUMA开启，或者-XX:-UseNUMA关闭",
+                "默认关闭",
+                "boolean",
+                ""
+        ));
+
+        // -XX:+UseParNewGC
+        set.add(new JvmParameterEntity(
+                "UseParNewGC",
+                new String[]{"all"},
+                new String[]{"-XX:+UseParNewGC"},
+                "-",
+                "-",
+                "Enables the use of parallel threads for collection in the young generation. By default, this option is disabled. It is automatically enabled when you set the -XX:+UseConcMarkSweepGC option. Using the -XX:+UseParNewGC option without the -XX:+UseConcMarkSweepGC option was deprecated in JDK 8.",
+                "ParNew收集器是Serial收集器的多线程版本，使用这个参数后会在新生代进行并行回收",
+                "你可以通过-XX:+UseParNewGC开启，或者-XX:-UseParNewGC关闭",
+                "默认关闭",
+                "boolean",
+                "在jdk8中-XX:+UseParNewGC与-XX:+UseConcMarkSweepGC一起使用"
+        ));
+
+        // -XX:+UseSerialGC
+        set.add(new JvmParameterEntity(
+                "UseParallelGC",
+                new String[]{"all jdk"},
+                new String[]{"-XX:+UseSerialGC"},
+                "-",
+                "-",
+                "Enables the use of the serial garbage collector. This is generally the best choice for small and simple applications that do not require any special functionality from garbage collection. By default, this option is disabled and the collector is chosen automatically based on the configuration of the machine and type of the JVM.",
+                "使用串行垃圾收集器",
+                "你可以通过-XX:+UseParallelGC开启，或者-XX:-UseParallelGC关闭",
+                "默认关闭",
+                "boolean",
+                ""
+        ));
+
+        // -XX:+UseSHM
+        set.add(new JvmParameterEntity(
+                "UseSHM",
+                new String[]{"all jdk"},
+                new String[]{"-XX:+UseSHM"},
+                "-",
+                "-",
+                "On Linux, enables the JVM to use shared memory to setup large pages.",
+                "在Linux上,使JVM可以使用共享内存来设置大页面",
+                "你可以通过-XX:+UseSHM开启，或者-XX:-UseSHM关闭",
+                "默认关闭",
+                "boolean",
+                ""
+        ));
+
+        // XX:+UseStringDeduplication
+        set.add(new JvmParameterEntity(
+                "UseStringDeduplication",
+                new String[]{"since@ 1.8+"},
+                new String[]{"-XX:+UseStringDeduplication"},
+                "-",
+                "-",
+                "Enables string deduplication. By default, this option is disabled. To use this option, you must enable the garbage-first (G1) garbage collector. See the -XX:+UseG1GC option.",
+                "允许去除堆中重复的字符串",
+                "你可以通过-XX:+UseStringDeduplication开启，或者-XX:-UseStringDeduplication关闭",
+                "默认关闭",
+                "boolean",
+                "仅在G1收集器使用，并且JDK的版本大于JDK8 update20，那么可以尝试开启-XX:+UseStringDeduplication，如果你的应用中存在大量长时间存活的对象，那结果肯定是很香"
+        ));
+
+        // -XX:+UseTLAB
+        // https://blog.gceasy.io/2018/12/23/usestringdeduplication/
+        set.add(new JvmParameterEntity(
+                "UseTLAB",
+                new String[]{"all jdk"},
+                new String[]{"-XX:+UseTLAB"},
+                "-",
+                "-",
+                "Enables the use of thread-local allocation blocks (TLABs) in the young generation space. This option is enabled by default. To disable the use of TLABs, specify -XX:-UseTLAB.",
+                "-XX:+UseTLAB 启用线程本地缓存区（Thread-local allocation buffers）分配对象",
+                "你可以通过-XX:+UseTLAB开启，或者-XX:-UseTLAB关闭",
+                "默认开启",
+                "boolean",
+                ""
+        ));
+        //=====================Deprecated and Removed Options=====================
     }
 }

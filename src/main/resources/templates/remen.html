@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{::link})">
+    <title>诊断参数</title>
+    <link rel="stylesheet" th:href="@{css/chosen.min.css}"/>
+</head>
+<body class="no-skin">
+<div th:replace="common :: navbar"></div>
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">try {ace.settings.loadState('main-container')} catch (e) {}</script>
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <script type="text/javascript">try {ace.settings.loadState('sidebar')} catch (e) {}</script>
+        <!--侧面导航栏目-->
+        <ul class="nav nav-list">
+            <li><a href="/"><i class="menu-icon fa fa-search"></i><span class="menu-text">查询参数</span></a></li>
+            <li><a href="/zhenduan"><i class="menu-icon fa fa-gavel"></i><span class="menu-text">诊断参数</span></a></li>
+            <li><a href="/dingzhi"><i class="menu-icon fa fa-pencil-square-o"></i><span class="menu-text">定制参数</span></a></li>
+            <li class="active"><a href="/remen"><i class="menu-icon fa fa-fire"></i><span class="menu-text">热门参数</span></a></li>
+        </ul><!-- /.nav-list -->
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li><i class="ace-icon fa fa-home home-icon"></i><a href="/">首页</a></li>
+                    <li class="active">热门参数</li>
+                </ul><!-- /.breadcrumb -->
+            </div>
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        JVM热门参数
+                        <small>
+                            ----------
+                        </small>
+                    </h1>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        规划中...
+                    </div><!-- /.col -->
+                </div>
+            </div>
+        </div>
+    </div><!-- /.main-content -->
+    <div th:replace="common :: footer-1"></div>
+    <div th:replace="common :: footer-2"></div>
+</div><!-- /.main-container -->
+<div th:replace="common :: script"></div>
+</body>
+</html>
