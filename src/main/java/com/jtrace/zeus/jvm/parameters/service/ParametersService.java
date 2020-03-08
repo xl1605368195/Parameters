@@ -6,6 +6,7 @@ import com.jtrace.zeus.jvm.parameters.data.ParametersRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +29,22 @@ public class ParametersService {
     public List<String> matchName(String name) {
         List<String> list = mapper.matchByName(name);
         return list;
+    }
+
+    // 模糊匹配+含义
+    public List<String> matchNameWithMeaning(String name) {
+        List<JvmParameterEntity> list = mapper.matchByNameWithMeaning(name);
+        List<String> result = new ArrayList<>(list.size());
+        StringBuilder stringBuilder;
+        for (JvmParameterEntity tmp : list) {
+            stringBuilder = new StringBuilder();
+            stringBuilder.append(tmp.getName());
+            stringBuilder.append("(");
+            stringBuilder.append(tmp.getHanyi());
+            stringBuilder.append(")");
+            result.add(stringBuilder.toString());
+        }
+        return result;
     }
 
     // 增加

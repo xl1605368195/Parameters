@@ -32,6 +32,7 @@ public class SearchJvmParametersController {
     public ResponseEntity complementeJvmParameters(@RequestParam("parameter") String parameter) {
         List<String> list = parametersService.matchName(parameter);
         if (list == null || list.size() == 0) {
+            logger.warn("模糊查询参数[" + parameter + "]不存在!", HttpStatus.OK);
             return new ResponseEntity<>("模糊查询参数[" + parameter + "]不存在!", HttpStatus.OK);
         }
         return new ResponseEntity<>(list, HttpStatus.OK);
@@ -44,6 +45,7 @@ public class SearchJvmParametersController {
     public ResponseEntity queryJvmParameters(@RequestParam("parameter") String parameter) {
         JvmParameterEntity parameterEntity = parametersService.getJvmParametersByName(parameter);
         if (parameterEntity == null || "".equals(parameterEntity.getName())) {
+            logger.warn("查询参数[" + parameter + "]不存在!", HttpStatus.BAD_REQUEST);
             return new ResponseEntity<>("查询参数[" + parameter + "]不存在!", HttpStatus.BAD_REQUEST);
         }
         logger.info("parameterEntity:" + parameterEntity.toString());
