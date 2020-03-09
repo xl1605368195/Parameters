@@ -30,6 +30,7 @@ public class SearchJvmParametersController {
      */
     @RequestMapping(value = "/complemente")
     public ResponseEntity complementeJvmParameters(@RequestParam("parameter") String parameter) {
+        parameter = parameter.trim();
         List<String> list = parametersService.matchName(parameter);
         if (list == null || list.size() == 0) {
             logger.warn("模糊查询参数[" + parameter + "]不存在!", HttpStatus.OK);
@@ -43,6 +44,7 @@ public class SearchJvmParametersController {
      */
     @RequestMapping(value = "/query")
     public ResponseEntity queryJvmParameters(@RequestParam("parameter") String parameter) {
+        parameter = parameter.trim();
         JvmParameterEntity parameterEntity = parametersService.getJvmParametersByName(parameter);
         if (parameterEntity == null || "".equals(parameterEntity.getName())) {
             logger.warn("查询参数[" + parameter + "]不存在!", HttpStatus.BAD_REQUEST);

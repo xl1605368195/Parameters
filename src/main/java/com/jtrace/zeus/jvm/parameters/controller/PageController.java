@@ -27,19 +27,19 @@ public class PageController {
     public static ConcurrentHashMap<String, String> OnlineInfo = new ConcurrentHashMap<>();
 
     @GetMapping(value = {"/index", "/"})
-    public String pageIndex(HttpServletRequest request, Model model) {
+    public String pageIndex(HttpServletRequest request) {
         // 获取用户IP
         String ip = IPUtils.getIP(request);
         String time = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
         // 在线用户(24小时统计一次)
         if (!IPInfo.containsKey(ip)) {
             IPInfo.put(ip, time);
-            logger.info(time + " IP[" + ip + "]用户登录了,今日总的登录人数[" + IPInfo.size() + "]");
+            logger.info(time + " IP[" + ip + "]用户登录了,今日访问总人数[" + IPInfo.size() + "]");
         }
         // 在线用户(1小时统计一次)
         if (!OnlineInfo.containsKey(ip)) {
             OnlineInfo.put(ip, time);
-            logger.info(time + " IP[" + ip + "]用户登录了,当前在线登录人数[" + IPInfo.size() + "]");
+            logger.info(time + " IP[" + ip + "]用户登录了,当前在线人数[" + IPInfo.size() + "]");
         }
         HttpSession session = request.getSession();
         session.setAttribute("total", IPInfo.size());
