@@ -30,7 +30,8 @@ public class SearchJvmParametersController {
      */
     @RequestMapping(value = "/complemente")
     public ResponseEntity complementeJvmParameters(@RequestParam("parameter") String parameter) {
-        parameter = parameter.trim();
+        // 去除空格的影响
+        parameter = parameter.trim().split(" ")[0];
         List<String> list = parametersService.matchName(parameter);
         if (list == null || list.size() == 0) {
             logger.warn("模糊查询参数[" + parameter + "]不存在!", HttpStatus.OK);

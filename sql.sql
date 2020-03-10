@@ -46,3 +46,14 @@ CREATE TABLE `tb_java_info` (
    PRIMARY KEY (`id`),
    UNIQUE (`hostname`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='主机的JavaInfo信息';
+
+DROP TABLE IF EXISTS `tb_user_info`;
+CREATE TABLE `tb_user_info` (
+  `id`            int(11)       NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `ip`            varchar(256)  NOT NULL                COMMENT 'ip地址',
+  `datetime`      datetime     DEFAULT NULL            COMMENT '访问时间',
+  `location`      varchar(256)  NOT NULL                COMMENT 'ip归属地',
+  `create_time`   datetime      DEFAULT NULL            COMMENT '创建时间/注册时间',
+  `modify_time`   datetime      DEFAULT NULL            COMMENT '最后更新时间',
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='主机的JavaInfo信息';

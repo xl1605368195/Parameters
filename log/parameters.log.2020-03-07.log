@@ -1,0 +1,413 @@
+2020-03-07 20:34:24.832 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 871 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 20:34:24.835 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 20:34:25.694 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 20:34:25.701 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 20:34:25.702 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 20:34:25.702 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 20:34:25.760 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 20:34:25.760 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 887 ms
+2020-03-07 20:34:26.060 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 20:34:26.108 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 20:34:26.151 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 20:34:26.213 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 20:34:26.245 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 20:34:26.248 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 1.757 seconds (JVM running for 2.533)
+2020-03-07 20:34:30.530 [http-nio-8080-exec-1] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.534 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 20:34:30.534 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 20:34:30.538 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2020-03-07 20:34:30.852 [http-nio-8080-exec-3] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.853 [http-nio-8080-exec-4] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.853 [http-nio-8080-exec-5] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.853 [http-nio-8080-exec-2] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.854 [http-nio-8080-exec-6] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.854 [http-nio-8080-exec-7] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.865 [http-nio-8080-exec-8] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.865 [http-nio-8080-exec-9] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.866 [http-nio-8080-exec-10] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.868 [http-nio-8080-exec-6] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.868 [http-nio-8080-exec-1] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.869 [http-nio-8080-exec-5] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.873 [http-nio-8080-exec-4] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.874 [http-nio-8080-exec-9] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.875 [http-nio-8080-exec-7] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.876 [http-nio-8080-exec-2] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.877 [http-nio-8080-exec-9] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.880 [http-nio-8080-exec-10] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.881 [http-nio-8080-exec-6] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.882 [http-nio-8080-exec-3] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.883 [http-nio-8080-exec-1] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.883 [http-nio-8080-exec-5] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.883 [http-nio-8080-exec-4] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.884 [http-nio-8080-exec-8] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.885 [http-nio-8080-exec-7] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.889 [http-nio-8080-exec-2] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.889 [http-nio-8080-exec-9] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.889 [http-nio-8080-exec-10] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.890 [http-nio-8080-exec-6] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 20:34:30.927 [http-nio-8080-exec-3] INFO  c.j.zeus.jvm.parameters.ip.RequestContextListener - userMap size:1
+2020-03-07 21:06:26.577 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:06:30.726 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 2914 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:06:30.729 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:06:31.668 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:06:31.676 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:06:31.677 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:06:31.677 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:06:31.743 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:06:31.743 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 972 ms
+2020-03-07 21:06:32.082 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:06:32.168 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:06:32.215 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:06:32.253 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:06:32.286 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:06:32.319 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:06:32.322 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 1.984 seconds (JVM running for 2.794)
+2020-03-07 21:07:08.954 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:07:08.955 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:07:08.960 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2020-03-07 21:08:12.080 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:08:12.082 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:08:15.345 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 3039 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:08:15.349 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:08:16.371 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:08:16.378 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:08:16.379 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:08:16.379 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:08:16.444 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:08:16.444 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1054 ms
+2020-03-07 21:08:16.806 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:08:16.878 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:08:16.928 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:08:16.971 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:08:17.010 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:08:17.045 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:08:17.048 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 2.015 seconds (JVM running for 2.65)
+2020-03-07 21:08:17.396 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:08:17.396 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:08:17.401 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2020-03-07 21:09:57.680 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:09:57.680 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:10:01.045 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 3158 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:10:01.049 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:10:02.109 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:10:02.117 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:10:02.117 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:10:02.117 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:10:02.203 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:10:02.203 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1103 ms
+2020-03-07 21:10:02.516 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:10:02.565 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:10:02.614 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:10:02.651 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:10:02.686 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:10:02.718 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:10:02.721 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 2.023 seconds (JVM running for 2.65)
+2020-03-07 21:10:12.593 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:10:12.593 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:10:12.598 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2020-03-07 21:15:20.568 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:15:20.570 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:15:24.265 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 3507 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:15:24.269 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:15:25.316 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:15:25.324 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:15:25.325 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:15:25.325 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:15:25.409 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:15:25.409 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1099 ms
+2020-03-07 21:15:25.777 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:15:25.843 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:15:25.896 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:15:25.934 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:15:25.969 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:15:26.002 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:15:26.006 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 2.117 seconds (JVM running for 2.934)
+2020-03-07 21:15:26.939 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:15:26.939 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:15:26.944 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2020-03-07 21:16:12.121 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:16:12.122 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:16:15.364 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 3562 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:16:15.367 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:16:16.367 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:16:16.375 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:16:16.376 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:16:16.376 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:16:16.452 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:16:16.453 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1044 ms
+2020-03-07 21:16:16.765 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:16:16.815 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:16:16.866 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:16:16.904 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:16:16.967 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:16:17.015 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:16:17.019 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 1.957 seconds (JVM running for 2.555)
+2020-03-07 21:16:19.368 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:16:19.368 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:16:19.374 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2020-03-07 21:19:48.302 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:19:48.304 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:19:51.940 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 3803 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:19:51.943 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:19:52.822 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:19:52.829 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:19:52.830 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:19:52.830 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:19:52.890 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:19:52.891 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 907 ms
+2020-03-07 21:19:53.220 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:19:53.277 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:19:53.340 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:19:53.377 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:19:53.412 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:19:53.449 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:19:53.454 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 1.841 seconds (JVM running for 2.584)
+2020-03-07 21:19:56.932 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:19:56.932 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:19:56.937 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2020-03-07 21:21:18.919 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:21:18.921 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:21:22.307 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 3906 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:21:22.310 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:21:23.253 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:21:23.260 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:21:23.260 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:21:23.261 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:21:23.322 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:21:23.322 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 976 ms
+2020-03-07 21:21:23.676 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:21:23.734 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:21:23.796 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:21:23.837 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:21:23.874 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:21:23.911 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:21:23.915 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 1.899 seconds (JVM running for 2.546)
+2020-03-07 21:21:25.005 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:21:29.534 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:21:29.534 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:21:29.538 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2020-03-07 21:21:30.004 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:1
+2020-03-07 21:21:35.004 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:1
+2020-03-07 21:21:40.004 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:21:45.002 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:1
+2020-03-07 21:21:50.004 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:1
+2020-03-07 21:21:55.003 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:22:00.004 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:22:05.003 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:1
+2020-03-07 21:22:10.005 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:22:15.003 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:22:20.002 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:22:25.004 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:1
+2020-03-07 21:22:30.003 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:22:35.004 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:22:40.004 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:22:45.004 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:0
+2020-03-07 21:22:49.276 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:22:49.276 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:23:52.548 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jtrace.zeus.jvm.parameters.ParametersApplicationTests], using SpringBootContextLoader
+2020-03-07 21:23:52.557 [main] INFO  o.s.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.jtrace.zeus.jvm.parameters.ParametersApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-03-07 21:23:52.558 [main] INFO  o.s.t.c.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jtrace.zeus.jvm.parameters.ParametersApplicationTests]: ParametersApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-03-07 21:23:52.705 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jtrace.zeus.jvm.parameters.ParametersApplication for test class com.jtrace.zeus.jvm.parameters.ParametersApplicationTests
+2020-03-07 21:23:52.824 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-03-07 21:23:52.843 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@210ab13f, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@20b2475a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7857fe2, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6f15d60e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1be2019a, org.springframework.test.context.transaction.TransactionalTestExecutionListener@29d80d2b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@58e1d9d, org.springframework.test.context.event.EventPublishingTestExecutionListener@446a1e84, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4f0f2942, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2657d4dd, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5340477f, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@47caedad, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7139992f]
+2020-03-07 21:23:53.128 [main] INFO  c.j.zeus.jvm.parameters.ParametersApplicationTests - Starting ParametersApplicationTests on xule05deMacBook-Pro.local with PID 4093 (started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:23:53.129 [main] INFO  c.j.zeus.jvm.parameters.ParametersApplicationTests - No active profile set, falling back to default profiles: default
+2020-03-07 21:23:55.077 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:23:55.183 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:23:55.292 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:23:55.391 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:23:55.461 [main] INFO  c.j.zeus.jvm.parameters.ParametersApplicationTests - Started ParametersApplicationTests in 2.559 seconds (JVM running for 3.754)
+2020-03-07 21:23:55.731 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:23:55.732 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:29:38.853 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 4475 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:29:38.859 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:29:39.936 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:29:39.944 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:29:39.945 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:29:39.945 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:29:40.013 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:29:40.013 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1096 ms
+2020-03-07 21:29:40.405 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:29:40.485 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:29:40.542 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:29:40.585 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:29:40.622 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:29:40.656 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:29:40.660 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 2.203 seconds (JVM running for 3.083)
+2020-03-07 21:29:41.256 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:29:41.256 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:29:41.263 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2020-03-07 21:30:06.382 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:30:06.382 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:30:08.396 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 4514 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:30:08.400 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:30:09.486 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:30:09.495 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:30:09.496 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:30:09.496 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:30:09.594 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:30:09.594 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1137 ms
+2020-03-07 21:30:09.932 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:30:09.983 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:30:10.029 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:30:10.068 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:30:10.103 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:30:10.137 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:30:10.141 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 2.096 seconds (JVM running for 2.94)
+2020-03-07 21:30:10.982 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:30:10.982 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:30:10.986 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2020-03-07 21:32:23.581 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:32:23.582 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:32:27.093 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 4676 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:32:27.096 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:32:28.043 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:32:28.051 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:32:28.051 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:32:28.051 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:32:28.135 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:32:28.135 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 992 ms
+2020-03-07 21:32:28.441 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:32:28.492 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:32:28.537 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:32:28.573 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:32:28.607 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:32:28.640 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:32:28.643 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 1.886 seconds (JVM running for 2.666)
+2020-03-07 21:32:33.926 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:32:33.926 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:32:33.931 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2020-03-07 21:35:24.639 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:35:24.640 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:35:26.637 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 4859 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:35:26.640 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:35:27.547 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:35:27.555 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:35:27.556 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:35:27.556 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:35:27.636 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:35:27.636 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 955 ms
+2020-03-07 21:35:27.932 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:35:27.980 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:35:28.025 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:35:28.060 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:35:28.093 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:35:28.124 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:35:28.127 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 1.806 seconds (JVM running for 2.723)
+2020-03-07 21:35:35.169 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:35:35.170 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:35:35.174 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2020-03-07 21:35:55.715 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:35:55.715 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:35:57.814 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 4903 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:35:57.817 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:35:58.917 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:35:58.925 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:35:58.926 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:35:58.926 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:35:58.988 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:35:58.989 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1128 ms
+2020-03-07 21:35:59.341 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:35:59.400 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:35:59.466 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:35:59.503 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:35:59.539 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:35:59.572 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:35:59.575 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 2.094 seconds (JVM running for 3.005)
+2020-03-07 21:36:00.384 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:36:00.384 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:36:00.388 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2020-03-07 21:36:22.003 [http-nio-8080-exec-2] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-03-07 21:37:06.842 [http-nio-8080-exec-1] INFO  c.j.z.j.p.controller.SearchJvmParametersController - parameterEntity:JvmParameterEntity(name=Xnoclassgc, versions=[all], examples=[-Xnoclassgc], type=-, os=all, meaning=Disables garbage collection (GC) of classes. This can save some GC time, which shortens interruptions during the application run., hanyi=禁用Class对象的垃圾收集（GC）, use=, defaultValue=关闭, valueType=null, extend=开启-Xnoclassgc时，应用程序中的 Class对象将在GC期间保持不变，并且将始终被视为活动的。这会导致更多的内存被永久占用，如果不小心使用，将引发内存不足异常, url=null)
+2020-03-07 21:46:57.842 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.jtrace.zeus.jvm.parameters.ParametersApplicationTests], using SpringBootContextLoader
+2020-03-07 21:46:57.851 [main] INFO  o.s.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.jtrace.zeus.jvm.parameters.ParametersApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-03-07 21:46:57.852 [main] INFO  o.s.t.c.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.jtrace.zeus.jvm.parameters.ParametersApplicationTests]: ParametersApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-03-07 21:46:58.000 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.jtrace.zeus.jvm.parameters.ParametersApplication for test class com.jtrace.zeus.jvm.parameters.ParametersApplicationTests
+2020-03-07 21:46:58.123 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-03-07 21:46:58.141 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@34bde49d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1b1cfb87, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@821330f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6f43c82, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5db6b9cd, org.springframework.test.context.transaction.TransactionalTestExecutionListener@210ab13f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@20b2475a, org.springframework.test.context.event.EventPublishingTestExecutionListener@7857fe2, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6f15d60e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1be2019a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@29d80d2b, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@58e1d9d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@446a1e84]
+2020-03-07 21:46:58.406 [main] INFO  c.j.zeus.jvm.parameters.ParametersApplicationTests - Starting ParametersApplicationTests on xule05deMacBook-Pro.local with PID 5654 (started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:46:58.408 [main] INFO  c.j.zeus.jvm.parameters.ParametersApplicationTests - No active profile set, falling back to default profiles: default
+2020-03-07 21:47:00.225 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:47:00.333 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:47:00.442 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:47:00.545 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:47:00.608 [main] INFO  c.j.zeus.jvm.parameters.ParametersApplicationTests - Started ParametersApplicationTests in 2.422 seconds (JVM running for 3.57)
+2020-03-07 21:47:00.875 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:47:00.876 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:52:45.039 [http-nio-8080-exec-2] INFO  c.j.z.j.p.controller.SearchJvmParametersController - parameterEntity:JvmParameterEntity(name=DisableExplicitGC, versions=[all], examples=[-XX:-DisableExplicitGC], type=-, os=all, meaning=, hanyi=默认情况下，此选项处于开启状态，这意味着忽略来自System.gc()方法触发的GC。, use=, defaultValue=开启, valueType=null, extend=, url=http://zeus.yitrace.com:8080/articles/2020/02/16/1581833097466.html)
+2020-03-07 21:59:10.193 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:59:10.195 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:59:10.199 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-03-07 21:59:12.634 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 6423 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:59:12.637 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:59:13.532 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:59:13.539 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:59:13.539 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:59:13.539 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:59:13.600 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:59:13.600 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 923 ms
+2020-03-07 21:59:13.933 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:59:13.989 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:59:14.056 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:59:14.094 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:59:14.130 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:59:14.164 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:59:14.167 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 1.86 seconds (JVM running for 2.923)
+2020-03-07 21:59:23.559 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 21:59:23.559 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 21:59:23.564 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2020-03-07 21:59:28.900 [http-nio-8080-exec-5] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-03-07 21:59:30.885 [http-nio-8080-exec-10] INFO  c.j.z.j.p.controller.SearchJvmParametersController - parameterEntity:JvmParameterEntity(name=UseG1GC, versions=[jdk7], examples=[-XX:-UseG1GC], type=-, os=-, meaning=Enables printing of messages at every GC., hanyi=-XX:+PrintGC开启GC日志打印, use=-, defaultValue=不开启, valueType=null, extend=-XX:+PrintGC的VM等价参数是-verbose:gc, url=null)
+2020-03-07 21:59:44.420 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 21:59:44.421 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:59:44.427 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-03-07 21:59:46.236 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 6464 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 21:59:46.239 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 21:59:47.289 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 21:59:47.297 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:59:47.297 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 21:59:47.297 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 21:59:47.383 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 21:59:47.384 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1100 ms
+2020-03-07 21:59:47.683 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 21:59:47.732 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 21:59:47.777 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 21:59:47.813 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 21:59:47.846 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 21:59:47.877 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 21:59:47.880 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 1.951 seconds (JVM running for 2.712)
+2020-03-07 22:00:03.201 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 22:00:03.202 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 22:00:03.206 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2020-03-07 22:00:04.799 [http-nio-8080-exec-2] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-03-07 22:00:08.171 [http-nio-8080-exec-5] INFO  c.j.z.j.p.controller.SearchJvmParametersController - parameterEntity:JvmParameterEntity(name=UseG1GC, versions=[jdk7], examples=[-XX:-UseG1GC], type=-, os=-, meaning=Enables printing of messages at every GC., hanyi=-XX:+PrintGC开启GC日志打印, use=-, defaultValue=不开启, valueType=null, extend=-XX:+PrintGC的VM等价参数是-verbose:gc, url=null)
+2020-03-07 22:00:36.524 [http-nio-8080-exec-2] INFO  c.j.z.j.p.controller.SearchJvmParametersController - parameterEntity:JvmParameterEntity(name=Xnoagent, versions=[jdk5], examples=[-Xnoagent], type=-, os=-, meaning=This is a deprecated option which is accepted and ignored. It need not be specified.wiki：https://www.oracle.com/technetwork/java/javase/tech/faqs-jsp-142584.html#QC4
+, hanyi=jvm启动参数中加入-Xnoagent这个参数不影响agent功能, use=-, defaultValue=, valueType=null, extend=-Xnoagent参数主要是JDK早期用于禁止JPDA远程调试用，现在已经弃用了, url=null)
+2020-03-07 22:01:37.872 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-07 22:01:37.872 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-07 22:01:37.879 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-03-07 22:01:41.832 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Starting ParametersApplication on xule05deMacBook-Pro.local with PID 6597 (/Users/xule05/parameters/target/classes started by xule05 in /Users/xule05/parameters)
+2020-03-07 22:01:41.838 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - No active profile set, falling back to default profiles: default
+2020-03-07 22:01:42.772 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-03-07 22:01:42.779 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-03-07 22:01:42.780 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2020-03-07 22:01:42.780 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+2020-03-07 22:01:42.863 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-03-07 22:01:42.863 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 980 ms
+2020-03-07 22:01:43.219 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-07 22:01:43.267 [main] INFO  o.s.b.a.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-03-07 22:01:43.313 [main] WARN  org.thymeleaf.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-03-07 22:01:43.349 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-03-07 22:01:43.382 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-03-07 22:01:43.414 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-07 22:01:43.417 [main] INFO  c.jtrace.zeus.jvm.parameters.ParametersApplication - Started ParametersApplication in 1.918 seconds (JVM running for 2.748)
+2020-03-07 22:01:46.278 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-07 22:01:46.278 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-03-07 22:01:46.282 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2020-03-07 22:03:15.788 [http-nio-8080-exec-2] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-03-07 22:03:22.363 [http-nio-8080-exec-7] INFO  c.j.z.j.p.controller.SearchJvmParametersController - parameterEntity:JvmParameterEntity(name=-D, versions=[all], examples=[-Djetty.port=8058], type=Standard_Options, os=all, meaning=Sets a system property value. The property variable is a string with no spaces that represents the name of the property. The value variable is a string that represents the value of the property. If value is a string with spaces, then enclose it in quotation marks ., hanyi=设置系统属性值, use=, defaultValue=, valueType=null, extend=, url=null)
+2020-03-07 22:03:34.507 [http-nio-8080-exec-5] INFO  c.j.z.j.p.controller.SearchJvmParametersController - parameterEntity:JvmParameterEntity(name=ConcGCThreads, versions=[*], examples=[-XX:ConcGCThreads=2], type=-, os=-, meaning=Sets the number of threads used for concurrent GC. The default value depends on the number of CPUs available to the JVM, hanyi=设置用于并发GC的线程数。默认值取决于JVM可用的cpu数量, use=-, defaultValue=?, valueType=null, extend=以CMS GC为例，-XX:ConcGCThreads是指并发阶段例如：并发标记，标记清理，标记重置时GC线程数。, url=null)
+2020-03-08 08:57:33.491 [scheduling-1] WARN  c.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask - 访问用户量为:1
+2020-03-08 11:22:01.574 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-03-08 11:22:01.586 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-03-08 11:22:01.628 [SpringContextShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
