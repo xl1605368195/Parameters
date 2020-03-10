@@ -28,11 +28,11 @@ public class ParametersRegister {
                 "Standard_Options",
                 "-",
                 "Loads the specified native agent library. After the library name, a comma-separated list of options specific to the library can be used.",
-                "通过相对路径加载一个c/c++语言编写的agent包",
+                "通过相对路径加载一个由c/c++语言编写的agent包",
                 "",
                 "",
                 "boolean",
-                "与agentpath功能相同，只是加载的native agent路径不同"
+                "与agentpath功能相同，只是加载native agent路径不同"
         ));
 
         // agentpath
@@ -43,11 +43,11 @@ public class ParametersRegister {
                 "Standard_Options",
                 "all",
                 "Loads a native agent library by full pathname",
-                "通过全路径加载一个c/c++语言编写的agent包",
+                "通过全路径加载一个由c/c++语言编写的agent包",
                 "",
                 "",
                 "boolean",
-                "与agentlib功能相同，只是加载的native agent路径不同"
+                "与agentlib功能相同，只是加载agent的路径不同"
         ));
 
         // client
@@ -69,30 +69,30 @@ public class ParametersRegister {
         set.add(new JvmParameterEntity(
                 "D",
                 new String[]{"all jdk"},
-                new String[]{"-Djetty.port=8888"},
+                new String[]{"-Djetty.port=8888,设置jetty.port属性的值为8888"},
                 "Standard_Options",
                 "—",
                 "Sets a system property value. The property variable is a string with no spaces that represents the name of the property. The value variable is a string that represents the value of the property. If value is a string with spaces, then enclose it in quotation marks .",
-                "该参数通常用于设置系统级全局变量值，如配置文件路径，以便该属性在程序中任何地方都可访问",
-                "启动Java程序传递参数的正确姿势: -DkeyName=value。在程序中使用System.getProperties(keyName)获取系统属性值",
+                "设置系统属性",
+                "启动Java程序传递参数的正确姿势: -DkeyName=value,在程序中使用System.getProperties(keyName)获取系统属性值",
                 "",
                 "String",
-                "如果系统属性值是一个包含空格的字符串，那么需要包在一对双引号中 例如：-Dfoo=\"some string\""
+                "如果系统属性值是一个包含空格的字符串，那么需要包在一对双引号中，例如：-Dfoo=\"some string\""
         ));
 
         // -jar
         set.add(new JvmParameterEntity(
                 "jar",
                 new String[]{"all jdk"},
-                new String[]{"java -jar a.jar"},
+                new String[]{""},
                 "Standard_Options",
                 "all",
                 "",
                 "以jar包的形式执行一个应用程序",
-                "使用该参数的正确姿势：java -jar __.jar",
+                "使用该参数的正确姿势：java -jar a.jar",
                 "",
                 "",
-                "要这样执行一个应用程序，必须让jar包的manifest文件中声明初始加载的Main-class，当然那Main-class必须有public static void main(String[] args)方法"
+                ""
         ));
 
         // -javaagent:
@@ -107,7 +107,7 @@ public class ParametersRegister {
                 "使用该参数的正确姿势: -javaagent:jarpath[=options]",
                 "",
                 "",
-                "通过-javaagent来指定我们编写的agent的jar路径及要传给agent的参数（name=ty&age=30）"
+                ""
         ));
 
         // server
@@ -122,19 +122,19 @@ public class ParametersRegister {
                 "",
                 "",
                 "",
-                "在具有64位能力的jdk环境下默认启动该模式，忽略配置的-client参数。'java -version'可以查看进程的启动模式"
+                "在64位的jdk中默认启动server模式，并忽略配置的-client参数"
         ));
 
         // verbose:gc
         set.add(new JvmParameterEntity(
                 "verbose:gc",
                 new String[]{"all jdk"},
-                new String[]{"-verbose:gc"},
+                new String[]{""},
                 "Standard_Options",
                 "all",
                 "Displays information about each garbage collection (GC) event.",
                 "输出虚拟机中GC的日志",
-                "-verbose:gc 输出虚拟机中GC日志，例如:[Full GC 168K->97K(1984K)， 0.0253873 secs],箭头前后的数据168K和97K分别表示垃圾收集GC前后所有存活对象使用的内存容量，说明有168K-97K=71K的对象容量被回收，括号内的数据1984K为堆内存的总容量，收集所需要的时间是0.0253873秒（这个时间在每次执行的时候会有所不同），因此打印的日志不是十分详细，比如GC的时间点就不会打印",
+                "开启该选项的正确姿势: -verbose:gc",
                 "默认关闭",
                 "boolean",
                 "-verbose:gc的VM等价参数是-XX:+PrintGC"
@@ -164,7 +164,7 @@ public class ParametersRegister {
                 "all",
                 "Displays information about each garbage collection (GC) event.",
                 "输出native方法调用的相关情况，一般用于诊断jni调用错误信息。",
-                "",
+                "开启该选项的正确姿势: -verbose:jni",
                 "默认关闭",
                 "boolean",
                 "-verbose:jni的VM等价参数是-XX:+PrintJNIResolving"
@@ -211,11 +211,11 @@ public class ParametersRegister {
                 "Non_Standard_Options",
                 "all",
                 "",
-                "完全取代基本核心的Java class搜索路径。不常用,否则要重新写所有Java 核心class",
-                "禁用",
+                "完全取代核心的class搜索路径。不常用,否则要重写所有Java核心class",
                 "",
                 "",
-                ""
+                "",
+                "禁用"
         ));
         // -Xbootclasspath/a:path
         set.add(new JvmParameterEntity(
@@ -229,7 +229,7 @@ public class ParametersRegister {
                 "",
                 "",
                 "",
-                ""
+                "常用"
         ));
         // -Xbootclasspath/p:path
         set.add(new JvmParameterEntity(
@@ -240,10 +240,10 @@ public class ParametersRegister {
                 "all",
                 "",
                 "path指定的路径在核心class搜索路径前",
-                "禁用",
                 "",
                 "",
-                ""
+                "",
+                "禁用"
         ));
         // -Xcheck:jni
         set.add(new JvmParameterEntity(
@@ -319,11 +319,11 @@ public class ParametersRegister {
                 "Non_Standard_Options",
                 "all",
                 "Sets the initial and maximum size of the heap for the young generation",
-                "设置新生代的初始大小和最大大小",
+                "设置新生代的初始容量和最大容量",
                 "使用此参数的正确姿势:-Xmn___",
                 "",
                 "unsigned int",
-                "建议新生代的大小保持整个堆的大小的25%~50%之间;-Xmn的VM等价参数为 -XX:NewSize(新生代初始大小) 和 -XX:MaxNewSize(新生代最大大小)"
+                "建议新生代的大小保持整个堆的大小的25%~50%之间;-Xmn的VM等价参数为 -XX:NewSize(新生代初始值) 和 -XX:MaxNewSize(新生代最大值)"
         ));
 
         // -Xms

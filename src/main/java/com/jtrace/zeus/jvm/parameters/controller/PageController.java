@@ -26,11 +26,6 @@ public class PageController {
     @GetMapping(value = {"/index", "/"})
     public String pageIndex(HttpServletRequest request) {
         saveIP(request);
-        ArrayList<User> result=new ArrayList<>(100);
-        for (int i = 0; i < 100; i++) {
-            result.add(new User("ip",new Date(),"北京"));
-        }
-        userMapper.batchInsert(result);
         return "index";
     }
 
