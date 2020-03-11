@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: common_head(~{::title},~{::link})">
-    <title>诊断参数</title>
-    <link rel="stylesheet" th:href="@{css/chosen.min.css}"/>
+<head th:replace="layout :: common_head(~{::title},~{})">
+    <title>接入</title>
 </head>
 <body class="no-skin">
 <div th:replace="common :: navbar"></div>
@@ -15,10 +14,10 @@
             <li><a href="/"><i class="menu-icon fa fa-search"></i><span class="menu-text">查询参数</span></a></li>
             <li><a href="/zhenduan"><i class="menu-icon fa fa-gavel"></i><span class="menu-text">诊断参数</span></a></li>
             <li><a href="/dingzhi"><i class="menu-icon fa fa-pencil-square-o"></i><span class="menu-text">定制参数</span></a></li>
-            <li class="active"><a href="/remen"><i class="menu-icon fa fa-fire"></i><span class="menu-text">热门参数</span></a></li>
-            <li><a href="#" class="dropdown-toggle"><i class="menu-icon fa fa-file-o"></i><span class="menu-text">网站建设</span><b class="arrow fa fa-angle-down"></b></a>
+            <li><a href="/remen"><i class="menu-icon fa fa-fire"></i><span class="menu-text">热门参数</span></a></li>
+            <li class="active open"><a href="#" class="dropdown-toggle"><i class="menu-icon fa fa-file-o"></i><span class="menu-text">网站建设</span><b class="arrow fa fa-angle-down"></b></a>
                 <ul class="submenu">
-                    <li><a href="/weixin"><i class="menu-icon fa fa-caret-right"></i>加微信群</a></li>
+                    <li class="active"><a href="/weixin"><i class="menu-icon fa fa-caret-right"></i>加微信群</a></li>
                     <li><a href="/fangwen"><i class="menu-icon fa fa-caret-right"></i>访问统计</a></li>
                     <li><a href="/faq"><i class="menu-icon fa fa-caret-right"></i>FAQ</a></li>
                     <li><a href="/examples"><i class="menu-icon fa fa-caret-right"></i>使用案例</a></li>
@@ -34,30 +33,67 @@
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                 <ul class="breadcrumb">
-                    <li><i class="ace-icon fa fa-home home-icon"></i><a href="/">首页</a></li>
-                    <li class="active">热门参数</li>
+                    <li><i class="ace-icon fa fa-home home-icon"></i><a href="/index">首页</a></li>
+                    <li><a href="/weixin">网站建设</a></li>
+                    <li class="active">加微信群</li>
                 </ul><!-- /.breadcrumb -->
             </div>
             <div class="page-content">
-                <div class="page-header">
-                    <h1>
-                        JVM热门参数
-                        <small>
-                            统计各个业务线的JVM参数配置情况,提供每个参数的使用频率以及默认值(数据来源于百万级生产环境和十万级测试环境)
-                        </small>
-                    </h1>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        即将上线中...
-                    </div><!-- /.col -->
+                <div class="col-xl-6 col-xl-offset-3">
+                    <div style="width:300px;">
+                        <img src="../static/images/weixing/WechatIMG7.jpeg" class="img-responsive center-block">
+                    </div>
                 </div>
             </div>
-        </div>
     </div><!-- /.main-content -->
     <div th:replace="common :: footer-1"></div>
     <div th:replace="common :: footer-2"></div>
 </div><!-- /.main-container -->
+<!-- basic scripts -->
 <div th:replace="common :: script"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        buildChart1();
+    });
+
+    function rce() {
+        var ip=$("#ip").val();
+        $.ajax({
+            url: "/rce_test/"+ip,
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                showNoticeNotiy("success", "success!");
+            },
+            error: function () {
+                showNoticeNotiy("error", "数据请求失败!");
+            }
+        });
+    }
+
+    function buildChart1() {
+        $.ajax({
+            url: "/ip/all",
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                generateChart(response);
+            },
+            error: function () {
+                showNoticeNotiy("error", "数据请求失败!");
+            }
+        });
+    }
+
+    function generateChart(data) {
+        var dom = document.getElementById("container1");
+        var myChart = echarts.init(dom);
+        option = null;
+        option=data;
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    }
+</script>
 </body>
 </html>

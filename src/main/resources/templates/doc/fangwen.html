@@ -15,11 +15,12 @@
             <li><a href="/zhenduan"><i class="menu-icon fa fa-gavel"></i><span class="menu-text">诊断参数</span></a></li>
             <li><a href="/dingzhi"><i class="menu-icon fa fa-pencil-square-o"></i><span class="menu-text">定制参数</span></a></li>
             <li><a href="/remen"><i class="menu-icon fa fa-fire"></i><span class="menu-text">热门参数</span></a></li>
-            <li class="active open"><a href="#" class="dropdown-toggle"><i class="menu-icon fa fa-file-o"></i><span class="menu-text">技术文档</span><b class="arrow fa fa-angle-down"></b></a>
+            <li class="active open"><a href="#" class="dropdown-toggle"><i class="menu-icon fa fa-file-o"></i><span class="menu-text">网站建设</span><b class="arrow fa fa-angle-down"></b></a>
                 <ul class="submenu">
-                    <li class="active"><a href="/join"><i class="menu-icon fa fa-caret-right"></i>扫码加群</a></li>
+                    <li><a href="/weixin"><i class="menu-icon fa fa-caret-right"></i>加微信群</a></li>
+                    <li class="active"><a href="/fangwen"><i class="menu-icon fa fa-caret-right"></i>访问统计</a></li>
                     <li><a href="/faq"><i class="menu-icon fa fa-caret-right"></i>FAQ</a></li>
-                    <li><a href="/examples"><i class="menu-icon fa fa-caret-right"></i>诊断案例</a></li>
+                    <li><a href="/examples"><i class="menu-icon fa fa-caret-right"></i>使用案例</a></li>
                     <li><a href="/introduction"><i class="menu-icon fa fa-caret-right"></i>RD简介</a></li>
                 </ul>
             </li>
@@ -33,30 +34,13 @@
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                 <ul class="breadcrumb">
                     <li><i class="ace-icon fa fa-home home-icon"></i><a href="/index">首页</a></li>
-                    <li><a href="#">技术文档</a></li>
-                    <li class="active">接入</li>
+                    <li><a href="/weixin">网站建设</a></li>
+                    <li class="active">访问统计</li>
                 </ul><!-- /.breadcrumb -->
             </div>
             <div class="page-content">
                 <div class="page-content-rows">
-                    <div class="tabbable">
-                        <ul class="nav nav-tabs padding-18 tab-size-bigger" id="myTab">
-                            <li class="active"><a data-toggle="tab" href="#faq-tab-1" aria-expanded="false">加入微信群</a></li>
-                            <li><a data-toggle="tab" href="#faq-tab-2" aria-expanded="false">站点访问量</a></li>
-                        </ul>
-                        <div class="tab-content no-border padding-24">
-                            <div id="faq-tab-1" class="tab-pane fade active in">
-                                <div class="col-xl-6 col-xl-offset-3">
-                                    <div style="width:300px;">
-                                        <img src="../static/images/weixing/WechatIMG7.jpeg" class="img-responsive center-block">
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="faq-tab-2" class="tab-pane fade">
-                                <div id="container1" style="height: 400px;"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="container1" style="height: 400px;"></div>
                 </div>
             </div>
         </div>
@@ -73,7 +57,7 @@
 
     function buildChart1() {
         $.ajax({
-            url: "/host/all",
+            url: "/ip/all",
             type: 'GET',
             dataType: 'json',
             success: function (response) {

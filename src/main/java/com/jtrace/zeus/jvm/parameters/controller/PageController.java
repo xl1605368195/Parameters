@@ -1,15 +1,9 @@
 package com.jtrace.zeus.jvm.parameters.controller;
 
-import com.jtrace.zeus.jvm.parameters.mapper.UserMapper;
-import com.jtrace.zeus.jvm.parameters.user.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 import static com.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask.saveIP;
 
@@ -19,9 +13,6 @@ import static com.jtrace.zeus.jvm.parameters.ip.SaticScheduleTask.saveIP;
  */
 @Controller
 public class PageController {
-
-    @Autowired
-    private UserMapper userMapper;
 
     @GetMapping(value = {"/index", "/"})
     public String pageIndex(HttpServletRequest request) {
@@ -46,14 +37,14 @@ public class PageController {
         return "remen";
     }
 
-    @GetMapping("/introduction")
-    public String pageIntroduction() {
-        return "/doc/introduction";
+    @GetMapping("/weixin")
+    public String pageWeixin() {
+        return "/doc/weixin";
     }
 
-    @GetMapping("/examples")
-    public String pageExamples() {
-        return "/doc/examples";
+    @GetMapping("/fangwen")
+    public String pageFangwen() {
+        return "/doc/fangwen";
     }
 
     @GetMapping("/faq")
@@ -61,8 +52,14 @@ public class PageController {
         return "/doc/faq";
     }
 
-    @GetMapping("/join")
-    public String pageJoin() {
-        return "/doc/join";
+    @GetMapping("/examples")
+    public String pageExamples() {
+        return "/doc/examples";
     }
+
+    @GetMapping("/introduction")
+    public String pageIntroduction() {
+        return "/doc/introduction";
+    }
+
 }

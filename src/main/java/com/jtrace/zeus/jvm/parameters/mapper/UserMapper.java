@@ -1,5 +1,6 @@
 package com.jtrace.zeus.jvm.parameters.mapper;
 
+import com.jtrace.zeus.jvm.parameters.dao.GroupByDate;
 import com.jtrace.zeus.jvm.parameters.user.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -33,4 +34,7 @@ public interface UserMapper {
             "</script>"
     })
     int batchInsert(@Param(value = "list") List<User> list);
+
+    @Select("SELECT date(datetime) AS day, count(*) AS count FROM tb_user_info GROUP BY day limit #{limitCount}")
+    List<GroupByDate> groupByDay(int limitCount);
 }

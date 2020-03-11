@@ -2,6 +2,7 @@ package com.jtrace.zeus.jvm.parameters.controller;
 
 import com.alibaba.fastjson.JSONObject;
 
+import com.jtrace.zeus.jvm.parameters.dao.GroupByDate;
 import com.jtrace.zeus.jvm.parameters.entity.echart.*;
 import com.jtrace.zeus.jvm.parameters.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,31 +28,19 @@ public class ChartDataController {
 
             // X轴名称
             List<String> xAxisData = new ArrayList<>();
-            List<HostAggregation> all = hostArrgegationService.getAll();
-            Iterator<HostAggregation> iterator1 = all.iterator();
+            List<GroupByDate> all = userService.getDailyCount(30);
+            Iterator<GroupByDate> iterator1 = all.iterator();
             while (iterator1.hasNext()) {
-                HostAggregation next = iterator1.next();
-                xAxisData.add(next.getCreateTime());
+                GroupByDate next = iterator1.next();
+                xAxisData.add(next.getDay());
             }
             Map<Integer, List<Integer>> newData = new HashMap<>();
             newData.put(0, new ArrayList<>());
-            newData.put(1, new ArrayList<>());
-            newData.put(2, new ArrayList<>());
-            newData.put(3, new ArrayList<>());
-            newData.put(4, new ArrayList<>());
-            newData.put(5, new ArrayList<>());
-            newData.put(6, new ArrayList<>());
             for (int i1 = 0; i1 < all.size(); i1++) {
-                Iterator<HostAggregation> iterator2 = all.iterator();
+                Iterator<GroupByDate> iterator2 = all.iterator();
                 while (iterator2.hasNext()) {
-                    HostAggregation next = iterator2.next();
-                    newData.get(0).add(next.getTotalHostCount());
-                    newData.get(1).add(next.getGreyHostCount());
-                    newData.get(2).add(next.getRaspHostCount());
-                    newData.get(3).add(next.getJavaHostCount());
-                    newData.get(4).add(next.getServerHostCount());
-                    newData.get(5).add(next.getGreyWebCount());
-                    newData.get(6).add(next.getSuccessInstrumentCount());
+                    GroupByDate next = iterator2.next();
+                    newData.get(0).add(next.getCount());
                 }
             }
             for (int i = 0; i < legendData.size(); i++) {
