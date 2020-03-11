@@ -39,9 +39,22 @@
             </div>
             <div class="page-content">
                 <div class="page-content-rows">
-                    <div class="col-xl-6 col-xl-offset-3">
-                        <div style="width:300px;">
-                            <img src="../static/images/weixing/WechatIMG7.jpeg" class="img-responsive center-block">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs padding-18 tab-size-bigger" id="myTab">
+                            <li class="active"><a data-toggle="tab" href="#faq-tab-1" aria-expanded="false">加入微信群</a></li>
+                            <li><a data-toggle="tab" href="#faq-tab-2" aria-expanded="false">站点访问量</a></li>
+                        </ul>
+                        <div class="tab-content no-border padding-24">
+                            <div id="faq-tab-1" class="tab-pane fade active in">
+                                <div class="col-xl-6 col-xl-offset-3">
+                                    <div style="width:300px;">
+                                        <img src="../static/images/weixing/WechatIMG7.jpeg" class="img-responsive center-block">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="faq-tab-2" class="tab-pane fade">
+                                <div id="container1" style="height: 400px;"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,5 +66,34 @@
 </div><!-- /.main-container -->
 <!-- basic scripts -->
 <div th:replace="common :: script"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        buildChart1();
+    });
+
+    function buildChart1() {
+        $.ajax({
+            url: "/host/all",
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                generateChart(response);
+            },
+            error: function () {
+                showNoticeNotiy("error", "数据请求失败!");
+            }
+        });
+    }
+
+    function generateChart(data) {
+        var dom = document.getElementById("container1");
+        var myChart = echarts.init(dom);
+        option = null;
+        option=data;
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    }
+</script>
 </body>
 </html>
