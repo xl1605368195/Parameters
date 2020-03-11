@@ -45,4 +45,24 @@ public class PageController {
         // 热门
         return "remen";
     }
+
+    @GetMapping("/introduction")
+    public String pageIntroduction() {
+        return "/doc/introduction";
+    }
+
+    @GetMapping("/examples")
+    public String pageExamples() {
+        return "/doc/examples";
+    }
+
+    @GetMapping("/faq")
+    public String pageFaq() {
+        return "/doc/faq";
+    }
+
+    @GetMapping("/join")
+    public String pageJoin() {
+        return "/doc/join";
+    }
 }

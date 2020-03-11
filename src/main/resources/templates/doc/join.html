@@ -39,7 +39,11 @@
             </div>
             <div class="page-content">
                 <div class="page-content-rows">
-                    ......
+                    <div class="col-xl-6 col-xl-offset-3">
+                        <div style="width:300px;">
+                            <img src="../static/images/weixing/WechatIMG7.jpeg" class="img-responsive center-block">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,13 +53,5 @@
 </div><!-- /.main-container -->
 <!-- basic scripts -->
 <div th:replace="common :: script"></div>
-<script type="text/javascript">
-    // logout
-    $("#logout").on(ace.click_event, function() {
-        bootbox.confirm("确定退出?", function(result) {
-            if(result) {$.ajax({url: "/user/logout/", type: "GET", success: function (response) {window.location.reload();}});}
-        });
-    });
-</script>
 </body>
 </html>
